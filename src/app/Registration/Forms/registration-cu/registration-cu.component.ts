@@ -13,6 +13,7 @@ import { ServRegistrationService } from '../../Services/serv-registration.servic
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VCustRegistration } from '../../Models/VCustRegistration';
 
+
 @Component({
   selector: 'app-registration-cu',
   standalone: true,
@@ -32,46 +33,46 @@ export class RegistrationCUComponent implements OnInit {
               private sanitizer: DomSanitizer ){
     this.RegisForm = this.formBuider.group({
       ccregId: '',
-    ccregName: '',
-    ccregNickName: '',
-    ccregNationId: '',
-    ccregNationImgFileName: '',
-    ccregNikImage: '',
-    ccregNibId: '',
-    ccregNibImgFileName: '',
-    ccregNibImage: '',
-    ccregAddress: '',
-    ccregRt: '' ,
-    ccregRw: '',
-    ccregProvId: '',
-    ccregCityId: '',
-    ccregKecId: '',
-    ccregKelId: '',
-    ccregArea: '',
-    ccregZip: '',
-    ccregMobilePhone: '',
-    ccregPhone: '',
-    ccregEmail: '',
-    ccregLongLat: '',
-    ccregSentCmbaId: '',
-    ccregSentCmbaName: '',
-    ccregSentCmbaAccount: '',
-    ccregRevcCmbaId: '',
-    ccregRecvCmbaName: '',
-    ccregRevcCmbaAccount: '',
-    ccregMinApproval: '',
-    ccregPic1Name: '',
-    ccregPic1Phone: '',
-    ccregPic1Email: '',
-    ccregPic1password: '',
-    ccregPic2Name: '',
-    ccregPic2Phone: '',
-    ccregPic2Email: '',
-    ccregPic2password: '',
-    ccregPic3Name: '',
-    ccregPic3Phone: '',
-    ccregPic3Email: '',
-    ccregPic3password: ''
+      ccregAddress: '',
+      ccregArea: '',
+      ccregCityId: '',
+      ccregEmail: '',
+      ccregKecId: '',
+      ccregKelId: '',
+      ccregLongLat: '',
+      ccregMinApproval: '',
+      ccregMobilePhone: '',
+      ccregName: '',
+      ccregNationId: '',
+      ccregNationImgFileName: '',
+      ccregNikImage: '',
+      ccregNibId: '',
+      ccregNibImgFileName: '',
+      ccregNibImage: '',
+      ccregNickName: '',
+      ccregPhone: '',
+      ccregPic1Email: '',
+      ccregPic1Name: '',
+      ccregPic1Phone: '',
+      ccregPic1password: '',
+      ccregPic2Email: '',
+      ccregPic2Name: '',
+      ccregPic2Phone: '',
+      ccregPic2password: '',
+      ccregPic3Email: '',
+      ccregPic3Name: '',
+      ccregPic3Phone: '',
+      ccregPic3password: '',
+      ccregProvId: '',
+      ccregRecvCmbaName: '',
+      ccregRevcCmbaAccount: '',
+      ccregRevcCmbaId: '',
+      ccregRt: '' ,
+      ccregRw: '',
+      ccregSentCmbaAccount: '',
+      ccregSentCmbaId: '',
+      ccregSentCmbaName: '',
+      ccregZip: ''
     });
   }
 
@@ -86,6 +87,7 @@ export class RegistrationCUComponent implements OnInit {
     alert("aaaaa");
     this.regiServ.getCustRegisById().subscribe((res: VCustRegistration[]) => {
       this.vregislist = res;
+      alert("rhl00003");
       for (var i = 0; i < this.vregislist.length; i++) {
         this.base64String=this.vregislist[i].ccregNikImage;
         this.imageNikUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.base64String);

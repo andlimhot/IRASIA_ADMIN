@@ -11,6 +11,6 @@ export class ServRegistrationService {
   constructor(private http:HttpClient) { }
 
   getCustRegisById(): Observable<any>{
-    return this.http.get<Array<VCustRegistration>>("http://localhost:9814/wa-svc/admin/getRegistrationById?regId=27");  
+    return this.http.get<Array<VCustRegistration>>("http://localhost:9814/wa-svc/admin/getRegistrationById?regId=1");  
   }
 }
