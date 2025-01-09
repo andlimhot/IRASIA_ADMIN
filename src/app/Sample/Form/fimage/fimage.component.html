@@ -1,0 +1,14 @@
+<div>
+    <input type="file" (change)="onFileSelected($event)">
+    <input type="text" [(ngModel)]="iconName" placeholder="Icon name">
+    <button (click)="uploadIcon()">Upload</button>
+  </div>
+  
+  <div>
+    <input type="number" #iconId placeholder="Icon ID">
+    <button (click)="getIcon(iconId.value)">Get Icon</button>
+  </div>
+  
+  <div *ngIf="imageUrl">
+    <img [src]="imageUrl" alt="Icon">
+  </div>

@@ -7,6 +7,7 @@ import { RegistrationCUComponent } from './Registration/Forms/registration-cu/re
 import { HttpClientModule } from '@angular/common/http';
 import { ProducttypeListComponent } from './ProductType/producttype-list/producttype-list.component';
 import { ProducttypeCuComponent } from './ProductType/producttype-cu/producttype-cu.component';
+import { FImageComponent } from './Sample/Form/fimage/fimage.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { ProducttypeCuComponent } from './ProductType/producttype-cu/producttype
     BrowserModule,
     BrowserAnimationsModule,
     RegistrationCUComponent,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    FImageComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })
