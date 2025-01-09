@@ -5,17 +5,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationCUComponent } from './Registration/Forms/registration-cu/registration-cu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FImageComponent } from './Sample/Form/fimage/fimage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-  ],
+     ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RegistrationCUComponent,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    FImageComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })

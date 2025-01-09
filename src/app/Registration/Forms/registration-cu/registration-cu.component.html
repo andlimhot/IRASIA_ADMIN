@@ -135,6 +135,7 @@
                   <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">Province</label>
                   <mat-form-field>
                     <mat-label>Province</mat-label>
+                    <input matInput formControlName="ccregProvId">
                    <!-- <mat-select formControlName="ccregProvId" name="pro" (selectionChange)="changeprov($event.value)">
                       <mat-option *ngFor="let pro of provlist" [value]="pro.cmpsiProvCode">{{ pro.cmpsiProvinsi }}</mat-option>
                   </mat-select> -->
@@ -145,6 +146,7 @@
                   <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">City</label>
                   <mat-form-field>
                     <mat-label>City</mat-label>
+                    <input matInput formControlName="ccregCityId">
                       <!-- <mat-select formControlName="ccregCityId" name="cit" (selectionChange)="changecity($event.value)">
                         <mat-option *ngFor="let cit of citylist" [value]="cit.cmcitCityCode">{{ cit.cmcitCity }}</mat-option>
                       </mat-select> -->
@@ -157,9 +159,7 @@
                   <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">District</label>
                   <mat-form-field>
                     <mat-label>District</mat-label>
-                    <!--<mat-select formControlName="ccregKecId" name="kc" (selectionChange)="changekecamatan($event.value)">
-                      <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecCityCode">{{ kc.cmkecKecamatan }}</mat-option>
-                    </mat-select>-->
+                            <input matInput formControlName="ccregKecId">
                   </mat-form-field>
                 </div>
   
@@ -167,13 +167,14 @@
                   <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">Village</label>
                   <mat-form-field>
                     <mat-label>Village</mat-label>
+                    <input matInput formControlName="ccregKelId">
                     <!--<mat-select formControlName="ccregKelId" name="kl" (selectionChange)="changekelurahan($event.value)">
                       <mat-option *ngFor="let kl of kellist" [value]="kl.cmkelKelCode">{{ kl.cmkelKelurahan }}</mat-option>
                     </mat-select>-->
                   </mat-form-field>
                 </div>
               </div>
-  
+  --
               <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
                 <div class="sm:col-span-4">
                   <label for="companyname" class="block text-sm/6 font-medium text-gray-900">Area Name</label>
@@ -294,13 +295,13 @@
                 </ng-template>
                 <h2 class="text-base/7 font-semibold text-gray-900 text-2xl">Maximum Approval</h2>
                 <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-                <mat-form-field  formControlName="ccregMinApproval">
+               
+                
                   <!--<mat-select  [(value)]="maxapp">
                     <mat-option value=1>1 PIC</mat-option>
                     <mat-option value=2>2 PIC</mat-option>
                     <mat-option value=3>3 PIC</mat-option>
                   </mat-select>-->
-                </mat-form-field>
                 <!--<div *ngIf="maxapp >=1 && maxapp <=3">-->
                   <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base/7 font-semibold text-gray-900 text-2xl" >Person In charge - I </h2>
