@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'IRASIA_ADMIN';
+
+  logon: boolean=false;
+
+
+  ngOnInit(): void {  
+    
+  }
+  
 }
