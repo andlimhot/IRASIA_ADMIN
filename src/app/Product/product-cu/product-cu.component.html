@@ -1,1 +1,75 @@
-<p>product-cu works!</p>
+<div mat-dialog-title class="content">
+    <mat-toolbar color="accent" class="mttolbar">
+        <h1>Master Product </h1>
+        <span class="toolbar-sapce"></span>
+        <button mat-raised-button color="accent" style="border-radius: 15px;" 
+        (click)="SaveUpdateProd()">Submit</button>
+        <button mat-raised-button color="warn" style="border-radius: 15px;" (click)="closeForm()">Cancel</button>
+    </mat-toolbar>
+</div>
+
+<div class="container" style="padding-top: 10px;">
+    <div class="row">
+        <div class="col-md-9">
+            <mat-card>
+                <mat-card-header>Entry/update Product</mat-card-header>
+                <mat-card-content style="padding-top: 7px;">
+                    <form [formGroup]="MasterProdForm">
+                       <!-- <mat-form-field> -->
+                            <mat-form-field appearance="outline" style="width: 49%;">
+                                <mat-label>Product Code</mat-label>
+                                <input matInput formControlName="cmprCode">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" style="width: 49%;">
+                                <mat-label>Product Name</mat-label>
+                                <input matInput formControlName="cmprName">
+                            </mat-form-field>
+        
+                            <!--<div>
+                                <mat-form-field appearance="outline" style="width: 49%;">
+                                    <mat-label>File Name</mat-label>
+                                    <input matInput formControlName="cmprImgFilename">
+                                </mat-form-field>
+                            </div>-->
+
+                            <div class="row">
+                                <div class="col-8">
+                                  <label class="btn btn-default p-0">
+                                  <input type="file" accept="image/*" (change)="selectImageNik($event)"  />
+                                  <img [src]="preview" alt="Image Preview" height="90px" width="130px" >
+                                  </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <mat-form-field appearance="outline" style="width: 49%;">
+                                    <mat-label>File Patch</mat-label>
+                                    <input matInput formControlName="cmprImgFilepath">
+                                </mat-form-field>
+
+                                <!--<label for="last_name" class="block text-gray-700 font-bold mb-2">Manual Product</label>
+                                <input matInput formControlName="cmprImgFilepath"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    placeholder="Manual Produk">-->
+
+                            </div>
+
+
+                        <!--</mat-form-field> -->
+        
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+
+    <div class="row" style="padding-top: 10px;">
+        <mat-tab-group>
+            <!--<mat-tab label="Batch Bahan Baku"> <app-bahan-baku-list [ddate]="p_tglbatch"  [nobatch]="nobatch"></app-bahan-baku-list> </mat-tab>-->
+            <!--<mat-tab label="Product Type List"><app-producttype-list></app-producttype-list></mat-tab>-->
+          </mat-tab-group>
+    </div>
+
+</div>

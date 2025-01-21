@@ -16,7 +16,12 @@ export class ServProductService {
 
   getProdSingle(prodcode:any): Observable<any>{
     return this.http.get<Array<CoreMstProduct>>("http://localhost:8090/am-svc/appmst/getCmprSingle?code="+prodcode);
+
+    }
+
+  saveupdateProd(data:any):Observable<any>{   
+      return this.http.post("http://localhost:8090/am-svc/appmst/saveupdprod",data, {responseType: 'text' as 'text'});
+     }
   
-  }
-  
+     
 }

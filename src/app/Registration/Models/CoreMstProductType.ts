@@ -1,4 +1,4 @@
-export interface CoreMstProduct{
+export interface CoreMstProductType{
     cmprtCmprCode: number,
     cmprtCode: number,
     cmprtTypeDesc: string,

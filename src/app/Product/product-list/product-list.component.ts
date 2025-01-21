@@ -12,13 +12,13 @@ import { ServProductService } from 'src/app/Registration/Services/serv-product.s
 import { MatTableDataSource, MatTableModule } from "@angular/material/table"; // tambah manual
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { ProductCuComponent } from '../product-cu/product-cu.component';
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatDatepickerInputEvent, MatDatepickerModule } from "@angular/material/datepicker";
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AppComponent } from 'src/app/app.component';
+import { ProductCuComponent } from '../product-cu/product-cu.component';
+import { ProducttypeCuComponent } from 'src/app/ProductType/producttype-cu/producttype-cu.component';
 
 
 @Component({
@@ -48,7 +48,6 @@ export class ProductListComponent implements OnInit {
   vct :number=0;
   events: string[] = [];
   month:string="a";
-  //brName2: string = 'bbb' || undefined;
 
   constructor(private _mbtserv:ServProductService,  private _router: Router, private dialog:MatDialog,
              private datePipe: DatePipe,
@@ -58,19 +57,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    alert('product list')
-   
-    alert('atas22');
     this.getproductListAll();
-    alert('bawah22');
-
-    /*this.isLoading=true;
-    this.dtparam=sessionStorage.getItem("paramdt");
-   //   alert('today'+ this.dtparam);
-      if (this.dtparam.length===0) { this.dtparam;}
-      this.getproductListAll;
-     // this.vlength=this.vfaklist.length;  
-      this.isLoading=false*/
     
   }
 
@@ -91,43 +78,13 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-   /*async getMasterBatchListDay(){
-    this.vmsjur=[];
-    this.vct=0;
-    alert(this.dtparam);
-    this._mbtserv.getProdListAll().subscribe((res:CoreMstProduct[])=>{
-      this.vmsjur=res;
-      this.dataSource=new MatTableDataSource(this.vmsjur);
-      this.dataSource.data.forEach( async item => {
-        this.vct=this.vct+1;
-        item.nourut=this.vct;
-       alert('prodnameget'+item.mbtBrCode+'/'+this.brName2)
-       await this.getProdName(item.mbtBrCode);
-       // alert('prodnameget22'+this.brName2)
-        item.Namabarang = this.brName2 + ' ('+ item.mbtBrCode +')';
-        
-      });      
-      this.dataSource.sort=this.sort;
-      this.dataSource.paginator=this.paginator;
-     
-      error:(error: HttpErrorResponse):void =>{
-        if (error instanceof ErrorEvent){
-                }else{
-          server side error
-        }
-       }
-    })  
-    }*/
 
-
-    //coba list awal all - tidak tampil saat awal masuk list, jika di panggil by button baru jalan
    getproductListAll(){
-    alert('mnmnmnmnm');
       this.vmsjur=[];
       this.vct=0;
-      alert('productlist');
+      //alert('productlist');
       this._mbtserv.getProdListAll().subscribe((res:CoreMstProduct[])=>{
-        alert(res.length)
+        //alert(res.length)
         this.vmsjur=res;
         this.dataSource=new MatTableDataSource(this.vmsjur);
         this.dataSource.data.forEach( async item => {
@@ -147,7 +104,7 @@ export class ProductListComponent implements OnInit {
       })  
     }
 
-  viewAddProduct(ptranstype:string, vprodcode:any){
+   viewAddProduct(ptranstype:string, vprodcode:any){
     const dialogRef =this.dialog.open(ProductCuComponent,{height:'90%',width:'80%'},);
       dialogRef.afterClosed().subscribe({
         next:(val) =>{
@@ -159,9 +116,26 @@ export class ProductListComponent implements OnInit {
         }
       });
       
-      /*dialogRef.componentInstance.nobatch=vprodcode;
-      dialogRef.componentInstance.type=ptranstype;*/
+      dialogRef.componentInstance.type=ptranstype;
+      dialogRef.componentInstance.Prodno=vprodcode;
 
     }
+
+    /*  viewAddProduct(ptranstype:string, vprodcode:any){
+        const dialogRef =this.dialog.open(ProducttypeCuComponent,{height:'90%',width:'80%'},);
+          dialogRef.afterClosed().subscribe({
+            next:(val) =>{
+              if (val) {
+                //this.getListFaktur();
+                //sessionStorage.setItem("dsono", this.dtparam);  
+      
+              }
+            }
+          });
+          
+         /* dialogRef.componentInstance.type=ptranstype;
+          dialogRef.componentInstance.Prodno=vprodcode;
+    
+        }*/
 
 }
