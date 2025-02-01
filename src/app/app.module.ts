@@ -11,7 +11,6 @@ import { FImageComponent } from './Sample/Form/fimage/fimage.component';
 import { ProductListComponent } from './Product/product-list/product-list.component';
 import { RouterModule, RouterOutlet, Routes } from '@angular/router';
 import { ProductCuComponent } from './Product/product-cu/product-cu.component';
-
 const ROUTES: Routes = [ 
   { path: 'ProductList', component: ProductListComponent },
   /*{ path: 'RequestUpdList/:param1/:param2', component: ReqUpdateListComponent },

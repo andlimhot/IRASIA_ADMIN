@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ProductCuComponent } from '../product-cu/product-cu.component';
 import { ProducttypeCuComponent } from 'src/app/ProductType/producttype-cu/producttype-cu.component';
+import { ProductsCuComponent } from '../products-cu/products-cu.component';
 
 
 @Component({
@@ -105,7 +106,7 @@ export class ProductListComponent implements OnInit {
     }
 
    viewAddProduct(ptranstype:string, vprodcode:any){
-    const dialogRef =this.dialog.open(ProductCuComponent,{height:'90%',width:'80%'},);
+    const dialogRef =this.dialog.open(ProductsCuComponent,{height:'90%',width:'80%'},);
       dialogRef.afterClosed().subscribe({
         next:(val) =>{
           if (val) {
@@ -116,8 +117,8 @@ export class ProductListComponent implements OnInit {
         }
       });
       
-      dialogRef.componentInstance.type=ptranstype;
-      dialogRef.componentInstance.Prodno=vprodcode;
+      dialogRef.componentInstance.p_type=ptranstype;
+      dialogRef.componentInstance.p_no=vprodcode;
 
     }
 
