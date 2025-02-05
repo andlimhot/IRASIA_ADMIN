@@ -8,7 +8,7 @@ export interface CoreMstProductType{
     cmprtImgFilename: string,
     cmprtImgFilepath: string,
     cmprtCreateBy: string,
-    cmprtCreateDate: Date,
+    cmprtCreateDate: string,
     cmprtUpdateBy: string,
-    cmprtUpdateDate: Date
+    cmprtUpdateDate: string
    }

@@ -1,1 +1,130 @@
-<p>producttype-cu works!</p>
+
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">e-commerce Product Type</h1>
+    <form (ngSubmit)="submitProdType()" enctype="multipart/form-data">
+    <div class="grid grid-cols-2 gap-6">
+
+        <div>
+            <h2 class="text-xl font-semibold mb-2">Master Product Type</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="ctecdProductTypeAlias" class="block text-gray-700 font-bold mb-2">Product Code</label>
+                    <input type="text" id="cmprtCmprCode" [(ngModel)]="data.cmprtCmprCode" name="cmprtCmprCode"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Product Code">
+                </div>
+                <div class="mb-4">
+                    <label for="ctecdProducttypeStockQty" class="block text-gray-700 font-bold mb-2">Product type Code</label>
+                    <input type="text" id="cmprtCode" [(ngModel)]="data.cmprtCode" name="cmprtCode"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Product Name">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="cmprtTypeDesc" class="block text-gray-700 font-bold mb-2">Product Type Desc</label>
+                    <input type="text" id="cmprtTypeDesc" [(ngModel)]="data.cmprtTypeDesc" name="cmprtTypeDesc"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Product Code">
+                </div>
+                <div class="mb-4">
+                    <label for="cmprtMeasure" class="block text-gray-700 font-bold mb-2">Measure</label>
+                    <input type="text" id="cmprtMeasure" [(ngModel)]="data.cmprtMeasure" name="cmprtMeasure"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Product Name">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="cmprtSpekGrade" class="block text-gray-700 font-bold mb-2">Spek Grade</label>
+                    <input type="text" id="cmprtSpekGrade" [(ngModel)]="data.cmprtSpekGrade" name="cmprtSpekGrade"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Product Code">
+                </div>
+                <div class="mb-4">
+                    <label for="cmprtTypeAlias" class="block text-gray-700 font-bold mb-2">Type Alias</label>
+                    <input type="text" id="cmprtTypeAlias" [(ngModel)]="data.cmprtTypeAlias" name="cmprtTypeAlias"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Product Name">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="cmprtImgFilename" class="block text-gray-700 font-bold mb-2">File Name</label>
+                    <input type="text" id="cmprtImgFilename" [(ngModel)]="data.cmprtImgFilename" name="cmprtImgFilename"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="File Name">
+                </div>
+                <div class="mb-4">
+                    <label for="cmprtImgFilepath" class="block text-gray-700 font-bold mb-2">File Path</label>
+                    <input type="text" id="cmprtImgFilepath" [(ngModel)]="data.cmprtImgFilepath" name="cmprtImgFilepath"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="File Path">
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <h2 class="text-xl font-semibold mb-2">Image Upload</h2>
+
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="row">
+                            <div class="col-span-1">
+                                <div class="col-span-8">
+                                    <label class="cursor-pointer inline-block p-0 relative">
+                                        <input type="file" accept="image/*"  id="file1" name="file1" (change)="onFileSelected($event, 1)" />
+                                        <img [src]="preview" alt="Image Preview1" class="h-24 w-32" />
+                                        <div
+                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                            <span class="text-white font-bold">Pilih File</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div class="mt-8">
+        <h2 class="text-xl font-semibold mb-2">Specification</h2>
+
+        <div class="mb-4">
+            <label for="ctecdProductTypeSize" class="block text-gray-700 font-bold mb-2">size</label>
+            <input type="text" id="ctecdProductTypeSize" [(ngModel)]="data.ctecdProductTypeSize" name="ctecdProductTypeSize"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Ukuran Product">
+        </div>
+
+        <div class="mb-4">
+            <label for="ctecdProductTypeSpec" class="block text-gray-700 font-bold mb-2">Detail Specification</label>
+            <input type="text" id="ctecdProductTypeSpec" [(ngModel)]="data.ctecdProductTypeSpec" name="ctecdProductTypeSpec"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Spesifikasi Detail">
+        </div>
+
+        <div class="mb-4">
+            <label for="ctecdProducttypeDesc" class="block text-gray-700 font-bold mb-2">Description</label>
+            <input type="text" id="ctecdProducttypeDesc" [(ngModel)]="data.ctecdProducttypeDesc" name="ctecdProducttypeDesc"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Penjelasan Produk">
+        </div>
+    </div>-->
+
+    <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit" >
+        Save Product Type
+    </button>
+    </form>
+</div>
+
+
+

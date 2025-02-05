@@ -47,7 +47,6 @@ export class ProducttypeListComponent {
     month:string="a";
 
  constructor(private _mbtserv:ServProducttypeService,  private _router: Router, private dialog:MatDialog,
-                 private datePipe: DatePipe,
  ){  
     
 }
@@ -80,7 +79,7 @@ export class ProducttypeListComponent {
           this.vmsjur=[];
           this.vct=0;
           //alert('productlist');
-          this._mbtserv.getProdTypeListByCode('1').subscribe((res:CoreMstProductType[])=>{
+          this._mbtserv.getProdTypeListByCode(1).subscribe((res:CoreMstProductType[])=>{
             //alert(res.length)
             this.vmsjur=res;
             this.dataSource=new MatTableDataSource(this.vmsjur);
@@ -101,24 +100,8 @@ export class ProducttypeListComponent {
           })  
         }
     
-       viewAddProductType(ptranstype:string, vprodcode:any){
-        const dialogRef =this.dialog.open(ProducttypeCuComponent,{height:'90%',width:'80%'},);
-          dialogRef.afterClosed().subscribe({
-            next:(val) =>{
-              if (val) {
-                //this.getListFaktur();
-                //sessionStorage.setItem("dsono", this.dtparam);  
-      
-              }
-            }
-          });
-          
-         /* dialogRef.componentInstance.type=ptranstype;
-          dialogRef.componentInstance.Prodno=vprodcode;*/
     
-        }
-    
-        /*  viewAddProduct(ptranstype:string, vprodcode:any){
+        viewAddProductType(ptranstype:string, p_prodcode:any,p_prodtypecode:any){
             const dialogRef =this.dialog.open(ProducttypeCuComponent,{height:'90%',width:'80%'},);
               dialogRef.afterClosed().subscribe({
                 next:(val) =>{
@@ -129,10 +112,11 @@ export class ProducttypeListComponent {
                   }
                 }
               });
-              
-             /* dialogRef.componentInstance.type=ptranstype;
-              dialogRef.componentInstance.Prodno=vprodcode;
+               
+              dialogRef.componentInstance.p_type=ptranstype;
+              dialogRef.componentInstance.p_no=p_prodcode;
+              dialogRef.componentInstance.p_typeno=p_prodtypecode;
         
-            }*/
+            }
 
 }

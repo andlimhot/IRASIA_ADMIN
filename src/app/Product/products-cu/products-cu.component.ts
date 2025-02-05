@@ -174,7 +174,7 @@ export class ProductsCuComponent implements OnInit{
   }
 
 
-  submitRequest() {
+  submitProducts() {
     if (this.p_type == 'Insert') {
       alert('new');
       this.reqServ.SaveCreateProduct(this.userid, this.data, this.selectedFile1)
