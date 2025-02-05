@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ProducttypeListComponent } from 'src/app/ProductType/producttype-list/producttype-list.component';
 import { CoreMstProduct } from 'src/app/Registration/Models/CoreMstProduct';
 import { ServProductService } from 'src/app/Registration/Services/serv-product.service';
 
@@ -16,7 +18,7 @@ import { ServProductService } from 'src/app/Registration/Services/serv-product.s
   selector: 'app-products-cu',
   standalone: true,
   imports: [CommonModule, MatTabsModule, MatIconModule, ReactiveFormsModule, MatSelectModule, MatFormFieldModule,
-    MatCheckboxModule, MatInputModule, FormsModule, RouterLink, RouterLinkActive, RouterOutlet],
+    MatCheckboxModule, MatInputModule, FormsModule, RouterLink, RouterLinkActive, RouterOutlet,ProducttypeListComponent],
   templateUrl: './products-cu.component.html',
   styleUrls: ['./products-cu.component.css']
 })
@@ -64,10 +66,13 @@ export class ProductsCuComponent implements OnInit{
   requestNumber: string = '';
 
   constructor(private reqServ: ServProductService, private formBuider: FormBuilder,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,private dialogRef: MatDialogRef<ProductsCuComponent>) {
 
   }
-
+  
+  closeForm() {
+    this.dialogRef.close(true)
+  }
 
   ngOnInit(): void {
     console.log("URL:", this.route.url);
@@ -77,11 +82,12 @@ export class ProductsCuComponent implements OnInit{
       this.p_no = params['param3'];
     });*/
     
-    alert('bbbbbb :' + this.p_type + " ---- " + this.p_reqno+ " --- "+this.p_no);
+   // alert('bbbbbb :' + this.p_type + " ---- " + this.p_reqno+ " --- "+this.p_no);
    // this.getProductList();
+   
     if (this.p_type = 'Update') {
       this.p_reqno = this.p_no;
-      alert('update coy'+this.p_reqno)
+     // alert('update coy'+this.p_reqno)
       this.getProductSingle(this.p_reqno);
     }
   }
@@ -89,16 +95,15 @@ export class ProductsCuComponent implements OnInit{
 
   getProductSingle(req: string) {
     //  alert("customer no :"+this.custcd);
-    alert('cccccc :'+req+" --- "+ this.p_no);
+    //alert('cccccc :'+req+" --- "+ this.p_no);
     this.rdtl = [];
    
     this.reqServ.getProdSingle(this.p_no).subscribe((res: CoreMstProduct[]) => {
       this.rdtl = res;
-      alert('ddddd :'+req+" --- "+ this.p_no +'/'+this.rdtl.length);
-     // this.getProductList();
+      //alert('ddddd :'+req+" --- "+ this.p_no +'/'+this.rdtl.length);
 
       for (var j = 0; j < this.rdtl.length; j++) {
-        alert('looping');
+       // alert('looping');
         this.data.cmprCode = this.rdtl[j].cmprCode;
         this.data.cmprName = this.rdtl[j].cmprName;
         this.data.cmprImgFilename = this.rdtl[j].cmprImgFilename;
@@ -108,8 +113,6 @@ export class ProductsCuComponent implements OnInit{
         this.data.cmprUpdateBy = this.rdtl[j].cmprUpdateBy;
         this.data.cmprUpdateDate = this.rdtl[j].cmprUpdateDate;
         //alert("eeeee :"+this.data.ctecdCtechId+" --- "+this.data.ctecdId);
-        //belum ada getimag di service product
-        alert('filename: '+this.data.cmprImgFilename)
         this.reqServ.getImages(this.p_no).subscribe(
           (data: string[]) => {
             this.imageUrls = data;
@@ -176,7 +179,7 @@ export class ProductsCuComponent implements OnInit{
 
   submitProducts() {
     if (this.p_type == 'Insert') {
-      alert('new');
+     // alert('new');
       this.reqServ.SaveCreateProduct(this.userid, this.data, this.selectedFile1)
         .subscribe(
           response => {
@@ -194,7 +197,7 @@ export class ProductsCuComponent implements OnInit{
           }
         );
     } else {
-      alert('update');
+     // alert('update');
       
       this.reqServ.UpdateProduct(this.data.cmprCode.toString(), this.userid, this.data, this.selectedFile1)
         .subscribe(
@@ -213,6 +216,7 @@ export class ProductsCuComponent implements OnInit{
           }
         );
     }
+    //this.closeForm();
   }
 
   delay(ms: number): Promise<void> {

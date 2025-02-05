@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -27,6 +28,7 @@ export class ProducttypeCuComponent implements OnInit{
     p_type: string = "aaaaa";
     p_no: string = "aaaaa";
     p_typeno: string = "aaaaa";
+    v_no:any;
     preview = '';
     preview2 = '';
     preview3 = '';
@@ -69,10 +71,13 @@ export class ProducttypeCuComponent implements OnInit{
     requestNumber: string = '';
   
     constructor(private reqServ: ServProducttypeService, private formBuider: FormBuilder,
-      private route: ActivatedRoute) {
+      private route: ActivatedRoute,private dialogRef: MatDialogRef<ProducttypeCuComponent>) {
   
     }
-  
+    
+    closeForm() {
+      this.dialogRef.close(true)
+    }
   
     ngOnInit(): void {
       console.log("URL:", this.route.url);
@@ -82,11 +87,17 @@ export class ProducttypeCuComponent implements OnInit{
         this.p_no = params['param3'];
       });*/
       
-      alert('bbbbbb :' + this.p_type + " ---- " + this.p_reqno+ " --- "+this.p_no);
+      //alert('bbbbbb :' + this.p_type + " ---- " + this.p_reqno+ " --- "+this.p_no);
      // this.getProductList();
+
+     if (this.p_type = 'Insert') {
+      this.v_no = this.p_no;
+      this.data.cmprtCmprCode = this.v_no;
+    }
+
       if (this.p_type = 'Update') {
         this.p_reqno = this.p_no;
-        alert('update coy'+this.p_reqno)
+       // alert('update coy'+this.p_reqno)
         this.getProductSingle(this.p_reqno);
       }
     }
@@ -94,16 +105,16 @@ export class ProducttypeCuComponent implements OnInit{
   
     getProductSingle(req: string) {
       //  alert("customer no :"+this.custcd);
-      alert('cccccc :'+req+" --- "+ this.p_no);
+      //alert('cccccc :'+req+" --- "+ this.p_no);
       this.rdtl = [];
      
       this.reqServ.getProdTypeSingle(this.p_no,this.p_typeno).subscribe((res: CoreMstProductType[]) => {
         this.rdtl = res;
-        alert('ddddd :'+req+" --- "+ this.p_no +'/'+this.rdtl.length);
+       // alert('ddddd :'+req+" --- "+ this.p_no +'/'+this.rdtl.length);
        // this.getProductList();
   
         for (var j = 0; j < this.rdtl.length; j++) {
-          alert('looping');
+         // alert('looping');
           this.data.cmprtCmprCode = this.rdtl[j].cmprtCmprCode;
           this.data.cmprtCode = this.rdtl[j].cmprtCode;
           this.data.cmprtTypeDesc = this.rdtl[j].cmprtTypeDesc;
@@ -118,7 +129,7 @@ export class ProducttypeCuComponent implements OnInit{
           this.data.cmprtUpdateDate = this.rdtl[j].cmprtUpdateDate;
           //alert("eeeee :"+this.data.ctecdCtechId+" --- "+this.data.ctecdId);
           //belum ada getimag di service product
-          alert('filename: '+this.data.cmprtImgFilename)
+         // alert('filename: '+this.data.cmprtImgFilename)
           this.reqServ.getImages(this.p_no,this.p_typeno).subscribe(
             (data: string[]) => {
               this.imageUrls = data;
@@ -185,7 +196,7 @@ export class ProducttypeCuComponent implements OnInit{
   
     submitProdType() {
       if (this.p_type == 'Insert') {
-        alert('new');
+        //alert('new');
         this.reqServ.SaveCreateProductType(this.userid, this.data, this.selectedFile1)
           .subscribe(
             response => {
@@ -203,7 +214,7 @@ export class ProducttypeCuComponent implements OnInit{
             }
           );
       } else {
-        alert('update');
+        //alert('update');
         
         this.reqServ.UpdateProductType(this.data.cmprtCmprCode.toString(),this.data.cmprtCode.toString(), this.userid, this.data, this.selectedFile1)
           .subscribe(
@@ -222,6 +233,7 @@ export class ProducttypeCuComponent implements OnInit{
             }
           );
       }
+      this.closeForm();
     }
   
     delay(ms: number): Promise<void> {

@@ -2,6 +2,7 @@
 <div class="container mx-auto p-6">
     <h1 class="text-2xl font-bold mb-4">e-commerce Product</h1>
     <form (ngSubmit)="submitProducts()" enctype="multipart/form-data">
+    <button mat-raised-button color="warn" style="border-radius: 15px;" (click)="closeForm()">Cancel</button>
     <div class="grid grid-cols-2 gap-6">
 
         <div>
@@ -24,13 +25,13 @@
             <div class="grid grid-cols-2 gap-4">
                 <div class="mb-4">
                     <label for="ctecdProductTypeAlias" class="block text-gray-700 font-bold mb-2">File Name</label>
-                    <input type="text" id="cmprImgFilename" [(ngModel)]="data.cmprImgFilename" name="cmprImgFilename"
+                    <input type="text" id="cmprImgFilename" [(ngModel)]="data.cmprImgFilename" name="cmprImgFilename" readonly
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="File Name">
                 </div>
                 <div class="mb-4">
                     <label for="ctecdProducttypeStockQty" class="block text-gray-700 font-bold mb-2">File Path</label>
-                    <input type="text" id="cmprImgFilepath" [(ngModel)]="data.cmprImgFilepath" name="cmprImgFilepath"
+                    <input type="text" id="cmprImgFilepath" [(ngModel)]="data.cmprImgFilepath" name="cmprImgFilepath" readonly
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="File Path">
                 </div>
@@ -95,6 +96,13 @@
         Save Product
     </button>
     </form>
+
+    <div class="row" style="padding-top: 10px;">
+        <mat-tab-group>
+            <mat-tab label="Product Type"> <app-producttype-list [p_pno]="p_no"></app-producttype-list> </mat-tab>
+          </mat-tab-group>
+    </div>
+
 </div>
 
 

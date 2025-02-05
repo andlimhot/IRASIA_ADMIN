@@ -110,7 +110,7 @@ export class ProductListComponent implements OnInit {
       dialogRef.afterClosed().subscribe({
         next:(val) =>{
           if (val) {
-            //this.getListFaktur();
+            this.getproductListAll();
             //sessionStorage.setItem("dsono", this.dtparam);  
   
           }
@@ -121,22 +121,4 @@ export class ProductListComponent implements OnInit {
       dialogRef.componentInstance.p_no=vprodcode;
 
     }
-
-    /*  viewAddProduct(ptranstype:string, vprodcode:any){
-        const dialogRef =this.dialog.open(ProducttypeCuComponent,{height:'90%',width:'80%'},);
-          dialogRef.afterClosed().subscribe({
-            next:(val) =>{
-              if (val) {
-                //this.getListFaktur();
-                //sessionStorage.setItem("dsono", this.dtparam);  
-      
-              }
-            }
-          });
-          
-         /* dialogRef.componentInstance.type=ptranstype;
-          dialogRef.componentInstance.Prodno=vprodcode;
-    
-        }*/
-
 }

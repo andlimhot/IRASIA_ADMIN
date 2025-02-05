@@ -1,6 +1,7 @@
 
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">e-commerce Product Type</h1>
+    <!--<h1 class="text-2xl font-bold mb-4">e-commerce Product Type</h1>-->
+    <!--<button mat-raised-button color="warn" style="border-radius: 15px;" (click)="closeForm()">Cancel</button>-->
     <form (ngSubmit)="submitProdType()" enctype="multipart/form-data">
     <div class="grid grid-cols-2 gap-6">
 
@@ -8,13 +9,13 @@
             <h2 class="text-xl font-semibold mb-2">Master Product Type</h2>
             <div class="grid grid-cols-2 gap-4">
                 <div class="mb-4">
-                    <label for="ctecdProductTypeAlias" class="block text-gray-700 font-bold mb-2">Product Code</label>
-                    <input type="text" id="cmprtCmprCode" [(ngModel)]="data.cmprtCmprCode" name="cmprtCmprCode"
+                    <label for="cmprtCmprCode" class="block text-gray-700 font-bold mb-2">Product Code</label>
+                    <input type="text" id="cmprtCmprCode" [(ngModel)]="data.cmprtCmprCode" name="cmprtCmprCode" readonly
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Product Code">
                 </div>
                 <div class="mb-4">
-                    <label for="ctecdProducttypeStockQty" class="block text-gray-700 font-bold mb-2">Product type Code</label>
+                    <label for="cmprtCode" class="block text-gray-700 font-bold mb-2">Product type Code</label>
                     <input type="text" id="cmprtCode" [(ngModel)]="data.cmprtCode" name="cmprtCode"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Product Name">
@@ -53,13 +54,13 @@
             <div class="grid grid-cols-2 gap-4">
                 <div class="mb-4">
                     <label for="cmprtImgFilename" class="block text-gray-700 font-bold mb-2">File Name</label>
-                    <input type="text" id="cmprtImgFilename" [(ngModel)]="data.cmprtImgFilename" name="cmprtImgFilename"
+                    <input type="text" id="cmprtImgFilename" [(ngModel)]="data.cmprtImgFilename" name="cmprtImgFilename" readonly
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="File Name">
                 </div>
                 <div class="mb-4">
                     <label for="cmprtImgFilepath" class="block text-gray-700 font-bold mb-2">File Path</label>
-                    <input type="text" id="cmprtImgFilepath" [(ngModel)]="data.cmprtImgFilepath" name="cmprtImgFilepath"
+                    <input type="text" id="cmprtImgFilepath" [(ngModel)]="data.cmprtImgFilepath" name="cmprtImgFilepath" readonly
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="File Path">
                 </div>

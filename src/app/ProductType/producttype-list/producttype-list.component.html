@@ -11,7 +11,7 @@
     <table style="width:100%;text-align: center;" id="tablelist">
       <tr>
         <td style="width:10%">
-        <button mat-raised-button color="primary" (click)="viewAddProductType('Insert','0','0')">Add Product Type</button>
+        <button mat-raised-button color="primary" (click)="viewAddProductType('Insert',p_pno,'0')">Add Type</button>
         </td>
         <td style="width: 10%;">
         </td>
@@ -33,8 +33,8 @@
           <table mat-table [dataSource]="dataSource" matSort>
   
             <ng-container matColumnDef="nourut">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-              <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> No. </th>
+              <td mat-cell *matCellDef="let row" hidden> {{row.nourut}} </td>
             </ng-container>
   
             <ng-container matColumnDef="cmprtCmprCode">
@@ -43,7 +43,7 @@
             </ng-container>
   
             <ng-container matColumnDef="cmprtCode">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> kode product type</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Type Code</th>
               <td mat-cell *matCellDef="let row"> {{row.cmprtCode}} </td>
             </ng-container>
 

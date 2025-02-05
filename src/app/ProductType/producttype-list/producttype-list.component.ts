@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -45,6 +45,7 @@ export class ProducttypeListComponent {
     vct :number=0;
     events: string[] = [];
     month:string="a";
+    @Input() p_pno:any;
 
  constructor(private _mbtserv:ServProducttypeService,  private _router: Router, private dialog:MatDialog,
  ){  
@@ -79,7 +80,7 @@ export class ProducttypeListComponent {
           this.vmsjur=[];
           this.vct=0;
           //alert('productlist');
-          this._mbtserv.getProdTypeListByCode(1).subscribe((res:CoreMstProductType[])=>{
+          this._mbtserv.getProdTypeListByCode(this.p_pno).subscribe((res:CoreMstProductType[])=>{
             //alert(res.length)
             this.vmsjur=res;
             this.dataSource=new MatTableDataSource(this.vmsjur);
@@ -106,7 +107,7 @@ export class ProducttypeListComponent {
               dialogRef.afterClosed().subscribe({
                 next:(val) =>{
                   if (val) {
-                    //this.getListFaktur();
+                    this.getproductTypeList();
                     //sessionStorage.setItem("dsono", this.dtparam);  
           
                   }
