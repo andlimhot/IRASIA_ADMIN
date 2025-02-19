@@ -1,0 +1,21 @@
+export interface RequestHdr{
+    ctechId: number,
+    ctechDate: string,
+    ctechType: string,
+    ctechStatus: string,
+    ctechSendDate: string,
+    ctechCcustCusno: string,
+    ctechPic1Cusno: string,
+    ctechPic1Date: string,
+    ctechPic1Sts: string,
+    ctechPic2Cusno: string,
+    ctechPic2Date: string,
+    ctechPic2Sts: string,
+    ctechPic3Cusno: string,
+    ctechPic3Date: string,
+    ctechPic3Sts: string,
+    ctechCreateBy: string,
+    ctechCreateDate: string,
+    ctechUpdateBy: string,
+    ctechUpdateDate: string
+}

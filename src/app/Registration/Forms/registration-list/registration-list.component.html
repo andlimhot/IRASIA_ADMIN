@@ -1,0 +1,97 @@
+<!--<mat-toolbar color="warn" class="mat-elevation-z8" class="mattoolbar">
+    <span>Product List</span>
+    <span class="toolbar-sapce"></span>
+    <button mat-button routerLink="/home">back</button>
+    <button mat-button routerLink="/home">home</button>
+    <button mat-raised-button color="primary" (click)="viewAddProduct('Insert', '0')">Add Master Batch</button>
+  </mat-toolbar>-->
+
+  
+  <div class="maindiv2">
+    <table style="width:100%;text-align: center;" id="tablelist">
+      <tr>
+        <td style="width:10%">
+        <!--<button mat-raised-button color="primary" (click)="viewRegis('Insert','0')">Add Product</button>-->
+        </td>
+        <td style="width: 10%;">
+        </td>
+        <td style="width:95%; text-align: right">
+          <mat-form-field class="applyfilter" id="tdaplly">
+            <mat-label class="fltr">Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. 123" #input>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <!--<div *ngIf="isLoading; else elseform">-->
+     <!--<app-spinner></app-spinner>-->
+     <!--<app-module></app-module>-->
+   <!-- </div> -->
+    <!--<ng-template #elseform>-->
+      <div class="row">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+  
+            <ng-container matColumnDef="nourut">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+              <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="ccregId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Register Id</th>
+              <td mat-cell *matCellDef="let row"> {{row.ccregId}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="ccregName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nama</th>
+              <td mat-cell *matCellDef="let row"> {{row.ccregName}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="ccregAddress">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Address</th>
+              <td mat-cell *matCellDef="let row" > {{row.ccregAddress}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ccregMobilePhone">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Phone</th>
+              <td mat-cell *matCellDef="let row"> {{row.ccregMobilePhone}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="ccregEmail">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
+              <td mat-cell *matCellDef="let row"> {{row.ccregEmail}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ccregMinApproval">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Min Approval</th>
+              <td mat-cell *matCellDef="let row"> {{row.ccregMinApproval}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+              <td mat-cell *matCellDef="let row">
+              <button mat-icon-button color="primary" (click)="viewRegis('Update', row.ccregId,row.ccregProvId,row.ccregCityId,row.ccregKecId)"
+                 ><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button color="accent"
+                  ><mat-icon>delete</mat-icon></button>
+              </td>
+            </ng-container>-->
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'hightligth':row.nourut%2== 1,'different':row.debet!=row.credit}">
+            </tr>
+  
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+  
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  
+        </div>
+      </div>
+    <!--</ng-template>-->
+  
+  
+  </div>
