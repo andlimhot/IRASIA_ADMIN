@@ -440,6 +440,11 @@ export class RequestUploadListComponent implements OnInit{
 
 
   submitRequest() {
+    this.inputBestPrice();
+    this.inputBestProd();
+    this.inputNewProd();
+    this.inputSale();
+
     this.data.ctecdProductCode = this.selectedprod;
     this.data.ctecdProducttypeCode = this.selectedprodtype;
     if (this.p_type == 'New') {
@@ -482,6 +487,42 @@ export class RequestUploadListComponent implements OnInit{
     }
   }
 
+  inputBestPrice() {
+    if (this.vactive) {
+      this.data.ctecdBestPrice = 'Y'
+    }
+    else {
+      this.data.ctecdBestPrice = 'N'
+    }
+  }
+  
+  inputBestProd() {
+    if (this.vacbestprod) {
+      this.data.ctecdBestProduct = 'Y'
+    }
+    else {
+      this.data.ctecdBestProduct = 'N'
+    }
+  }
+
+  inputNewProd() {
+    if (this.vacnewprod) {
+      this.data.ctecdNewProduct = 'Y'
+    }
+    else {
+      this.data.ctecdNewProduct = 'N'
+    }
+  }
+
+  inputSale() {
+    if (this.vactsale) {
+      this.data.ctecdSale = 'Y'
+    }
+    else {
+      this.data.ctecdSale = 'N'
+    }
+  }
+
   setcheck(completed: boolean) {
     if (completed) {
       this.vactive = true;
@@ -518,19 +559,6 @@ export class RequestUploadListComponent implements OnInit{
     }
   }
 
-  /*updateMasterBatch() {
-    //alert('call update') 
-    if (this.vactive) {
-      this.MasterBatchForm.patchValue({
-        mbtSelesai: 'Y'
-      });
-    }
-    else {
-      this.MasterBatchForm.patchValue({
-        mbtSelesai: 'N'
-      });
-    }*/
-
   delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -539,5 +567,7 @@ export class RequestUploadListComponent implements OnInit{
           const bytes = CryptoJS.AES.decrypt(ciphertext, this.secretKey);
           return bytes.toString(CryptoJS.enc.Utf8);
       }*/
+  
+  
 
 }
