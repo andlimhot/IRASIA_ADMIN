@@ -11,16 +11,16 @@ export class ServProductService {
   constructor(private http:HttpClient) { }
 
   getProdListAll(): Observable<any>{
-      return this.http.get<Array<CoreMstProduct>>("http://localhost:8090/am-svc/appmst/getCmprListAll");  
+      return this.http.get<Array<CoreMstProduct>>("http://localhost:9815/am-svc/appmst/getCmprListAll");  
     }
 
   getProdSingle(prodcode:any): Observable<any>{
-    return this.http.get<Array<CoreMstProduct>>("http://localhost:8090/am-svc/appmst/getCmprSingle?code="+prodcode);
+    return this.http.get<Array<CoreMstProduct>>("http://localhost:9815/am-svc/appmst/getCmprSingle?code="+prodcode);
 
     }
 
   saveupdateProd(data:any):Observable<any>{   
-      return this.http.post("http://localhost:8090/am-svc/appmst/saveupdprod",data, {responseType: 'text' as 'text'});
+      return this.http.post("http://localhost:9815/am-svc/appmst/saveupdprod",data, {responseType: 'text' as 'text'});
      }
 
 
@@ -31,7 +31,7 @@ export class ServProductService {
   
       if (file1) { formData.append('file1', file1); }
   
-      return this.http.post<string>('http://localhost:8090/am-svc/appmst/saveproducts', formData);
+      return this.http.post<string>('http://localhost:9815/am-svc/appmst/saveproducts', formData);
     }
   
   UpdateProduct(id: string, userid: string, data: CoreMstProduct, file1: File): Observable<string> {
@@ -42,7 +42,7 @@ export class ServProductService {
   
       if (file1) { formData.append('file1', file1); }
   
-      return this.http.post<string>('http://localhost:8090/am-svc/appmst/UpdateProducts', formData);
+      return this.http.post<string>('http://localhost:9815/am-svc/appmst/UpdateProducts', formData);
     }
 
     getReqEcByIdNo(req: string, no: string): Observable<any> {
@@ -50,7 +50,7 @@ export class ServProductService {
     }
 
     getImages(no: string): Observable<string[]> {
-      const url = `http://localhost:8090/am-svc/images/productImgbyId?no=`+no;
+      const url = `http://localhost:9815/am-svc/images/productImgbyId?no=`+no;
       return this.http.get<string[]>(url);
     }
 }

@@ -1,92 +1,91 @@
 <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Request E-Commerce List Admin</h1>
-  
-    <div class="flex flex-col md:flex-row md:items-center mb-4">
-      <div class="w-full md:w-1/4 mb-4 md:mb-0 md:pr-0 text-center">
-          <img src="/assets/ialogo_awal.png" alt="image" class="h-20 w-20 text-center"> 
-        
-      </div>
-      <div class="w-full md:w-1/2 mb-4 md:mb-0 flex justify-center md:px-0"> 
-        <div>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">New</button>
-          <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">Sent</button>
-          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Approve</button>
-          <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">All</button>
-        </div>
-      </div>
-      <div class="w-full md:w-1/4 mb-4 md:mb-0 md:pl-0 text-center"> 
-        <div class="text-white font-bold py-2 px-4 rounded">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" (click)="AddRequest('New')">Add Request</button>
-        </div>
+  <h1 class="text-2xl font-bold mb-4">Request E-Commerce List</h1>
+
+  <div class="flex flex-col md:flex-row md:items-center mb-4">
+    <div class="w-full md:w-1/4 mb-4 md:mb-0 md:pr-0 text-center">
+        <img src="/assets/ialogo_awal.png" alt="image" class="h-20 w-20 text-center"> 
+      
+    </div>
+    <div class="w-full md:w-1/2 mb-4 md:mb-0 flex justify-center md:px-0"> 
+      <div>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">New</button>
+        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2">Sent</button>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Approve</button>
+        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">All</button>
       </div>
     </div>
-  
-    <div class="flex">
-      <div class="w-1/4 pr-4">
-        <div class="bg-gray-200 mb-4"> 
-          <img src="/assets/Note 5.jpg" alt="image">
-        </div>
-        <div >
-        </div>
-      </div>
-  
-      <div class="w-3/4">
-        <div class="mat-elevation-z8 min-h-[33.5rem] overflow-y-auto">
-          <table mat-table [dataSource]="dataSource" matSort>
-  
-            <ng-container matColumnDef="nourut">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-              <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="vrlCustno">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> user</th>
-              <td mat-cell *matCellDef="let row" hidden> {{row.vrlCustno}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="vrlReqno">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Request No.</th>
-              <td mat-cell *matCellDef="let row"> {{row.vrlReqno}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="vrlDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Request Date. </th>
-              <td mat-cell *matCellDef="let row"> {{row.vrlDate }} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="vrlDateSort">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Request No. </th>
-              <td mat-cell *matCellDef="let row" hidden> {{row.vrlDateSort}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="vrlStatus">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-              <td mat-cell *matCellDef="let row"> {{row.vrlStatus }} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="vrlProductNo">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> No Of Product </th>
-              <td mat-cell *matCellDef="let row"> {{row.vrlProductNo | currency:' '}} </td>
-            </ng-container>
-  
-            <ng-container matColumnDef="action">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-              <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" (click)="UpdateRequest('Update', row.vrlReqno)"
-                ><mat-icon>edit</mat-icon></button>
-                <button mat-icon-button color="accent"
-                ><mat-icon>delete</mat-icon></button>
-              </td>
-            </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'hightligth':row.nourut%2== 1,'different':row.debet!=row.credit}">
-            </tr>
-          </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-        </div> 
+    <div class="w-full md:w-1/4 mb-4 md:mb-0 md:pl-0 text-center"> 
+      <div class="text-white font-bold py-2 px-4 rounded">
+        <!--<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" (click)="AddRequest('New')">Add Request</button>-->
       </div>
     </div>
   </div>
-  
-  
+
+  <div class="flex">
+    <div class="w-1/4 pr-4">
+      <div class="bg-gray-200 mb-4"> 
+        <img src="/assets/Note 5.jpg" alt="image">
+      </div>
+      <div >
+      </div>
+    </div>
+
+    <div class="w-3/4">
+      <div class="mat-elevation-z8 min-h-[33.5rem] overflow-y-auto">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <ng-container matColumnDef="nourut">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vrlCustno">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> user</th>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vrlCustno}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vrlReqno">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Request No.</th>
+            <td mat-cell *matCellDef="let row"> {{row.vrlReqno}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vrlDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Request Date. </th>
+            <td mat-cell *matCellDef="let row"> {{row.vrlDate }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vrlDateSort">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Request No. </th>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vrlDateSort}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vrlStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row"> {{row.vrlStatus }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vrlProductNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No Of Product </th>
+            <td mat-cell *matCellDef="let row"> {{row.vrlProductNo | currency:' '}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button color="primary" (click)="updateRequest('Update', row.vrlReqno)"
+              ><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button color="accent"
+              ><mat-icon>delete</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'hightligth':row.nourut%2== 1,'different':row.debet!=row.credit}">
+          </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div> 
+    </div>
+  </div>
+</div>
+

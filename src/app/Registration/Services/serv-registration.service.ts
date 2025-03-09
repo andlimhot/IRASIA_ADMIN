@@ -15,19 +15,19 @@ export class ServRegistrationService {
   constructor(private http:HttpClient) { }
 
   getProvinceALL(): Observable<any>{
-    return this.http.get<Array<provincemdl>>("http://localhost:8090/am-svc/appmst/getCmpsiListAll");  
+    return this.http.get<Array<provincemdl>>("http://localhost:9815/am-svc/appmst/getCmpsiListAll");  
   }
 
   getcitybyprovALL(provcode:string): Observable<any>{
-    return this.http.get<Array<citymdl>>("http://localhost:8090/am-svc/appmst/getCmcitListByProvCode?ProvCode="+provcode);  
+    return this.http.get<Array<citymdl>>("http://localhost:9815/am-svc/appmst/getCmcitListByProvCode?ProvCode="+provcode);  
   }
 
   getKecbyCityALL(citycode:string): Observable<any>{
-    return this.http.get<Array<kecamatanmdl>>("http://localhost:8090/am-svc/appmst/getCmkecListByCityCode?CityCode="+citycode);  
+    return this.http.get<Array<kecamatanmdl>>("http://localhost:9815/am-svc/appmst/getCmkecListByCityCode?CityCode="+citycode);  
   }
 
   getKelbyKecALL(keccode:string): Observable<any>{
-    return this.http.get<Array<kelurahanmdl>>("http://localhost:8090/am-svc/appmst/getCmkelListByKecCode?KecCode="+keccode);  
+    return this.http.get<Array<kelurahanmdl>>("http://localhost:9815/am-svc/appmst/getCmkelListByKecCode?KecCode="+keccode);  
   }
 
   getVRegisAll(): Observable<any>{

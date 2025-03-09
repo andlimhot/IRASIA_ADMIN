@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class IconServiceService {
 
 
-  private baseUrl = 'http://localhost:8090/am-svc/api/saveicons'; // Ganti dengan URL backend
+  private baseUrl = 'http://localhost:9815/am-svc/api/saveicons'; // Ganti dengan URL backend
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class IconServiceService {
     return this.http.post(this.baseUrl, formData);
   }
   
-  private baseUrl2 = 'http://localhost:8090/am-svc/api/icons';
+  private baseUrl2 = 'http://localhost:9815/am-svc/api/icons';
   getIcon(id: string): Observable<Blob> {
     return this.http.get(`${this.baseUrl2}/${id}`, { responseType: 'blob' });
   }

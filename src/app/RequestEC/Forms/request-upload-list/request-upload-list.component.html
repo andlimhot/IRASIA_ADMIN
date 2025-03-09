@@ -1,1 +1,199 @@
-<p>request-upload-list works!</p>
+
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">e-commerce upload request</h1>
+    <form (ngSubmit)="submitRequest()" enctype="multipart/form-data">
+    <div class="grid grid-cols-2 gap-6">
+
+        <div>
+            <h2 class="text-xl font-semibold mb-2">Product</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="pr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
+                        option</label>
+                    <select id="selectedprod" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        [(ngModel)]="selectedprod" (ngModelChange)="changeproduct()" name="selectedprod">
+                        <option *ngFor="let prod of prodlist" [value]="prod.cmprCode">{{ prod.cmprName }}</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="ctecdProductName" class="block text-gray-700 font-bold mb-2">Manual Product</label>
+                    <input type="text" id="ctecdProductName" [(ngModel)]="data.ctecdProductName"  name="ctecdProductName"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Manual Produk">
+                </div>
+            </div>
+
+            <h2 class="text-xl font-semibold mb-2">Product Type</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="prt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
+                        option</label>
+                    <select id="selectedprodtype" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        [(ngModel)]="selectedprodtype" name="selectedprodtype">
+                        <option *ngFor="let prodty of prodtylist" [value]="prodty.cmprtCmprCode">{{ prodty.cmprtTypeDesc
+                            }}</option>
+                    </select>
+                    <label for="first_name" class="block text-gray-700 font-bold mb-2">Select Product Type</label>
+                </div>
+                <div class="mb-4">
+                    <label for="ctecdProducttypeName" class="block text-gray-700 font-bold mb-2">Manual Product Type</label>
+                    <input type="text" id="prodtypenm" [(ngModel)]="data.ctecdProducttypeName" name="ctecdProducttypeName"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Manual Tipe Produk">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="ctecdProductTypeAlias" class="block text-gray-700 font-bold mb-2">Alias</label>
+                    <input type="text" id="ctecdProductTypeAlias" [(ngModel)]="data.ctecdProductTypeAlias" name="ctecdProductTypeAlias"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Alias">
+                </div>
+                <div class="mb-4">
+                    <label for="ctecdProducttypeStockQty" class="block text-gray-700 font-bold mb-2">Stock</label>
+                    <input type="text" id="ctecdProducttypeStockQty" [(ngModel)]="data.ctecdProducttypeStockQty" name="ctecdProducttypeStockQty"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Stock">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label for="ctecdProducttypePrice" class="block text-gray-700 font-bold mb-2">Price </label>
+                    <input type="text" id="ctecdProducttypePrice" [(ngModel)]="data.ctecdProducttypePrice" name="ctecdProducttypePrice"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Harga">
+                </div>
+                <div class="mb-4">
+                    <label for="mipurchase" class="block text-gray-700 font-bold mb-2">Min Purchase</label>
+                    <input type="text" id="ctecdProducttypeMinQty" [(ngModel)]="data.ctecdProducttypeMinQty" name="ctecdProducttypeMinQty"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Min. Penjualan">
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-xl font-semibold mb-2">Image Upload</h2>
+
+            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="row">
+                            <div class="col-span-1">
+                                <div class="col-span-8">
+                                    <label class="cursor-pointer inline-block p-0 relative">
+                                        <input type="file" accept="image/*"  id="file1" name="file1" (change)="onFileSelected($event, 1)" />
+                                        <img [src]="preview" alt="Image Preview1" class="h-24 w-32" />
+                                        <div
+                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                            <span class="text-white font-bold">Pilih File</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
+                                <div class="col-span-8">
+                                    <label class="cursor-pointer inline-block p-0 relative my-4">
+                                        <input type="file" accept="image/*"  id="file2" name="file2" (change)="onFileSelected($event, 2)"/>
+                                        <img [src]="preview2" alt="Image Preview2" class="h-24 w-32" />
+                                        <div
+                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                            <span class="text-white font-bold">Pilih File</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-span-1">
+                                <div class="col-span-8">
+                                    <label class="cursor-pointer inline-block p-0 relative">
+                                        <input type="file" accept="image/*" id="file3" name="file3" (change)="onFileSelected($event, 3)" />
+                                        <img [src]="preview3" alt="Image Preview3" class="h-24 w-32" />
+                                        <div
+                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                            <span class="text-white font-bold">Pilih File</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
+                                <div class="col-span-8">
+                                    <label class="cursor-pointer inline-block p-0 relative my-4">
+                                        <input type="file" accept="image/*" id="file4" name="file4" (change)="onFileSelected($event, 4)"/>
+                                        <img [src]="preview4" alt="Image Preview4" class="h-24 w-32" />
+                                        <div
+                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                            <span class="text-white font-bold">Pilih File</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-xl font-semibold mb-2">Specification</h2>
+
+        <div class="mb-4">
+            <label for="ctecdProductTypeSize" class="block text-gray-700 font-bold mb-2">size</label>
+            <input type="text" id="ctecdProductTypeSize" [(ngModel)]="data.ctecdProductTypeSize" name="ctecdProductTypeSize"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Ukuran Product">
+        </div>
+
+        <div class="mb-4">
+            <label for="ctecdProductTypeSpec" class="block text-gray-700 font-bold mb-2">Detail Specification</label>
+            <input type="text" id="ctecdProductTypeSpec" [(ngModel)]="data.ctecdProductTypeSpec" name="ctecdProductTypeSpec"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Spesifikasi Detail">
+        </div>
+
+        <div class="mb-4">
+            <label for="ctecdProducttypeDesc" class="block text-gray-700 font-bold mb-2">Description</label>
+            <input type="text" id="ctecdProducttypeDesc" [(ngModel)]="data.ctecdProducttypeDesc" name="ctecdProducttypeDesc"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Penjelasan Produk">
+        </div>
+        
+        <div class="mb-4">
+           
+            <mat-checkbox [(ngModel)]="vactive" [checked]="vactive" (change)="setcheck($event.checked)"
+                                style="width: 25%;">Best Price
+            </mat-checkbox>
+
+            <mat-checkbox [(ngModel)]="vacbestprod" [checked]="vacbestprod" (change)="setcheckBestProd($event.checked)"
+                                style="width: 25%;">Best Product
+            </mat-checkbox>
+
+            <mat-checkbox [(ngModel)]="vacnewprod" [checked]="vacnewprod" (change)="setcheckNewProd($event.checked)"
+                                style="width: 25%;">New Product
+            </mat-checkbox>
+
+            <mat-checkbox [(ngModel)]="vactsale" [checked]="vactsale" (change)="setcheckSale($event.checked)"
+                                style="width: 25%;">Sale
+            </mat-checkbox>
+
+        </div>
+
+    </div>
+
+    <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit" >
+        Sent Request
+    </button>
+    </form>
+</div>
+

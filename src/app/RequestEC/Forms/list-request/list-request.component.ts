@@ -32,6 +32,11 @@ export class ListRequestComponent implements OnInit{
   vrllist:vrequestlist[]=[];
   vct:number=0;
   usr:string="USER09";
+  secretKey: string="12!@#$%abgz123";
+  vtkn:any;
+  vtknd:any;
+  vusr:any;
+  vusrd:any;
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -41,6 +46,11 @@ export class ListRequestComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.vusrd=sessionStorage.getItem('usr');
+    this.vtknd=sessionStorage.getItem('tkn');
+    //this.vusr=this.decrypt(this.vusrd);
+    //this.vtkn=this.decrypt(this.vtknd);
+    alert("aaaaa :"+this.vusr+" ---- "+this.vtkn);
     this.getVrlByUser();
   }
 
@@ -55,7 +65,9 @@ export class ListRequestComponent implements OnInit{
   getVrlByUser(){
     this.vrllist=[];
     this.vct=0;
-    this._vrlserv.getVReqByuser(this.usr).subscribe((res:vrequestlist[])=>{
+    
+   
+    this._vrlserv.getVReqByuser(this.usr, this.vtkn).subscribe((res:vrequestlist[])=>{
       this.vrllist=res;
       this.dataSource=new MatTableDataSource(this.vrllist);
       this.dataSource.data.forEach( async item => {
@@ -71,7 +83,7 @@ export class ListRequestComponent implements OnInit{
           //server side error
         }
        }
-    })  
+    });  
     }
 
     AddRequest(ptranstype:string){
@@ -84,18 +96,18 @@ export class ListRequestComponent implements OnInit{
     
             }
           }
-        });
-        
-        /*dialogRef.componentInstance.p_usr=this.usr;
-        dialogRef.componentInstance.p_type='ptranstype';*/
-  
-      }
+        });        
+        dialogRef.componentInstance.p_usr=this.usr;
+        dialogRef.componentInstance.p_type='ptranstype';
+    }
 
-      UpdateRequest(tipe:string, reqno:string){
-       
+    updateRequest(tipe:string, reqno:string){       
         this._router.navigate(['RequestUpdList', tipe,reqno]);
-     
-        
-        }
+    }
+
+   /* decrypt(ciphertext: string): string {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, this.secretKey);
+        return bytes.toString(CryptoJS.enc.Utf8);
+    }*/
 
 }
