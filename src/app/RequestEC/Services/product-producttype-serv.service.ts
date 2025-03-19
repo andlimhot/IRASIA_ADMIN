@@ -32,29 +32,29 @@ export class ProductProducttypeServService {
   constructor(private http:HttpClient) { }
 
   getProductList(): Observable<any>{
-    return this.http.get<Array<CoreMstProduct>>("http://localhost:9815/am-svc/appmst/getCmprListAll");  
+    return this.http.get<Array<CoreMstProduct>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprListAll");  
   }
 
   getImageProducts(): Observable<string[]> {
-    const url = `http://localhost:9815/am-svc/images/productImg`;
+    const url = `http://193.111.124.45:9815/appmst-svc/images/productImg`;
     return this.http.get<string[]>(url);
   }
 
   getProductLypeImage(prodcode:string): Observable<any>{
-    const url = `http://localhost:9815/am-svc/images/producttype/${prodcode}`;
+    const url = `http://193.111.124.45:9815/appmst-svc/images/producttype/${prodcode}`;
     return this.http.get<Array<CoreMstProductType>>(url);
   }
 
   getProductTypeList(code:String): Observable<any>{
-    return this.http.get<Array<CoreMstProductType>>("http://localhost:9815/am-svc/appmst/getCmprtListByCmprCode?CmprCode="+code);  
+    return this.http.get<Array<CoreMstProductType>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprtListByCmprCode?CmprCode="+code);  
   }
 
   getProductByCode(code:String): Observable<any>{
-    return this.http.get<Array<CoreMstProduct>>("http://localhost:9815/am-svc/appmst/getCmprSingle?code="+code);  
+    return this.http.get<Array<CoreMstProduct>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprSingle?code="+code);  
   }
 
   getProductTypeByCode(code:String): Observable<any>{
-    return this.http.get<Array<CoreMstProductType>>("http://localhost:9815/am-svc/appmst/getCmprtListByCmprCode?CmprCode="+code);  
+    return this.http.get<Array<CoreMstProductType>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprtListByCmprCode?CmprCode="+code);  
   }
 
   getImages(custNo: string, requestno: string, no: string): Observable<string[]> {

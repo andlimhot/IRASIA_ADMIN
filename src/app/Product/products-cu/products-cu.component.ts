@@ -87,7 +87,7 @@ export class ProductsCuComponent implements OnInit{
    
     if (this.p_type = 'Update') {
       this.p_reqno = this.p_no;
-     // alert('update coy'+this.p_reqno)
+      alert('update coy'+this.p_reqno)
       this.getProductSingle(this.p_reqno);
     }
   }

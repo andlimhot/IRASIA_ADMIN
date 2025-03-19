@@ -11,20 +11,20 @@ export class ServProducttypeService {
   constructor(private http:HttpClient) { }
 
   getProdTypeListAll(): Observable<any>{
-        return this.http.get<Array<CoreMstProductType>>("http://localhost:9815/am-svc/appmst/getCmprListAll");  
+        return this.http.get<Array<CoreMstProductType>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprListAll");  
       }
 
   getProdTypeListByCode(prodcode:any): Observable<any>{
-        return this.http.get<Array<CoreMstProductType>>("http://localhost:9815/am-svc/appmst/getCmprtListByCmprCode?CmprCode="+prodcode);  
+        return this.http.get<Array<CoreMstProductType>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprtListByCmprCode?CmprCode="+prodcode);  
       }
   
     getProdTypeSingle(prodcode:any,prodtype:any): Observable<any>{
-      return this.http.get<Array<CoreMstProductType>>("http://localhost:9815/am-svc/appmst/getCmprTypeSingle?code="+prodcode+'&typecode='+prodtype);
+      return this.http.get<Array<CoreMstProductType>>("http://193.111.124.45:9815/appmst-svc/appmst/getCmprTypeSingle?code="+prodcode+'&typecode='+prodtype);
   
       }
   
     saveupdateProdType(data:any):Observable<any>{   
-        return this.http.post("http://localhost:9815/am-svc/appmst/saveupdprod",data, {responseType: 'text' as 'text'});
+        return this.http.post("http://193.111.124.45:9815/appmst-svc/appmst/saveupdprod",data, {responseType: 'text' as 'text'});
        }
 
     SaveCreateProductType(userid: string, data: CoreMstProductType, file1: File): Observable<string> {
@@ -34,7 +34,7 @@ export class ServProducttypeService {
       
           if (file1) { formData.append('file1', file1); }
       
-          return this.http.post<string>('http://localhost:9815/am-svc/appmst/saveproducttypes', formData);
+          return this.http.post<string>('http://193.111.124.45:9815/appmst-svc/appmst/saveproducttypes', formData);
         }
       
       UpdateProductType(id: string, prodtypeid: string, userid: string, data: CoreMstProductType, file1: File): Observable<string> {
@@ -46,11 +46,11 @@ export class ServProducttypeService {
       
           if (file1) { formData.append('file1', file1); }
       
-          return this.http.post<string>('http://localhost:9815/am-svc/appmst/UpdateProducttypes', formData);
+          return this.http.post<string>('http://193.111.124.45:9815/appmst-svc/appmst/UpdateProducttypes', formData);
         }
 
         getImages(no: string, typeno: string): Observable<string[]> {
-          const url = `http://localhost:9815/am-svc/images/producttypebyprodtype?no=`+no +'&typeno='+typeno;
+          const url = `http://193.111.124.45:9815/appmst-svc/images/producttypebyprodtype?no=`+no +'&typeno='+typeno;
           return this.http.get<string[]>(url);
         }
 

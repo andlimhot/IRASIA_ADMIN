@@ -15,6 +15,7 @@ import { RegistrationListComponent } from './Registration/Forms/registration-lis
 import { ReqUpdateListComponent } from './RequestEC/Forms/req-update-list/req-update-list.component';
 import { RequestUploadListComponent } from './RequestEC/Forms/request-upload-list/request-upload-list.component';
 import { ListRequestComponent } from './RequestEC/Forms/list-request/list-request.component';
+import { FormUserLoginComponent } from './MainScreen/form-user-login/form-user-login.component';
 const ROUTES: Routes = [ 
   { path: 'ProductList', component: ProductListComponent },
   { path: 'ProducttypeList', component: ProducttypeListComponent },
@@ -22,6 +23,7 @@ const ROUTES: Routes = [
   { path: 'RequestList', component: ListRequestComponent },
   { path: 'RequestUpdList/:param1/:param2', component: ReqUpdateListComponent },
   { path: 'RequestCU/:param1/:param2/:param3', component: RequestUploadListComponent },
+  { path: 'login', component: FormUserLoginComponent },
 ];
 
 @NgModule({

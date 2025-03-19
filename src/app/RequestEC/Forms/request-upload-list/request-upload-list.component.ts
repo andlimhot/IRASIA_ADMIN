@@ -31,6 +31,8 @@ export class RequestUploadListComponent implements OnInit{
   p_reqno: string = "aaaaa";
   p_type: string = "aaaaa";
   p_no: string = "aaaaa";
+  pin_reqno: string = "aaaaa";
+  pin_no: string = "aaaaa";
   preview = '';
   preview2 = '';
   preview3 = '';
@@ -151,7 +153,7 @@ export class RequestUploadListComponent implements OnInit{
     alert('bbbbbb :' + this.p_type + " ---- " + this.p_reqno+ " --- "+this.p_no);
     this.getProductList();
     if (this.p_type = 'Update') {
-      this.getRequestDtl(this.p_reqno, );
+      this.getRequestDtl(this.p_reqno);
     }
   }
 
@@ -559,9 +561,32 @@ export class RequestUploadListComponent implements OnInit{
     }
   }
 
-  delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  ApproveProductDtl() {
+    this.pin_reqno = this.p_reqno;
+    this.pin_no = this.p_no;
+    alert('Approve: '+this.pin_reqno+'/'+this.pin_no);
+    //this.reqServ.UpdStsProductDtl(this.data.ctecdCtechId,this.data.ctecdId);
+    this.reqServ.UpdStsProductDtl(this.pin_reqno,this.pin_no)
+        .subscribe(
+          response => {
+            console.log('Approve berhasil');
+            // Tambahkan logika untuk menangani response sukses, misalnya:
+            // - Reset form
+            // - Tampilkan pesan sukses
+            // - Redirect ke halaman lain
+          },
+          error => {
+            console.error('Terjadi kesalahan:', error);
+            // Tambahkan logika untuk menangani error, misalnya:
+            // - Tampilkan pesan error
+          }
+        );
+        //alert('endsubmitregist');
   }
+
+  /*delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }*/
 
    /*decrypt(ciphertext: string): string {
           const bytes = CryptoJS.AES.decrypt(ciphertext, this.secretKey);

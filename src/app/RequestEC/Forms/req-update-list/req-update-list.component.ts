@@ -53,6 +53,7 @@ export class ReqUpdateListComponent implements OnInit{
   producttype: string = "aaaa";
   data: requestlistupd[] = [];
   requestList: DTORequestList[]=[];
+  requestNumber: string = '';
 
   constructor(private reqServ: RequestServService, private formBuider: FormBuilder, private dialog:MatDialog,
     private route: ActivatedRoute, private masterserv: ProductProducttypeServService) {
@@ -175,13 +176,26 @@ export class ReqUpdateListComponent implements OnInit{
            dialogRef.componentInstance.p_no=no;
            dialogRef.componentInstance.p_reqno=this.p_reqno;
          }
-  SendTOWeb(code: String) {
-    alert('sendtoweb')
-    /*this.masterserv.getProductByCode(code).subscribe((res: CoreMstProduct[]) => {
-      this.prodlist = res;
-      this.productName = this.prodlist[0].cmprName;
 
-    });*/
+  CallSendTOWeb() {
+    alert('sendtoweb: '+this.p_reqno+'/'+this.userid)
+    this.reqServ.SendToWeb(this.p_reqno, this.userid)
+        .subscribe(
+          response => {
+            this.requestNumber = response;
+            console.log('Send To web berhasil dibuat dengan nomor:', this.requestNumber);
+            // Tambahkan logika untuk menangani response sukses, misalnya:
+            // - Reset form
+            // - Tampilkan pesan sukses
+            // - Redirect ke halaman lain
+          },
+          error => {
+            console.error('Terjadi kesalahan:', error);
+            // Tambahkan logika untuk menangani error, misalnya:
+            // - Tampilkan pesan error
+          }
+        );
+        //alert('endsubmitregist');
   }
     
     delay(ms: number): Promise<void> {
