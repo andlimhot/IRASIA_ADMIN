@@ -16,6 +16,7 @@ import { vrequestlist } from '../../Models/vrequestlist';
 import { RequestServService } from '../../Services/request-serv.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RequestUploadListComponent } from '../request-upload-list/request-upload-list.component';
+import { vrequestlistadm } from '../../Models/vrequestlistadm';
 
 @Component({
   selector: 'app-list-request',
@@ -28,10 +29,10 @@ import { RequestUploadListComponent } from '../request-upload-list/request-uploa
   styleUrls: ['./list-request.component.css']
 })
 export class ListRequestComponent implements OnInit{
-  displayedColumns: string[] = ['nourut', 'vrlReqno','vrlCustno','vrlDate','vrlStatus','vrlDateSort','vrlProductNo','action'];
-  vrllist:vrequestlist[]=[];
+  displayedColumns: string[] = ['nourut', 'vrlaReqno','vrlaCustno','vrlaDate','vrlaStatus','vrlaDateSort','vrlaSummary','action'];
+  vrllist:vrequestlistadm[]=[];
   vct:number=0;
-  usr:string="USER09";
+  //usr:string="0001";
   secretKey: string="12!@#$%abgz123";
   vtkn:any;
   vtknd:any;
@@ -67,7 +68,7 @@ export class ListRequestComponent implements OnInit{
     this.vct=0;
     
    
-    this._vrlserv.getVReqByuser(this.usr, this.vtkn).subscribe((res:vrequestlist[])=>{
+    this._vrlserv.getVReqByuser(this.vtkn).subscribe((res:vrequestlistadm[])=>{
       this.vrllist=res;
       this.dataSource=new MatTableDataSource(this.vrllist);
       this.dataSource.data.forEach( async item => {
@@ -86,7 +87,7 @@ export class ListRequestComponent implements OnInit{
     });  
     }
 
-    AddRequest(ptranstype:string){
+    /*AddRequest(ptranstype:string){
       const dialogRef =this.dialog.open(RequestUploadListComponent,{height:'90%',width:'80%'},);
         dialogRef.afterClosed().subscribe({
           next:(val) =>{
@@ -99,10 +100,10 @@ export class ListRequestComponent implements OnInit{
         });        
         dialogRef.componentInstance.p_usr=this.usr;
         dialogRef.componentInstance.p_type='ptranstype';
-    }
+    }*/
 
-    updateRequest(tipe:string, reqno:string){       
-        this._router.navigate(['RequestUpdList', tipe,reqno]);
+    updateRequest(tipe:string, reqno:string, user:string){       
+        this._router.navigate(['RequestUpdList', tipe,reqno,user]);
     }
 
    /* decrypt(ciphertext: string): string {

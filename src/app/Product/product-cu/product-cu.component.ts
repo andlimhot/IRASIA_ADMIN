@@ -193,7 +193,7 @@ export class ProductCuComponent {
     formData.append('file', this.selectedFilenik);
     formData.append('dirname', this.vregid.toString());
   
-    this.http.post('http://localhost:8091/wc-svc/file/RegisUpload', formData, {
+    this.http.post('http://193.111.124.45:8091/wc-svc/file/RegisUpload', formData, {
       reportProgress: true,
       observe: 'events'
     }).subscribe(event => {

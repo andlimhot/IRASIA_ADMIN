@@ -101,7 +101,7 @@ export class RegistrationListComponent implements OnInit{
         })  
       }
   
-     viewRegis(ptranstype:string, pregid:any,pprovcode:string,pcitycode:string,pkeccode:string){
+     viewRegis(ptranstype:string, pregid:any,pprovcode:string,pcitycode:string,pkeccode:string,pmaxapp : any){
       const dialogRef =this.dialog.open(RegistrationCUComponent,{height:'90%',width:'80%'},);
         dialogRef.afterClosed().subscribe({
           next:(val) =>{
@@ -118,6 +118,7 @@ export class RegistrationListComponent implements OnInit{
         dialogRef.componentInstance.p_provcode=pprovcode;
         dialogRef.componentInstance.p_citycode=pcitycode;
         dialogRef.componentInstance.p_keccode=pkeccode;
+        dialogRef.componentInstance.p_maxapp=pmaxapp;
   
       }
 

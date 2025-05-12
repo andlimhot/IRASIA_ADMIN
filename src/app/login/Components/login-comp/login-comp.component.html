@@ -1,0 +1,65 @@
+<div class="flex items-center justify-center h-full bg-gray-100">
+  <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+    <div class="flex justify-center">
+      <img src="/assets/ialogo_awal.png" alt="image" class="h-24 w-auto border-2 border-blue-700 rounded-md shadow-md">
+    </div>
+    <h2 class="text-2xl font-bold text-center text-gray-900">Sign in to your account</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+      <div class="rounded-md shadow-sm space-y-4">
+        <div>
+          <label for="email" class="sr-only">Email address</label>
+          <input id="email" formControlName="email" type="email" autocomplete="email" required
+            class="relative block w-full px-3 py-2 border border-gray-300 rounded-t-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+            placeholder="Email address">
+
+        </div>
+        <div>
+          <!--<label for="password" class="sr-only">Password</label>
+              <input id="password" formControlName="password" type="password" autocomplete="current-password" required class="relative block w-full px-3 py-2 border border-gray-300 rounded-b-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm" placeholder="Password">-->
+          <div class="password-container" style="position: relative;">
+            <input id="password" formControlName="password" [type]="showPassword ? 'text' : 'password'"
+              autocomplete="current-password" required
+              class="relative block w-full px-3 py-2 border border-gray-300 rounded-b-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 focus:z-10 sm:text-sm"
+              placeholder="Password">
+            <button type="button" (click)="togglePassword()"
+              style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+              <svg *ngIf="!showPassword" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 4C6.5 4 2 9 2 12C2 15 6.5 20 12 20C17.5 20 22 15 22 12C22 9 17.5 4 12 4ZM12 18C8.13 18 5 14.87 5 12C5 9.13 8.13 6 12 6C15.87 6 19 9.13 19 12C19 14.87 15.87 18 12 18ZM12 8C10.34 8 9 9.34 9 11C9 12.66 10.34 14 12 14C13.66 14 15 12.66 15 11C15 9.34 13.66 8 12 8Z"
+                  fill="#333" />
+              </svg>
+              <svg *ngIf="showPassword" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M2 12C2 9 6.5 4 12 4C17.5 4 22 9 22 12C22 14 17.5 20 12 20C6.5 20 2 15 2 12ZM12 6C8.13 6 5 9.13 5 12C5 14.87 8.13 18 12 18C15.87 18 19 14.87 19 12C19 9.13 15.87 6 12 6ZM16 11C16 13 14 14 12 14C10 14 8 13 8 11C8 9 10 8 12 8C14 8 16 9 16 11Z"
+                  fill="#333" />
+              </svg>
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <input id="remember-me" name="remember-me" type="checkbox"
+            class="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500">
+          <label for="remember-me" class="block ml-2 text-sm text-gray-900">Remember me</label>
+        </div>
+        <div class="text-sm">
+          <a href="#" class="font-medium text-purple-600 hover:text-purple-500">Forgot password?</a>
+        </div>
+      </div>
+      <div>
+        <button type="submit"
+          class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md group hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+          Sign in
+        </button>
+      </div>
+    </form>
+    <div class="text-sm text-center text-gray-600">
+      Not a member? <a href="#" class="font-medium text-purple-600 hover:text-purple-500">Register</a>
+    </div>
+  </div>
+</div>

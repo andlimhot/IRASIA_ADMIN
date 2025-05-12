@@ -70,7 +70,7 @@
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
               <td mat-cell *matCellDef="let row">
-              <button mat-icon-button color="primary" (click)="viewRegis('Update', row.ccregId,row.ccregProvId,row.ccregCityId,row.ccregKecId)"
+              <button mat-icon-button color="primary" (click)="viewRegis('Update', row.ccregId,row.ccregProvId,row.ccregCityId,row.ccregKecId,row.ccregMinApproval)"
                  ><mat-icon>edit</mat-icon></button>
                 <button mat-icon-button color="accent"
                   ><mat-icon>delete</mat-icon></button>

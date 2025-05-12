@@ -1,455 +1,501 @@
-<!--<div class="container" style="padding-top: 10px;">
-    <div class="row">
-        <div class="col-md-6">
-            <form [formGroup]="RegisForm">
-                <input type="text" formControlName="ccregName">
-                <img [src]="imageNikUrl" alt="Base64 Image">
-                <img [src]="imageNibUrl" alt="Base64 Image">
-            </form>
-        </div>
-    </div>
-</div>-->
+<div class="divide-y divide-blue-300">
+  <!-- Header Section -->
 
-<div class="divide-y divide-blue-200 ">
-    <div>
-      <p class="text-5xl text-blue-600 font-weight: 800 font-sans hover:font-serif ">Registration</p>
-    </div>
-    <form [formGroup]="RegisForm">
-      <div >
-        <mat-tab-group>
-  <!--  TAB GENERAL-->  
-            <mat-tab>
-              <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">account_circle</mat-icon>
-                General
-              </ng-template>
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="companyname" class="block text-sm/6 font-medium text-gray-900">Company Name</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-   
-                      <input type="text" formControlName="ccregName" name="ccregName" id="ccregName" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="sm:col-span-4">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">Alias Name / Known name</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                      <input type="text" formControlName="ccregNickName" name="ccregNickName" id="ccregNickName" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="nik" class="block text-sm/6 font-medium text-gray-900">National ID</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                      <input type="text" formControlName="ccregNationId" name="ccregNationId" id="ccregNationId" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>              
-              </div>
-             
-              <div class="row">
-                <div class="col-8">
-                  <label class="btn btn-default p-0">
-                 <!-- <input type="file" accept="image/*" (change)="selectImageNik($event)"  />
-                  <img [src]="preview" alt="Image Preview" height="90px" width="130px" > -->
-                  </label>
-                </div>
-              </div>
-            
-             
-  
-              <div>
-                <p class="text-2xl text-blue-600 font-weight: 800 font-sans hover:font-serif text-center">Member B2B</p>
-              </div>
-  
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="nik" class="block text-sm/6 font-medium text-gray-900">Single business No</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                      <input type="text" formControlName="ccregNationId" name="ccregNationId" id="ccregNationId" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>              
-              </div>
-  
-              <div class="row">
-                <div class="col-8">
-                  <label class="btn btn-default p-0">
-                 <!-- <input type="file" accept="image/*" (change)="selectImageNib($event)"  />
-                  <img [src]="preview2" alt="Image Preview" height="90px" width="130px" > -->
-                  </label> 
-                </div>
-              </div>
-  
-             
-              
-            </mat-tab>
-  
-  <!--  TAB ADDRESS-->          
-          
-            <mat-tab>
-              <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">home</mat-icon>
-                Address
-              </ng-template>
-             
-              <div class="col-span-full">
-                <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Street address</label>
-                <div class="mt-2">
-                  <input type="text" formControlName="ccregAddress" name="ccregAddress" id="ccregAddress" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                </div>
-              </div>
-  
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="companyname" class="block text-sm/6 font-medium text-gray-900">RT</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-   
-                      <input type="text" formControlName="ccregRt" name="ccregRt" id="ccregRt" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="sm:col-span-4">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">RW</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                      <input type="text" formControlName="ccregRw" name="ccregRw" id="ccregRw" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">Province</label>
-                  <mat-form-field>
-                    <mat-label>Province</mat-label>
-                    <input matInput formControlName="ccregProvId">
-                    <mat-select formControlName="ccregProvId" name="pro" (selectionChange)="changeprov($event.value)">
-                      <mat-option *ngFor="let pro of provlist" [value]="pro.cmpsiProvCode">{{ pro.cmpsiProvinsi }}</mat-option>
-                  </mat-select>
-                  </mat-form-field>
-                </div>
-  
-                <div class="sm:col-span-4">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">City</label>
-                  <mat-form-field>
-                    <mat-label>City</mat-label>
-                    <input matInput formControlName="ccregCityId">
-                      <mat-select formControlName="ccregCityId" name="cit" (selectionChange)="changecity($event.value)">
-                        <mat-option *ngFor="let cit of citylist" [value]="cit.cmcitCityCode">{{ cit.cmcitCity }}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-  
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-5">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">District</label>
-                  <mat-form-field>
-                    <mat-label>District</mat-label>
-                    <input matInput formControlName="ccregKecId">
-                    <mat-select formControlName="ccregKecId" name="kc" (selectionChange)="changekecamatan($event.value)">
-                      <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecKecCode">{{ kc.cmkecKecamatan }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-  
-                <div class="sm:col-span-5">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">Village</label>
-                  <mat-form-field>
-                    <mat-label>Village</mat-label>
-                    <input matInput formControlName="ccregKelId">
-                    <mat-select formControlName="ccregKelId" name="kl" (selectionChange)="changekelurahan($event.value)">
-                      <mat-option *ngFor="let kl of kellist" [value]="kl.cmkelKelCode">{{ kl.cmkelKelurahan }}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-  --
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="companyname" class="block text-sm/6 font-medium text-gray-900">Area Name</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-   
-                      <input type="text" formControlName="ccregArea" name="ccregArea" id="ccregArea" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="sm:col-span-4">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">ZIP Code</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                      <input type="text" formControlName="ccregZip" name="ccregZip" id="ccregZip" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="grid grid-flow-col gap-4 auto-cols-max hover:auto-cols-min">
-                <div class="sm:col-span-4">
-                  <label for="companyname" class="block text-sm/6 font-medium text-gray-900">Phone No</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-   
-                      <input type="text" formControlName="ccregPhone" name="ccregPhone" id="ccregPhone" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="sm:col-span-4">
-                  <label for="aliasname" class="block text-sm/6 font-medium text-gray-900">latitude and longitude</label>
-                  <div class="mt-2">
-                    <div class="flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                      <input type="text" formControlName="ccregLongLat" name="ccregLongLat" id="ccregLongLat" class="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6">
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-            </mat-tab>
-  
-  <!--  TAB BANK-->  
-            <mat-tab>
-              <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">account_balance</mat-icon>
-                Bank
-              </ng-template>
-          
-              <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-900 text-2xl" >Recieve Bank</h2>
-                <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-  
-                <div class="col-span-full">
-                  <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Bank Name</label>
-                  <div class="mt-2">
-                    <input type="text" formControlName="ccregRevcCmbaId" name="ccregRevcCmbaId" id="ccregRevcCmbaId" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                  </div>
-                </div>
-  
-                <div class="col-span-full">
-                  <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Account Name</label>
-                  <div class="mt-2">
-                    <input type="text" formControlName="ccregRecvCmbaName" name="ccregRecvCmbaName" id="ccregRecvCmbaName" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                  </div>
-                </div>
-  
-                <div class="col-span-full">
-                  <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Account No</label>
-                  <div class="mt-2">
-                    <input type="text" formControlName="ccregRevcCmbaAccount" name="ccregRevcCmbaAccount" id="ccregRevcCmbaAccount" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                  </div>
-                </div>
-  
-                <!--<section class="example-section ">
-                  <mat-checkbox [checked]="bankrcv" (change)="showSentBank()" class="example-margin" >The sending bank is the same as the receiving bank</mat-checkbox>
-                </section>-->
-              </div>
-  
-              <!--<div *ngIf="bankrcv === false">-->
-                <div class="border-b border-gray-900/10 pb-12">
-                  <h2 class="text-base/7 font-semibold text-gray-900 text-2xl">Sent Bank</h2>
-                  <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-    
-                  <div class="col-span-full">
-                    <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Bank Name</label>
-                    <div class="mt-2">
-                      <input type="text" formControlName="ccregSentCmbaId" name="ccregSentCmbaId" id="ccregSentCmbaId" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-    
-                  <div class="col-span-full">
-                    <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Account Name</label>
-                    <div class="mt-2">
-                      <input type="text" formControlName="ccregSentCmbaName" name="ccregSentCmbaName" id="ccregSentCmbaName" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-    
-                  <div class="col-span-full">
-                    <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Account No</label>
-                    <div class="mt-2">
-                      <input type="text" formControlName="ccregSentCmbaAccount" name="ccregSentCmbaAccount" id="ccregSentCmbaAccount" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-    
-                </div>
-              <!--</div>-->
-              
-            </mat-tab>
-    
-  <!--  TAB APPROVAL-->  
-            <mat-tab>
-                <ng-template mat-tab-label>
-                  <mat-icon class="example-tab-icon">how_to_reg</mat-icon>
-                  Aprroval
-                </ng-template>
-                <h2 class="text-base/7 font-semibold text-gray-900 text-2xl">Maximum Approval</h2>
-                <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-               
-                
-                  <!--<mat-select  [(value)]="maxapp">
-                    <mat-option value=1>1 PIC</mat-option>
-                    <mat-option value=2>2 PIC</mat-option>
-                    <mat-option value=3>3 PIC</mat-option>
-                  </mat-select>-->
-                <!--<div *ngIf="maxapp >=1 && maxapp <=3">-->
-                  <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base/7 font-semibold text-gray-900 text-2xl" >Person In charge - I </h2>
-                    <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">PIC Name</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic1Name" name="ccregPic1Name" id="ccregPic1Name" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Mobile Phone</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic1Phone" name="ccregPic1Phone" id="ccregPic1Phone" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Email</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic1Email" name="ccregPic1Email" id="ccregPic1Email" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-    
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Password</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic1password" name="ccregPic1password" id="ccregPic1password" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-                  </div>
-               <!-- </div> -->
-               
-  
-                <!--<div *ngIf="maxapp>1 && maxapp<3 ||  maxapp==3"> -->
-                  <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base/7 font-semibold text-gray-900 text-2xl" >Person In charge - II </h2>
-                    <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">PIC Name</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic2Name" name="ccregPic2Name" id="ccregPic2Name" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Mobile Phone</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic2Phone" name="ccregPic2Phone" id="ccregPic2Phone" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Email</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic2Email" name="ccregPic2Email" id="ccregPic2Email" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-    
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Password</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic2password" name="ccregPic2password" id="ccregPic2password" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-                  </div>
-                <!--</div>-->
-  
-                <!--<div *ngIf=" maxapp>1 && maxapp==3 ">-->
-                  <div class="border-b border-gray-900/10 pb-12">
-                    <h2 class="text-base/7 font-semibold text-gray-900 text-2xl" >Person In charge - III </h2>
-                    <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">PIC Name</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic3Name" name="ccregPic3Name" id="ccregPic3Name" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Mobile Phone</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic3Phone" name="ccregPic3Phone" id="ccregPic3Phone" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-      
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Email</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic3Email" name="ccregPic3Email" id="ccregPic3Email" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-    
-                    <div class="col-span-full">
-                      <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Password</label>
-                      <div class="mt-2">
-                        <input type="text" formControlName="ccregPic3password" name="ccregPic3password" id="ccregPic3password" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                      </div>
-                    </div>
-                  </div>
-                <!--</div>-->
-  
-              </mat-tab>
-  
-  <!--  TAB LOGIN-->  
-              <mat-tab>
-                <ng-template mat-tab-label>
-                  <mat-icon class="example-tab-icon">tv_singin</mat-icon>
-                  Login
-                </ng-template>
-            
-                <div class="col-span-full">
-                  <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Mobile Phone</label>
-                  <div class="mt-2">
-                    <input type="text" formControlName="ccregMobilePhone" name="ccregMobilePhone" id="ccregMobilePhone" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                  </div>
-                </div>
-  
-                <div class="col-span-full">
-                  <label for="street-address" class="block text-sm/6 font-medium text-gray-900">Email</label>
-                  <div class="mt-2">
-                    <input type="text" formControlName="ccregEmail" name="ccregEmail" id="ccregEmail" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                  </div>
-                </div>
-  
-                <div class="shadow-md ...">
-                  <div class="col-span-full">
-                    <label for="street-address" class="block text-sm/6 font-medium text-gray-900">OTP</label>
-                    <div class="mt-2">
-                      <input type="text" formControlName="ccregMobilePhone" name="ccregMobilePhone" id="ccregMobilePhone" autocomplete="street-address" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    </div>
-                  </div>
-                  <!--<button mat-flat-button color="accent">Sent OTP</button>-->
-                </div>
-                <button mat-flat-button color="accent" (click)="submitRegis()">Submit</button>
-              </mat-tab>
-  
-          </mat-tab-group>
-      </div>
-     
-    </form>
-   
+  <div class="pb-4 text-center">
+    <p
+      class="text-5xl font-extrabold text-white font-sans hover:font-serif tracking-wide transition-all bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 py-4 rounded-lg shadow-md">
+      Registration
+    </p>
+    <p class="text-gray-600 text-lg mt-2 font-medium">
+      Please complete the form below to register your account.
+    </p>
   </div>
+
+  <!-- Registration Form -->
+  <form [formGroup]="RegisForm" class="space-y-6">
+    <div>
+      <!-- Tab Group for Registration -->
+      <mat-tab-group class="mt-5">
+        <!-- Example Tab: General -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="flex items-center space-x-2">
+              <mat-icon class="text-indigo-600">account_circle</mat-icon>
+              <span class="font-medium text-gray-700">General</span>
+            </div>
+          </ng-template>
+          <!-- Container dengan Desain Modern -->
+          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
+            <!-- Company Name Field -->
+            <div class="space-y-2">
+              <label for="ccregName" class="block text-sm font-medium text-gray-700">Company Name</label>
+              <input type="text" formControlName="ccregName" id="ccregName" placeholder="Enter company name"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+            <!-- Alias Name Field -->
+            <div class="space-y-2">
+              <label for="ccregNickName" class="block text-sm font-medium text-gray-700">Alias Name / Known Name</label>
+              <input type="text" formControlName="ccregNickName" id="ccregNickName" placeholder="Enter alias name"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+            <!-- Email -->
+              <div class="space-y-2">
+                <label for="ccregMobilePhone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
+                <input type="text" formControlName="ccregMobilePhone" id="ccregMobilePhone"
+                  placeholder="Enter Mobile Phone"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
   
+              <!-- Mobile Phone -->
+              <div class="space-y-2">
+                <label for="ccregEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="text" formControlName="ccregEmail" id="ccregEmail" placeholder="Enter Email Address"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+            
+
+            <!-- National ID Field -->
+            <div class="space-y-2">
+              <label for="ccregNibId" class="block text-sm font-medium text-gray-700">National Id</label>
+              <input type="text" formControlName="ccregNationId" id="ccregNationId" placeholder="KTP No"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+            <!-- Business No Image Field -->
+            <div class="space-y-4">
+              <label class="block text-sm font-medium text-gray-700">Upload National Id</label>
+              <div class="flex flex-col items-center space-y-2">
+                <img
+                  [src]="imageNikUrl || 'assets/default-image.png'"
+                  alt="National Id Preview"
+                  class="h-[150px] w-[250px] object-cover rounded-md shadow-md"
+                  style="background-color: #f3f4f6;"
+                />
+               <!-- <input
+                  type="file"
+                  accept="image/*"
+                  #fileInput
+                  style="display: none"
+                  (change)="selectImageNik($event)"
+                />
+                <button
+                  type="button"
+                  class="px-4 py-2 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 h-10 w-62"
+                  (click)="fileInput.click()"
+                >
+                  Select Image
+                </button> -->
+              </div>            
+            </div>
+
+            <!-- Single Business No Field -->
+            <div class="space-y-2">
+              <label for="ccregNibId" class="block text-sm font-medium text-gray-700">Single Business No</label>
+              <input type="text" formControlName="ccregNibId" id="ccregNibId" placeholder="Enter Single Business No"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+            <!-- Business No Image Field -->
+            <div class="space-y-4">
+              <label class="block text-sm font-medium text-gray-700">Upload Business No Image</label>
+              <div class="flex flex-col items-center space-y-2">
+                <img
+                  [src]="imageNibUrl || 'assets/default-image.png'"
+                  alt="Business No Preview"
+                  class="h-[150px] w-[250px] object-cover rounded-md shadow-md"
+                  style="background-color: #f3f4f6;"
+                />
+              <!--  <input
+                  type="file"
+                  accept="image/*"
+                  #fileInput2
+                  style="display: none"
+                  (change)="selectImageNib($event)"
+                />
+                <button
+                  type="button"
+                  class="px-4 py-2 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 h-10 w-62"
+                  (click)="fileInput2.click()"
+                >
+                  Select Image
+                </button> -->
+              </div>            
+            </div>
+          </div>
+        </mat-tab>
+        <!--  TAB ADDRESS-->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="flex items-center space-x-2">
+              <mat-icon class="text-indigo-600">home</mat-icon>
+              <span class="font-medium text-gray-700">Address</span>
+            </div>
+          </ng-template>
+
+          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
+            <!-- Street Address -->
+            <div class="space-y-2">
+              <label for="ccregAddress" class="block text-sm font-medium text-gray-700">Street address</label>
+              <input type="text" formControlName="ccregAddress" id="ccregAddress" placeholder="Enter Street Address"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+            <!-- RT and RW -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="ccregRt" class="block text-sm font-medium text-gray-700">RT</label>
+                <input type="text" formControlName="ccregRt" id="ccregRt" placeholder="Enter RT"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+              <div class="space-y-2">
+                <label for="ccregRw" class="block text-sm font-medium text-gray-700">RW</label>
+                <input type="text" formControlName="ccregRw" id="ccregRw" placeholder="Enter RW"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+            </div>
+
+            <!-- Province and City -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="ccregProvId" class="block text-sm font-medium text-gray-700">Province</label>
+                <mat-form-field appearance="fill" class="w-full">
+                  <mat-label>Province</mat-label>
+                  <mat-select formControlName="ccregProvId" (selectionChange)="changeprov($event.value)">
+                    <mat-option *ngFor="let pro of provlist" [value]="pro.cmpsiProvCode">
+                      {{ pro.cmpsiProvinsi }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="space-y-2">
+                <label for="ccregCityId" class="block text-sm font-medium text-gray-700">City</label>
+                <mat-form-field appearance="fill" class="w-full">
+                  <mat-label>City</mat-label>
+                  <mat-select formControlName="ccregCityId" (selectionChange)="changecity($event.value)">
+                    <mat-option *ngFor="let cit of citylist" [value]="cit.cmcitCityCode">
+                      {{ cit.cmcitCity }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- District and Village -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="ccregKecId" class="block text-sm font-medium text-gray-700">District</label>
+                <mat-form-field appearance="fill" class="w-full">
+                  <mat-label>District</mat-label>
+                  <mat-select formControlName="ccregKecId" (selectionChange)="changekecamatan($event.value)">
+                    <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecCityCode">
+                      {{ kc.cmkecKecamatan }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="space-y-2">
+                <label for="ccregKelId" class="block text-sm font-medium text-gray-700">Village</label>
+                <mat-form-field appearance="fill" class="w-full">
+                  <mat-label>Village</mat-label>
+                  <mat-select formControlName="ccregKelId" (selectionChange)="changekelurahan($event.value)">
+                    <mat-option *ngFor="let kl of kellist" [value]="kl.cmkelKelCode">
+                      {{ kl.cmkelKelurahan }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Area Name and ZIP Code -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="ccregArea" class="block text-sm font-medium text-gray-700">Area Name</label>
+                <input type="text" formControlName="ccregArea" id="ccregArea" placeholder="Enter Area Name"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+              <div class="space-y-2">
+                <label for="ccregZip" class="block text-sm font-medium text-gray-700">ZIP Code</label>
+                <input type="text" formControlName="ccregZip" id="ccregZip" placeholder="Enter ZIP Code"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+            </div>
+
+            <!-- Phone and Coordinates -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="ccregPhone" class="block text-sm font-medium text-gray-700">Phone No</label>
+                <input type="text" formControlName="ccregPhone" id="ccregPhone" placeholder="Enter Phone Number"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+              <div class="space-y-2">
+                <label for="ccregLongLat" class="block text-sm font-medium text-gray-700">Latitude & Longitude</label>
+                <input type="text" formControlName="ccregLongLat" id="ccregLongLat" placeholder="Enter Coordinates"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <!--  TAB BANK-->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="flex items-center space-x-2">
+              <mat-icon class="text-indigo-600">account_balance</mat-icon>
+              <span class="font-medium text-gray-700">Bank</span>
+            </div>
+          </ng-template>
+
+          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
+            <!-- Receive Bank Section -->
+            <div class="space-y-4">
+              <h2 class="text-xl font-bold text-indigo-600">Receive Bank</h2>
+              <p class="text-sm text-gray-600">This information will be displayed publicly, so be careful what you
+                share.</p>
+
+              <!-- Bank Name -->
+              <div class="space-y-2">
+                <label for="ccregRevcCmbaId" class="block text-sm font-medium text-gray-700">Bank Name</label>
+                <input type="text" formControlName="ccregRevcCmbaId" id="ccregRevcCmbaId" placeholder="Enter Bank Name"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+
+              <!-- Account Name -->
+              <div class="space-y-2">
+                <label for="ccregRecvCmbaName" class="block text-sm font-medium text-gray-700">Account Name</label>
+                <input type="text" formControlName="ccregRecvCmbaName" id="ccregRecvCmbaName"
+                  placeholder="Enter Account Name"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+
+              <!-- Account No -->
+              <div class="space-y-2">
+                <label for="ccregRevcCmbaAccount" class="block text-sm font-medium text-gray-700">Account No</label>
+                <input type="text" formControlName="ccregRevcCmbaAccount" id="ccregRevcCmbaAccount"
+                  placeholder="Enter Account No"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+
+              <!-- Checkbox -->
+             <div>
+                <mat-checkbox [checked]="bankrcv" (change)="showSentBank()" class="text-sm">
+                  The sending bank is the same as the receiving bank
+                </mat-checkbox>
+              </div> 
+            </div>
+
+            <!-- Sent Bank Section -->
+           <div *ngIf="bankrcv === false" class="space-y-4 pt-6 border-t border-gray-300">
+              <h2 class="text-xl font-bold text-indigo-600">Sent Bank</h2>
+              <p class="text-sm text-gray-600">This information will be displayed publicly, so be careful what you
+                share.</p>
+
+              <!-- Bank Name -->
+              <div class="space-y-2">
+                <label for="ccregSentCmbaId" class="block text-sm font-medium text-gray-700">Bank Name</label>
+                <input type="text" formControlName="ccregSentCmbaId" id="ccregSentCmbaId" placeholder="Enter Bank Name"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+
+              <!-- Account Name -->
+              <div class="space-y-2">
+                <label for="ccregSentCmbaName" class="block text-sm font-medium text-gray-700">Account Name</label>
+                <input type="text" formControlName="ccregSentCmbaName" id="ccregSentCmbaName"
+                  placeholder="Enter Account Name"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+
+              <!-- Account No -->
+              <div class="space-y-2">
+                <label for="ccregSentCmbaAccount" class="block text-sm font-medium text-gray-700">Account No</label>
+                <input type="text" formControlName="ccregSentCmbaAccount" id="ccregSentCmbaAccount"
+                  placeholder="Enter Account No"
+                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <!--  TAB APPROVAL-->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="flex items-center space-x-2">
+              <mat-icon class="text-indigo-600">how_to_reg</mat-icon>
+              <span class="font-medium text-gray-700">Approval</span>
+            </div>
+          </ng-template>
+
+          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
+            <!-- Maximum Approval Section -->
+            <div class="space-y-4">
+              <h2 class="text-xl font-bold text-indigo-600">Maximum Approval</h2>
+              <p class="text-sm text-gray-600">This information will be displayed publicly, so be careful what you
+                share.</p>
+
+              <!-- Select Maximum Approval -->
+              <div class="space-y-2">
+                <label for="ccregMinApproval" class="block text-sm font-medium text-gray-700">Approval Level</label>
+                <mat-form-field appearance="fill" class="w-full">
+                  <mat-select formControlName="ccregMinApproval" [(value)]="maxapp">
+                    <mat-option value="1">1 PIC</mat-option>
+                    <mat-option value="2">2 PIC</mat-option>
+                    <mat-option value="3">3 PIC</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Person in Charge Section -->
+            <div *ngIf="maxapp >= 1" class="space-y-6">
+              <div class="space-y-4">
+                <h2 class="text-lg font-bold text-gray-700">Person In Charge - I</h2>
+
+                <!-- PIC Name -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Name" class="block text-sm font-medium text-gray-700">PIC Name</label>
+                  <input type="text" formControlName="ccregPic1Name" id="ccregPic1Name" placeholder="Enter PIC Name"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <!-- Mobile Phone -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Phone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
+                  <input type="text" formControlName="ccregPic1Phone" id="ccregPic1Phone"
+                    placeholder="Enter Mobile Phone"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <!-- Email -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input type="text" formControlName="ccregPic1Email" id="ccregPic1Email"
+                    placeholder="Enter Email Address"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Password" class="block text-sm font-medium text-gray-700">Password</label>
+                  <input type="text" formControlName="ccregPic1password" id="ccregPic1Password"
+                    placeholder="Enter Password"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+              </div>
+
+              <!-- Additional Persons in Charge -->
+              <div *ngIf="maxapp > 1" class="space-y-6">
+                <h2 class="text-lg font-bold text-gray-700">Person In Charge - II</h2>
+
+                <!-- PIC Name -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Name" class="block text-sm font-medium text-gray-700">PIC Name</label>
+                  <input type="text" formControlName="ccregPic2Name" id="ccregPic2Name" placeholder="Enter PIC Name"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <!-- Mobile Phone -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Phone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
+                  <input type="text" formControlName="ccregPic2Phone" id="ccregPic2Phone"
+                    placeholder="Enter Mobile Phone"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <!-- Email -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input type="text" formControlName="ccregPic2Email" id="ccregPic2Email"
+                    placeholder="Enter Email Address"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-2">
+                  <label for="ccregPic1Password" class="block text-sm font-medium text-gray-700">Password</label>
+                  <input type="text" formControlName="ccregPic2password" id="ccregPic2Password"
+                    placeholder="Enter Password"
+                    class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+
+                <div *ngIf="maxapp > 2" class="space-y-6">
+                  <h2 class="text-lg font-bold text-gray-700">Person In Charge - III</h2>
+                  <!-- Fields for PIC III -->
+
+                  <!-- PIC Name -->
+                  <div class="space-y-2">
+                    <label for="ccregPic1Name" class="block text-sm font-medium text-gray-700">PIC Name</label>
+                    <input type="text" formControlName="ccregPic3Name" id="ccregPic3Name" placeholder="Enter PIC Name"
+                      class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                  </div>
+  
+                  <!-- Mobile Phone -->
+                  <div class="space-y-2">
+                    <label for="ccregPic1Phone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
+                    <input type="text" formControlName="ccregPic3Phone" id="ccregPic2Phone"
+                      placeholder="Enter Mobile Phone"
+                      class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                  </div>
+  
+                  <!-- Email -->
+                  <div class="space-y-2">
+                    <label for="ccregPic1Email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="text" formControlName="ccregPic3Email" id="ccregPic3Email"
+                      placeholder="Enter Email Address"
+                      class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                  </div>
+  
+                  <!-- Password -->
+                  <div class="space-y-2">
+                    <label for="ccregPic1Password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="text" formControlName="ccregPic3password" id="ccregPic3Password"
+                      placeholder="Enter Password"
+                      class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <!--  TAB LOGIN
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="flex items-center space-x-2">
+              <mat-icon class="text-indigo-600">tv_singin</mat-icon>
+              <span class="font-medium text-gray-700">Login</span>
+            </div>
+          </ng-template>
+
+          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
+            Mobile Phone 
+            <div class="space-y-2">
+              <label for="ccregMobilePhone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
+              <input type="text" formControlName="ccregMobilePhone" id="ccregMobilePhone"
+                placeholder="Enter Mobile Phone"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+             Email 
+            <div class="space-y-2">
+              <label for="ccregEmail" class="block text-sm font-medium text-gray-700">Email</label>
+              <input type="text" formControlName="ccregEmail" id="ccregEmail" placeholder="Enter Email Address"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+          </div>
+        </mat-tab> -->
+
+      </mat-tab-group>
+      <!-- Submit Button -->
+      <button mat-flat-button color="accent" (click)="submitRegis()"
+      class="w-full py-2 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700">
+      Submit
+      </button>
+    </div>
+  </form>
+
+  <!-- Close Button -->
+  <div class="pt-6 text-center">
+    <button 
+      class="px-6 py-2 bg-indigo-600 text-white text-lg rounded-lg shadow hover:bg-indigo-700 transition-all">
+      Tutup
+    </button>
+  </div>
+</div>

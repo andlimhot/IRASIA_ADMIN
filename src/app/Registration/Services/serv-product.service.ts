@@ -46,11 +46,11 @@ export class ServProductService {
     }
 
     getReqEcByIdNo(req: string, no: string): Observable<any> {
-      return this.http.get<Array<CoreMstProduct>>("http://localhost:8091/wc-svc/webcust/getCtecdListByCtechIdAndCtecdId?CtechId="+req+"&CtecdId="+no);
+      return this.http.get<Array<CoreMstProduct>>("http://193.111.124.45:8091/wc-svc/webcust/getCtecdListByCtechIdAndCtecdId?CtechId="+req+"&CtecdId="+no);
     }
 
     getImages(no: string): Observable<string[]> {
-      const url = `http://193.111.124.45:9815/appmst-svc/images/productImgbyId?no=`+no;
+      const url = `http://193.111.124.45:9815/appmst-svc/images/bannerImgbyId?no=`+no;
       return this.http.get<string[]>(url);
     }
 }

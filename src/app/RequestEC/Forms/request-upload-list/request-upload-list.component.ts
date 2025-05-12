@@ -40,8 +40,8 @@ export class RequestUploadListComponent implements OnInit{
   coreTransRequestEcDtl: RequestDtl[] = [];
   prodlist: CoreMstProduct[] = [];
   prodtylist: CoreMstProductType[] = [];
-  selectedprod: string = "";
-  selectedprodtype: string = "";
+  selectedprod: any = null;
+  selectedprodtype: any = null;
   selectedFiles: File[] = [];
 
   selectedFile1: any = null;
@@ -78,9 +78,9 @@ export class RequestUploadListComponent implements OnInit{
   data: RequestDtl = {
     ctecdCtechId: "",
     ctecdId: "",
-    ctecdProductCode: "",
+    ctecdProductCode: 0,
     ctecdProductName: "",
-    ctecdProducttypeCode: "",
+    ctecdProducttypeCode: 0,
     ctecdProducttypeName: "",
     ctecdProducttypeStockQty: 0,
     ctecdProducttypeMinQty: 0,
@@ -184,7 +184,7 @@ export class RequestUploadListComponent implements OnInit{
     alert('cccccc :'+req+" --- "+ this.p_no);
     this.rdtl = [];
    
-    this.reqServ.getReqEcByIdNo(req, this.p_no, this.vusr, this.vtkn).subscribe((res: RequestDtl[]) => {
+    this.reqServ.getReqEcByIdNo(req, this.p_no, this.p_usr, this.vtkn).subscribe((res: RequestDtl[]) => {
       this.rdtl = res;
       this.getProductList();
 
@@ -561,7 +561,7 @@ export class RequestUploadListComponent implements OnInit{
     }
   }
 
-  ApproveProductDtl() {
+  /*ApproveProductDtl() {
     this.pin_reqno = this.p_reqno;
     this.pin_no = this.p_no;
     alert('Approve: '+this.pin_reqno+'/'+this.pin_no);
@@ -582,7 +582,7 @@ export class RequestUploadListComponent implements OnInit{
           }
         );
         //alert('endsubmitregist');
-  }
+  }*/
 
   /*delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));

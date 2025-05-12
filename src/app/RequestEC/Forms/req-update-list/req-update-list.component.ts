@@ -17,6 +17,7 @@ import { CoreMstProduct } from 'src/app/Registration/Models/CoreMstProduct';
 import { CoreMstProductType } from 'src/app/Registration/Models/CoreMstProductType';
 import { ProductProducttypeServService } from '../../Services/product-producttype-serv.service';
 import { DTORequestList } from '../../Models/DTORequestList';
+import { ReqUpdateListCommentComponent } from '../req-update-list-comment/req-update-list-comment.component';
 
 @Component({
   selector: 'app-req-update-list',
@@ -42,12 +43,21 @@ export class ReqUpdateListComponent implements OnInit{
   vtknd:any;
   vusr:any;
   vusrd:any;
+
+  vactive = false;
+  vacbestprod = false;
+  vacnewprod = false;
+  vactsale = false;
+  vdtbestprice: string = "a";
+  vdtbestprod: string = "a";
+  vdtnewprod: string = "a";
+  vdtsale: string = "a";
  
 
   prodlist: CoreMstProduct[] = [];
   prodtylist: CoreMstProductType[] = [];
   rdtl: RequestDtl[] = [];
-  userid: string = 'USER09';
+  //userid: string = 'USER09';
   imageUrls: string[] = [];  
   productName: string = "ccc"; 
   producttype: string = "aaaa";
@@ -69,14 +79,15 @@ export class ReqUpdateListComponent implements OnInit{
     this.route.params.subscribe(params => {
       this.p_type = params['param1'];
       this.p_reqno = params['param2'];
+      this.p_usr = params['param3'];
     });
   //  this.getRequestDtl(this.p_reqno);
-      this.getRequestList(this.p_reqno);
+      this.getRequestList(this.p_reqno,this.p_usr);
   }
 
-  getRequestList(req: string){
+  getRequestList(req: string,user:string){
     this.requestList=[];
-    this.reqServ.getReqList(req, "USER09", this.vusr, this.vtkn).subscribe((res: DTORequestList[]) => {
+    this.reqServ.getReqList(req, user, user, this.vtkn).subscribe((res: DTORequestList[]) => {
       this.requestList = res;
     });
 
@@ -95,7 +106,8 @@ export class ReqUpdateListComponent implements OnInit{
         this.file3img='';
         this.file4img='';// Tunggu 1/2 detik
         // alert("dddddd: "+ this.rdtl[j].ctecdCtechId);
-        this.reqServ.getImages(this.userid, this.rdtl[j].ctecdCtechId, this.rdtl[j].ctecdId.toString(), this.vusr, this.vtkn ).subscribe(
+        alert('userrrbyparam: '+ this.p_usr);
+        this.reqServ.getImages(this.p_usr, this.rdtl[j].ctecdCtechId, this.rdtl[j].ctecdId.toString(), this.vusr, this.vtkn ).subscribe(
           (data: string[]) => {
             this.imageUrls = data;
              //  alert("eeeekkkkk1111: "+ this.imageUrls.length );
@@ -160,7 +172,80 @@ export class ReqUpdateListComponent implements OnInit{
 
   }
 
-    updateRequest(ptranstype:string, no:string){
+  inputBestPrice() {
+    if (this.vactive) {
+      this.vdtbestprice = 'Y'
+    }
+    else {
+      this.vdtbestprice = 'N'
+    }
+  }
+  
+  inputBestProd() {
+    if (this.vacbestprod) {
+      this.vdtbestprod = 'Y'
+    }
+    else {
+      this.vdtbestprod = 'N'
+    }
+  }
+
+  inputNewProd() {
+    if (this.vacnewprod) {
+      this.vdtnewprod = 'Y'
+    }
+    else {
+      this.vdtnewprod = 'N'
+    }
+  }
+
+  inputSale() {
+    if (this.vactsale) {
+      this.vdtsale = 'Y'
+    }
+    else {
+      this.vdtsale = 'N'
+    }
+  }
+
+  setcheck(completed: boolean) {
+    if (completed) {
+      this.vactive = true;
+    }
+    else {
+      this.vactive = false;
+    }
+  }
+
+  setcheckBestProd(completed: boolean) {
+    if (completed) {
+      this.vacbestprod = true;
+    }
+    else {
+      this.vacbestprod = false;
+    }
+  }
+
+  setcheckNewProd(completed: boolean) {
+    if (completed) {
+      this.vacnewprod = true;
+    }
+    else {
+      this.vacnewprod = false;
+    }
+  }
+
+  setcheckSale(completed: boolean) {
+    if (completed) {
+      this.vactsale = true;
+    }
+    else {
+      this.vactsale = false;
+    }
+  }
+
+
+   /* updateRequest(ptranstype:string, no:string){
          const dialogRef =this.dialog.open(RequestUploadListComponent,{height:'90%',width:'80%'},);
            dialogRef.afterClosed().subscribe({
              next:(val) =>{
@@ -175,11 +260,34 @@ export class ReqUpdateListComponent implements OnInit{
            dialogRef.componentInstance.p_type="Update";  
            dialogRef.componentInstance.p_no=no;
            dialogRef.componentInstance.p_reqno=this.p_reqno;
+         }*/
+  
+  RejectReqDtl(ptranstype:string, no:string){
+         const dialogRef =this.dialog.open(ReqUpdateListCommentComponent,{height:'40%',width:'40%'},);
+           dialogRef.afterClosed().subscribe({
+             next:(val) =>{
+               if (val) {
+                 //this.getListFaktur();
+                 //sessionStorage.setItem("dsono", this.dtparam);  
+       
+               }
+             }
+           });        
+           dialogRef.componentInstance.p_usr=this.p_usr;
+           dialogRef.componentInstance.p_type="Update";  
+           dialogRef.componentInstance.p_no=no;
+           dialogRef.componentInstance.p_reqno=this.p_reqno;
          }
+  
+ 
 
-  CallSendTOWeb() {
-    alert('sendtoweb: '+this.p_reqno+'/'+this.userid)
-    this.reqServ.SendToWeb(this.p_reqno, this.userid)
+  CallSendTOWeb(vpseq_no:string) {
+    this.inputBestPrice();
+    this.inputBestProd();
+    this.inputNewProd();
+    this.inputSale();
+    alert('sendtoweb: '+this.p_reqno+'/'+vpseq_no+'/'+ this.p_usr+'/'+this.vdtbestprice+'/'+this.vdtbestprod+'/'+this.vdtnewprod+'/'+this.vdtsale)
+   this.reqServ.SendToWeb(this.p_reqno,vpseq_no, this.p_usr,this.vdtbestprice,this.vdtbestprod,this.vdtnewprod,this.vdtsale)
         .subscribe(
           response => {
             this.requestNumber = response;

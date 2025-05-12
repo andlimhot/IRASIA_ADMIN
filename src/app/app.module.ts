@@ -16,19 +16,32 @@ import { ReqUpdateListComponent } from './RequestEC/Forms/req-update-list/req-up
 import { RequestUploadListComponent } from './RequestEC/Forms/request-upload-list/request-upload-list.component';
 import { ListRequestComponent } from './RequestEC/Forms/list-request/list-request.component';
 import { FormUserLoginComponent } from './MainScreen/form-user-login/form-user-login.component';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
+import { EmployeeListComponent } from './Employee/Forms/employee-list/employee-list.component';
+import { ReqUpdateListCommentComponent } from './RequestEC/Forms/req-update-list-comment/req-update-list-comment.component';
+import { BannersListComponent } from './Banners/Forms/banners-list/banners-list.component';
+import { BannersCuComponent } from './Banners/Forms/banners-cu/banners-cu.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+//import { AvatarModule } from 'primeng/avatar';
+
 const ROUTES: Routes = [ 
   { path: 'ProductList', component: ProductListComponent },
   { path: 'ProducttypeList', component: ProducttypeListComponent },
   { path: 'RegistrationList', component: RegistrationListComponent},
   { path: 'RequestList', component: ListRequestComponent },
-  { path: 'RequestUpdList/:param1/:param2', component: ReqUpdateListComponent },
+  { path: 'RequestUpdList/:param1/:param2/:param3', component: ReqUpdateListComponent },
   { path: 'RequestCU/:param1/:param2/:param3', component: RequestUploadListComponent },
   { path: 'login', component: FormUserLoginComponent },
+  { path: 'EmployeeList', component: EmployeeListComponent },
+  { path: 'BannersList', component: BannersListComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -43,8 +56,14 @@ const ROUTES: Routes = [
     ListRequestComponent,
     RouterModule.forRoot(ROUTES),
     RouterOutlet,
+    HeaderNavComponent,
+    EmployeeListComponent,
+    BannersListComponent,
+    MatCardModule,
+    MatToolbarModule,
 ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

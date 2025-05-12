@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RequestDtl } from '../Models/RequestDtl';
 import { vrequestlist } from '../Models/vrequestlist';
 import { DTORequestList } from '../Models/DTORequestList';
+import { vrequestlistadm } from '../Models/vrequestlistadm';
 
 @Injectable({
   providedIn: 'root'
@@ -25,27 +26,27 @@ export class RequestServService {
 
   getAllReqEc(sr:string, tkn:string): Observable<RequestDtl[]> {
     const headers = this.getHeaders(tkn);
-    return this.http.get<RequestDtl[]>("http://localhost:9815/wc-svc/webcust/getCtecdListAll");
+    return this.http.get<RequestDtl[]>("http://193.111.124.45:9815/wc-svc/webcust/getCtecdListAll");
   }
 
   getReqEcById(req: string, sr:string, tkn:string): Observable<any> {
     const headers = this.getHeaders(tkn);
-    return this.http.get<Array<RequestDtl>>("http://localhost:9815/wc-svc/webcust/getCtecdListByCtechId?CtechId="+req);
+    return this.http.get<Array<RequestDtl>>("http://193.111.124.45:9815/wc-svc/webcust/getCtecdListByCtechId?CtechId="+req);
   }
 
   getReqList(req: string, userid:string, usr:string, tkn:string): Observable<any> {
     const headers = this.getHeaders(tkn);
-    return this.http.get<Array<DTORequestList>>("http://localhost:9815/wc-svc/webcust/getRequestList?CtechId="+req+"&userid="+usr);
+    return this.http.get<Array<DTORequestList>>("http://193.111.124.45:9815/wc-svc/webcust/getRequestList?CtechId="+req+"&userid="+usr);
   }
 
   getReqEcByIdNo(req: string, no: string, sr:string, tkn:string): Observable<any> {
     const headers = this.getHeaders(tkn);
-    return this.http.get<Array<RequestDtl>>("http://localhost:9815/wc-svc/webcust/getCtecdListByCtechIdAndCtecdId?CtechId="+req+"&CtecdId="+no);
+    return this.http.get<Array<RequestDtl>>("http://193.111.124.45:9815/wc-svc/webcust/getCtecdListByCtechIdAndCtecdId?CtechId="+req+"&CtecdId="+no);
   }
 
-  getVReqByuser(usr:string,tkn:string): Observable<vrequestlist[]> {
+  getVReqByuser(tkn:string): Observable<vrequestlistadm[]> {
     const headers = this.getHeaders(tkn);
-    return this.http.get<vrequestlist[]>("http://localhost:9815/wc-svc/webcust/getVReqByUserStatus?usr="+usr+"&Stat=AC");
+    return this.http.get<vrequestlistadm[]>("http://193.111.124.45:9815/wc-svc/webcust/getVReqAdmByStatus?Stat=SQ");
   }
 
   createReqWeb(userid: string, data: RequestDtl, file1: File, file2: File, file3: File, file4: File): Observable<string> {
@@ -58,7 +59,7 @@ export class RequestServService {
     if (file3) { formData.append('file3', file3); }
     if (file4) { formData.append('file4', file4); }
 
-    return this.http.post<string>('http://localhost:9815/wc-svc/webcust/saveupdreqecdtl',  formData);
+    return this.http.post<string>('http://193.111.124.45:9815/wc-svc/webcust/saveupdreqecdtl',  formData);
   }
 
 
@@ -74,28 +75,28 @@ export class RequestServService {
     if (file3) { formData.append('file3', file3); }
     if (file4) { formData.append('file4', file4); }
    // const headers = this.getHeaders(tkn);
-    return this.http.post<string>('http://localhost:9815/wc-svc/webcust/UpdateRequest',  formData);
+    return this.http.post<string>('http://193.111.124.45:9815/wc-svc/webcust/UpdateRequest',  formData);
   }
 
   deleteProduct(ctih: string, ctid:string, sr:string, tkn:string): Observable<any> {
     const headers = this.getHeaders(tkn);
-    return this.http.delete('http://localhost:9815/wc-svc/webcust/DeleteRequestPic?ctih='+ctih+'&ctid='+ctid);
+    return this.http.delete('http://193.111.124.45:9815/wc-svc/webcust/DeleteRequestPic?ctih='+ctih+'&ctid='+ctid);
   }
   
   getImages(custNo: string, requestno: string, no: string, usr:string, tkn:string): Observable<string[]> {
-    const url = `http://localhost:9815/wc-svc/images/${usr}/REQUEST/${requestno}?no=${no}`;
+    const url = `http://193.111.124.45:9815/wc-svc/images/${usr}/REQUEST/${requestno}?no=${no}`;
     const headers = this.getHeaders(tkn);
     return this.http.get<string[]>(url);
   }
 
-  SendToWeb(p_reqno:any, p_userid:any):Observable<string>{
-    const SubWeb:string="http://localhost:9815/wc-svc/webcust/SendReqToWeb?p_reqno="+p_reqno+"&p_user="+p_userid;
+  SendToWeb(p_reqno:string, p_seqno:string, p_user:string, p_best_price:string, p_best_product:string, p_new_product:string, p_sale:string):Observable<string>{
+    const SubWeb:string="http://193.111.124.45:9815/am-svc/webadmin/SendReqToWeb?p_reqno="+p_reqno+"&p_seqno="+p_seqno+"&p_user="+p_user;+"&p_best_price="+p_best_price+"&p_best_product="+p_best_product+"&p_new_product="+p_new_product+"&p_sale="+p_sale;
     return this.http.get(SubWeb, {responseType: 'text' as 'text'});
    }
 
-   UpdStsProductDtl(ctih: string, ctid:string): Observable<any> {
+   UpdStsProductDtl(p_reqno: string, p_seqno:string, p_notes:string, p_user:string): Observable<any> {
     //const headers = this.getHeaders(tkn);
-    return this.http.get("http://localhost:9815/wc-svc/webcust/ProcUpdateReq?p_ctechid="+ctih+"&p_ctecdid="+ctid);
+    return this.http.get("http://193.111.124.45:9815/am-svc/webadmin/ProcUpdateReq?p_reqno="+p_reqno+"&p_seqno="+p_seqno+"&p_notes="+p_notes+"&p_user="+p_user);
   }
 
 

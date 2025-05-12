@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>Dashboard Taktis</span>
+</mat-toolbar>
+
+<div class="dashboard-container">
+  <mat-card class="dashboard-card">
+    <mat-card-title>Total Pengguna</mat-card-title>
+    <mat-card-content>
+      <h2>{{totalUsers}}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <mat-card-title>Transaksi Hari Ini</mat-card-title>
+    <mat-card-content>
+      <h2>{{transactionsToday}}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <mat-card-title>Status Server</mat-card-title>
+    <mat-card-content>
+      <h2 [style.color]="serverStatus === 'Online' ? 'green' : 'red'">
+        {{serverStatus}}
+      </h2>
+    </mat-card-content>
+  </mat-card>
+</div>

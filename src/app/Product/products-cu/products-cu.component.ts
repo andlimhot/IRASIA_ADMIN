@@ -25,9 +25,9 @@ import { ServProductService } from 'src/app/Registration/Services/serv-product.s
 export class ProductsCuComponent implements OnInit{
 
   p_usr: string = "aaaaa";
-  p_reqno: string = "aaaaa";
+  p_reqno: any;
   p_type: string = "aaaaa";
-  p_no: string = "aaaaa";
+  p_no: any;
   preview = '';
   preview2 = '';
   preview3 = '';

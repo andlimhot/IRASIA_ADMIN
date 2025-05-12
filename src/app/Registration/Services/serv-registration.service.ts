@@ -35,7 +35,7 @@ export class ServRegistrationService {
 
   execLogin(userid:string, userpass:string, macaddress:string, pmsg:string): Observable<any>{    
     
-    return this.http.get<loginreponse>("http://localhost:9815/am-svc/webadmin/exeLogin?userid="+userid+"&userpass="+userpass+"&macaddress="+macaddress)
+    return this.http.get<loginreponse>("http://193.111.124.45:9815/am-svc/webadmin/exeLogin?userid="+userid+"&userpass="+userpass+"&macaddress="+macaddress)
     .pipe(
       catchError(this.handleError)
     );

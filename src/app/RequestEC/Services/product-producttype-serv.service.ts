@@ -58,7 +58,7 @@ export class ProductProducttypeServService {
   }
 
   getImages(custNo: string, requestno: string, no: string): Observable<string[]> {
-  const url = `http://localhost:8091/wc-svc/images/${custNo}/REQUEST/${requestno}?no=${no}`;
+  const url = `http://193.111.124.45:8091/wc-svc/images/${custNo}/REQUEST/${requestno}?no=${no}`;
   return this.http.get<string[]>(url);
   }
 

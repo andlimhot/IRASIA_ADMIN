@@ -1,9 +1,9 @@
 export interface RequestDtl{
     ctecdCtechId: string,
     ctecdId: string,
-    ctecdProductCode: string,
+    ctecdProductCode: number,
     ctecdProductName: string,
-    ctecdProducttypeCode: string,
+    ctecdProducttypeCode: number,
     ctecdProducttypeName: string,
     ctecdProducttypeStockQty: number,
     ctecdProducttypeMinQty: number,

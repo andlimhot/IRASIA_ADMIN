@@ -38,6 +38,7 @@ export class RegistrationCUComponent implements OnInit {
   p_provcode: string ='';
   p_citycode: string ='';
   p_keccode: string ='';
+  p_maxapp: number = 0;
   provlist:provincemdl[]=[];
   citylist:citymdl[]=[];
   keclist:kecamatanmdl[]=[];
@@ -53,6 +54,10 @@ export class RegistrationCUComponent implements OnInit {
   selectedkel: string = 'a';
   selectedbank: string = 'a';
   requestNumber: string = '';
+  preview='';
+  preview2='';
+  maxapp: number = 0;
+  bankrcv: boolean = true;
 
   constructor(private regiServ : ServRegistrationService, private formBuider: FormBuilder, private http: HttpClient,
               private sanitizer: DomSanitizer ){
@@ -103,6 +108,7 @@ export class RegistrationCUComponent implements OnInit {
 
   ngOnInit(): void {
     this.getVRegis();
+    this.maxapp = this.p_maxapp;
     this.getprovince();
     this.getcity(this.p_provcode);
     this.getkecamatan(this.p_citycode);
@@ -175,6 +181,7 @@ export class RegistrationCUComponent implements OnInit {
         this.base64String=this.vregislist[i].ccregNikImage;
         this.imageNikUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.base64String);
         this.imageNibUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.vregislist[i].ccregNibImage);
+       // this.preview = this.imageNikUrl;
         this.RegisForm.setValue({
           ccregId:  this.vregislist[i].ccregId ,
           ccregName: this.vregislist[i].ccregName,
@@ -232,15 +239,23 @@ export class RegistrationCUComponent implements OnInit {
     
     });
   }
+
+  showSentBank() {
+    if (this.bankrcv === true) {
+      this.bankrcv = false;
+    } else {
+      this.bankrcv = true;
+    };
+  }
   
 
   submitRegis() {
     alert('submitregist');
-      this.regiServ.SubmitRegistration(this.p_regid, this.p_regid)
+      this.regiServ.SubmitRegistration('EMP01', this.p_regid)
         .subscribe(
           response => {
             this.requestNumber = response;
-            console.log('Request berhasil dibuat dengan nomor:', this.requestNumber);
+            console.log('Submit Succes'+this.requestNumber);
             // Tambahkan logika untuk menangani response sukses, misalnya:
             // - Reset form
             // - Tampilkan pesan sukses

@@ -1,0 +1,55 @@
+<header>
+  <div class="top-header">
+    <div class="container mx-auto px-8">
+      <div class="flex flex-wrap flex-row justify-between text-center">
+        <ul class="flex flex-wrap flex-row justify-center md:justify-start gap-4 header-left-content">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Request For Quotation</a></li>
+          <li><span>Need Help</span></li>
+        </ul>
+        <ul class="flex flex-wrap flex-row justify-center w-full md:w-auto mt-2 md:mt-0 header-right-content">
+          <li class="account-dropdown">
+            <a href="#" class="my-account">
+              <div *ngIf="myacc === 'My Account'"></div>
+              <div *ngIf="myacc !== 'My Account'">
+                <img src={{mypp}} alt="Logo" class="account-logo" />
+              </div>
+              {{myacc}}
+              <i class="ri-arrow-down-s-line dropdown-icon"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#" (click)="login($event)"><i class="ri-login-box-line"></i> Login</a></li>
+              <li><a href="#" (click)="registration($event,'Insert','')"><i class="ri-user-add-line"></i> Sign Up</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Menu Master dan Transaksi Sejajar -->
+      <div class="menu-wrapper">
+        <div class="menu-container">
+          <button mat-button [matMenuTriggerFor]="masterMenu">MASTER</button>
+          <mat-menu #masterMenu="matMenu">
+            <button mat-menu-item (click)="openProductInNewTab()">Master Product</button>
+            <button mat-menu-item (click)="openEmployeeInNewTab()">Master Employee</button>
+            <button mat-menu-item (click)="openBannersInNewTab()">Master Banners</button>
+          </mat-menu>
+        </div>
+
+        <div class="menu-container">
+          <button mat-button [matMenuTriggerFor]="transaksiMenu">TRANSAKSI</button>
+          <mat-menu #transaksiMenu="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="productMenu">Product</button>
+          </mat-menu>
+
+          <mat-menu #productMenu="matMenu">
+            <button mat-menu-item>Employee 1</button>
+            <button mat-menu-item>Employee 2</button>
+            <button mat-menu-item>Employee 3</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</header>

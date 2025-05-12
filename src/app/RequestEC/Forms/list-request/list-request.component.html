@@ -16,7 +16,7 @@
     </div>
     <div class="w-full md:w-1/4 mb-4 md:mb-0 md:pl-0 text-center"> 
       <div class="text-white font-bold py-2 px-4 rounded">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" (click)="AddRequest('New')">Add Request</button>
+      <!-- <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" (click)="AddRequest('New')">Add Request</button> -->
       </div>
     </div>
   </div>
@@ -39,40 +39,45 @@
             <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="vrlCustno">
+          <ng-container matColumnDef="vrlaCustno">
             <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> user</th>
-            <td mat-cell *matCellDef="let row" hidden> {{row.vrlCustno}} </td>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vrlaCustno}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="vrlReqno">
+          <ng-container matColumnDef="vrlaReqno">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Request No.</th>
-            <td mat-cell *matCellDef="let row"> {{row.vrlReqno}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.vrlaReqno}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="vrlDate">
+          <ng-container matColumnDef="vrlaDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Request Date. </th>
-            <td mat-cell *matCellDef="let row"> {{row.vrlDate }} </td>
+            <td mat-cell *matCellDef="let row"> {{row.vrlaDate }} </td>
           </ng-container>
 
-          <ng-container matColumnDef="vrlDateSort">
+          <ng-container matColumnDef="vrlaDateSort">
             <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Request No. </th>
-            <td mat-cell *matCellDef="let row" hidden> {{row.vrlDateSort}} </td>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vrlaDateSort}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="vrlStatus">
+          <ng-container matColumnDef="vrlaStatus">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let row"> {{row.vrlStatus }} </td>
+            <td mat-cell *matCellDef="let row"> {{row.vrlaStatus }} </td>
           </ng-container>
 
-          <ng-container matColumnDef="vrlProductNo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> No Of Product </th>
-            <td mat-cell *matCellDef="let row"> {{row.vrlProductNo | currency:' '}} </td>
+        <!--<ng-container matColumnDef="vrlaSummary">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Process Of Product </th>
+            <td mat-cell *matCellDef="let row"> {{row.vrlaSummary | currency:' '}} </td>
+          </ng-container> -->
+
+          <ng-container matColumnDef="vrlaSummary">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Process Of Product </th>
+            <td mat-cell *matCellDef="let row"> {{row.vrlaSummary}} </td>
           </ng-container>
 
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
             <td mat-cell *matCellDef="let row">
-              <button mat-icon-button color="primary" (click)="updateRequest('Update', row.vrlReqno)"
+              <button mat-icon-button color="primary" (click)="updateRequest('Update', row.vrlaReqno,row.vrlaCustno)"
               ><mat-icon>edit</mat-icon></button>
               <button mat-icon-button color="accent"
               ><mat-icon>delete</mat-icon></button>
