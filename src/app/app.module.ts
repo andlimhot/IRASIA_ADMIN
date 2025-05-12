@@ -24,6 +24,7 @@ import { BannersCuComponent } from './Banners/Forms/banners-cu/banners-cu.compon
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 //import { AvatarModule } from 'primeng/avatar';
 
 const ROUTES: Routes = [ 
@@ -61,6 +62,7 @@ const ROUTES: Routes = [
     BannersListComponent,
     MatCardModule,
     MatToolbarModule,
+    NgxChartsModule,
 ],
   providers: [],
   bootstrap: [AppComponent]
