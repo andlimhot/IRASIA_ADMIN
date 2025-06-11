@@ -1,65 +1,70 @@
-
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">e-commerce Banners</h1>
+    <button class="close-icon" mat-icon-button color="warn" style="position: absolute; right: 10px; top: 5px;"
+        (click)="closeForm()" title="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h1 class="text-2xl font-bold mb-4">Master Banners</h1>
     <form (ngSubmit)="submitBanners()" enctype="multipart/form-data">
-    <button mat-raised-button color="warn" style="border-radius: 15px;" (click)="closeForm()">Cancel</button>
-    <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-2 gap-6">
 
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Master Banners</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmbannId" class="block text-gray-700 font-bold mb-2">Banners Code</label>
-                    <input type="text" id="cmbannId" [(ngModel)]="data.cmbannId" [(ngModel)]="p_no"  name="cmbannId"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Product Code">
+            <div>
+                <!--<h2 class="text-xl font-semibold mb-2">Master Banners</h2>-->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmbannId" class="block text-gray-700 font-bold mb-2">Banners Code</label>
+                        <input type="text" id="cmbannId" [(ngModel)]="data.cmbannId" [(ngModel)]="p_no" name="cmbannId"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Product Code">
+                    </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmbannFileName" class="block text-gray-700 font-bold mb-2">File Name</label>
+                        <input type="text" id="cmbannFileName" [(ngModel)]="data.cmbannFileName" name="cmbannFileName"
+                            readonly
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="File Name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmbannFilePath" class="block text-gray-700 font-bold mb-2">File Path</label>
+                        <input type="text" id="cmbannFilePath" [(ngModel)]="data.cmbannFilePath" name="cmbannFilePath"
+                            readonly
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="File Path">
+                    </div>
+                </div>
+
             </div>
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Image Upload</h2>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmbannFileName" class="block text-gray-700 font-bold mb-2">File Name</label>
-                    <input type="text" id="cmbannFileName" [(ngModel)]="data.cmbannFileName" name="cmbannFileName" readonly
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="File Name">
-                </div>
-                <div class="mb-4">
-                    <label for="cmbannFilePath" class="block text-gray-700 font-bold mb-2">File Path</label>
-                    <input type="text" id="cmbannFilePath" [(ngModel)]="data.cmbannFilePath" name="cmbannFilePath" readonly
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="File Path">
-                </div>
-            </div>
-
-        </div>
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Image Upload</h2>
-
-            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center">
-                        <div class="row">
-                            <div class="col-span-1">
-                                <div class="col-span-8">
-                                    <label class="cursor-pointer inline-block p-0 relative">
-                                        <input type="file" accept="image/*"  id="file1" name="file1" (change)="onFileSelected($event, 1)" />
-                                        <img [src]="preview" alt="Image Preview1" class="h-24 w-32" />
-                                        <div
-                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
-                                            <span class="text-white font-bold">Pilih File</span>
-                                        </div>
-                                    </label>
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="row">
+                                <div class="col-span-1">
+                                    <div class="col-span-8">
+                                        <label class="cursor-pointer inline-block p-0 relative">
+                                            <input type="file" accept="image/*" id="file1" name="file1"
+                                                (change)="onFileSelected($event, 1)" />
+                                            <img [src]="preview" alt="Image Preview1" class="h-24 w-32" />
+                                            <div
+                                                class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                                <span class="text-white font-bold">Pilih File</span>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <!--<div class="mt-8">
+        <!--<div class="mt-8">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
 
         <div class="mb-4">
@@ -84,14 +89,11 @@
         </div>
     </div>-->
 
-    <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="submit" >
-        Save Banners
-    </button>
+        <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit">
+            Save Banners
+        </button>
     </form>
 
 </div>
-
-
-

@@ -1,17 +1,22 @@
 <div class="container mx-auto p-6">
-    <form (ngSubmit)="ApproveProductDtl()" enctype="multipart/form-data">
+    <form (ngSubmit)="RejectProductDtl()" enctype="multipart/form-data">
         <div class="grid grid-cols-1 gap-6">
             <div class="mb-4">
                 <label for="ctecdReason" class="block text-gray-700 font-bold mb-2">Comment</label>
                 <textarea id="ctecdReason" [(ngModel)]="data.ctecdReason" name="ctecdReason"
                     class="shadow appearance-none border rounded w-full h-32 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Comment"></textarea>
+                    placeholder="Comment" required #ctecdReason="ngModel"></textarea>
+
+                <div *ngIf="ctecdReason.invalid && ctecdReason.touched" class="text-red-500 text-sm">
+                    Comment is required.
+                </div>
+
             </div>
         </div>
 
         <button
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105"
-            type="submit">
+            type="button" (click)="validateAndReject()">
             Reject
         </button>
     </form>

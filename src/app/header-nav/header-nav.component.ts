@@ -37,17 +37,22 @@ export class HeaderNavComponent implements OnInit{
  vtknd:any;
  vusr:any;
  private subscription!: Subscription;
-
-
+ 
+  ismenuaktif : boolean = false;
+  
  constructor(private dialog: MatDialog, private logserv:ServLoginService) {
  
   }
 
  ngOnInit() {
-
+  // alert('init');
    this.subscription = this.logserv.callMethodObservable.subscribe(() => {
     this.log_info();
    });
+
+  /* this.subscription = this.logserv.callMethodObservablenavbar.subscribe(() => {   
+      this.log_infonavbar();
+    });*/
 
     try {    
       this.vusrd=sessionStorage.getItem('usnm');
@@ -66,13 +71,14 @@ export class HeaderNavComponent implements OnInit{
           this.myacc = value;
           
       });
+      this.ismenuaktif=true;
 
      /* this.logserv.currentVariable3$.subscribe(value => {       
         this.mypp = value;
         
       }); */
     }else{
-      alert('elsenavvv: ' +this.myacc);
+     // alert('elsenavvv: ' +this.myacc);
       this.myacc="My Account";
      
     }
@@ -102,7 +108,9 @@ export class HeaderNavComponent implements OnInit{
     //this.logserv.updatemyppc(this.vusurl);
     this.myacc=this.vusnm;
     //this.mypp=this.vusurl;
-   // alert('loginfo: '+this.myacc);
+  // alert('loginfo: '+this.myacc);
+   this.ismenuaktif=true;
+  //  alert('loginfonafbar');
   }
 
   login(event: Event) {
@@ -155,6 +163,11 @@ export class HeaderNavComponent implements OnInit{
        dialogRef.componentInstance.p_no=vprodcode;
    }
 
+  log_infonavbar(){
+    this.ismenuaktif=true;
+    //alert('loginfonafbar');
+  }
+
    openProductInNewTab() {
     window.open('/ProductList', '_blank');
   }
@@ -165,6 +178,26 @@ export class HeaderNavComponent implements OnInit{
 
   openBannersInNewTab() {
     window.open('/BannersList', '_blank');
+  }
+
+  openBannerTypeInNewTab() {
+    window.open('/BannerTypesList', '_blank');
+  }
+
+  openRequesInNewTab() {
+    window.open('/RequestList', '_blank');
+  }
+
+  openRegisInNewTab() {
+    window.open('/RegistrationList', '_blank');
+  }
+
+  openQuoManualInNewTab() {
+    window.open('/QuotationListManual', '_blank');
+  }
+
+  openQuoProductInNewTab() {
+    window.open('/QuotationListProduct', '_blank');
   }
  
 }

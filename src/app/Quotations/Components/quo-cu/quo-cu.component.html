@@ -1,0 +1,102 @@
+<div class="h-full w-full p-4 md:p-6 bg-gray-50">
+  <button class="close-icon" mat-icon-button color="warn" style="position: absolute; right: 10px; top: 5px;" (click)="closeForm()"
+        title="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+  <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl max-w-4xl mx-auto">
+
+    <div class="flex items-center justify-center space-x-3 sm:space-x-4 mb-8">
+      <img src="/assets/ialogo_awal.png" alt="Logo Perusahaan" class="h-10 sm:h-12 w-auto">
+      <h1 class="text-2xl lg:text-3xl font-bold text-blue-700">
+        Request For Quotation - Manual
+      </h1>
+    </div>
+    <form [formGroup]="forms" (ngSubmit)="CallProcQuoToBlast()" class="space-y-6">
+
+      <div class="flex flex-col md:flex-row md:space-x-4 space-y-6 md:space-y-0">
+        <div class="flex-grow">
+          <label for="ctqhProductName" class="block text-sm font-medium text-gray-700 mb-1">Nama Product</label>
+          <input type="text" id="ctqhProductName" name="ctqhProductName" formControlName="ctqhProductName"
+            class="shadow-sm appearance-none border border-gray-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+            placeholder="Masukkan Nama Product" readonly />
+        </div>
+        <div class="md:w-1/4 lg:w-1/6">
+          <label for="ctqhQty" class="block text-sm font-medium text-gray-700 mb-1">Permintaan Qty</label>
+          <input type="number" id="ctqhQty" name="ctqhQty" formControlName="ctqhQty"
+            class="shadow-sm appearance-none border border-gray-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+            placeholder="Qty" readonly />
+        </div>
+      </div>
+
+      <div>
+        <label for="ctqhNotes" class="block text-sm font-medium text-gray-700 mb-1">Detail Permintaan</label>
+        <textarea id="ctqhNotes" formControlName="ctqhNotes" name="ctqhNotes" rows="8"
+          class="shadow-sm appearance-none border border-gray-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+          placeholder="Masukkan detail spesifikasi, catatan, atau instruksi tambahan di sini..." readonly
+          style="min-height: 250px;"></textarea>
+      </div>
+
+      <div class="flex flex-col md:grid md:grid-cols-[1fr_auto] md:gap-4 md:items-start pt-8 space-y-6 md:space-y-0">
+
+        <div class="flex items-start space-x-2 md:space-x-4">
+
+          <div class="flex flex-col">
+            <img *ngIf="imagePreview1" [src]="imagePreview1" alt="Preview Image 1"
+              class="w-24 h-20 object-cover rounded border border-gray-200 shadow-sm cursor-pointer hover:opacity-80"
+              title="Klik untuk melihat lebih besar Gambar 1" (click)="openModal(imagePreview1)" />
+
+            <!-- Modal untuk gambar1 -->
+            <div *ngIf="modalImage" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-8"
+              (click)="modalImage = null">
+              <img [src]="modalImage" class="w-[95%] h-auto max-w-3xl max-h-[85vh] rounded-lg shadow-lg" />
+            </div>
+
+
+          </div>
+
+          <div class="flex flex-col">
+            <!-- <div *ngIf="!imagePreview2" (click)="imageInput2.click()" tabindex="0"
+              (keydown.enter)="$event.preventDefault(); imageInput2.click()"
+              (keydown.space)="$event.preventDefault(); imageInput2.click()"
+              class="w-20 h-20 border-2 border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:border-gray-400 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              title="Upload Gambar 2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+            </div> -->
+            <img *ngIf="imagePreview2" [src]="imagePreview2" alt="Preview Image 1"
+              class="w-24 h-20 object-cover rounded border border-gray-200 shadow-sm cursor-pointer hover:opacity-80"
+              title="Klik untuk melihat lebih besar Gambar 1" (click)="openModal2(imagePreview2)" />
+
+            <!-- Modal untuk gambar2 -->
+            <div *ngIf="modalImage2" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-8"
+              (click)="modalImage2 = null">
+              <img [src]="modalImage2" class="w-[95%] h-auto max-w-3xl max-h-[85vh] rounded-lg shadow-lg" />
+            </div>
+
+          </div>
+          <div class="flex justify-end items-start mt-[-10px] mr-0 w-full">
+            <div class="flex justify-end w-full space-x-4">
+              <button
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out shadow-md"
+                type="button" (click)="RejectQuo()">
+                Reject
+              </button>
+
+              <button
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out shadow-md"
+                type="submit" [disabled]="forms.invalid">
+                Blast To Supplier
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -24,7 +24,17 @@ import { BannersCuComponent } from './Banners/Forms/banners-cu/banners-cu.compon
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { QuoListComponent } from './Quotations/Components/quo-list/quo-list.component';
+import { QuoCuComponent } from './Quotations/Components/quo-cu/quo-cu.component';
+import { QuoByproductListComponent } from './Quotations/Components/quo-byproduct-list/quo-byproduct-list.component';
+import { QuoByproductDetailListComponent } from './Quotations/Components/quo-byproduct-detail-list/quo-byproduct-detail-list.component';
+import { QuoByproductCuComponent } from './Quotations/Components/quo-byproduct-cu/quo-byproduct-cu.component';
+import { LoginCompComponent } from "./login/Components/login-comp/login-comp.component";
+import { RegistrationCommentComponent } from './Registration/Forms/registration-comment/registration-comment.component';
+import { QuoCuCommentComponent } from './Quotations/Components/quo-cu-comment/quo-cu-comment.component';
+import { QuoByproductCommentComponent } from './Quotations/Components/quo-byproduct-comment/quo-byproduct-comment.component';
+import { BannertypeListComponent } from './BannerTypes/Forms/bannertype-list/bannertype-list.component';
+import { BannertypeCuComponent } from './BannerTypes/Forms/bannertype-cu/bannertype-cu.component';
 //import { AvatarModule } from 'primeng/avatar';
 
 const ROUTES: Routes = [ 
@@ -37,12 +47,16 @@ const ROUTES: Routes = [
   { path: 'login', component: FormUserLoginComponent },
   { path: 'EmployeeList', component: EmployeeListComponent },
   { path: 'BannersList', component: BannersListComponent },
+  { path: 'BannerTypesList', component: BannertypeListComponent },
+  { path: 'QuotationListManual', component: QuoListComponent },
+  { path: 'QuotationListProduct', component: QuoByproductListComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    QuoByproductCuComponent,
 
   ],
   imports: [
@@ -60,9 +74,12 @@ const ROUTES: Routes = [
     HeaderNavComponent,
     EmployeeListComponent,
     BannersListComponent,
+    BannertypeListComponent,
     MatCardModule,
     MatToolbarModule,
-    NgxChartsModule,
+    QuoListComponent,
+    QuoByproductListComponent,
+    LoginCompComponent
 ],
   providers: [],
   bootstrap: [AppComponent]

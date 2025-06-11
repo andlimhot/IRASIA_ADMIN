@@ -36,7 +36,7 @@ export class RequestServService {
 
   getReqList(req: string, userid:string, usr:string, tkn:string): Observable<any> {
     const headers = this.getHeaders(tkn);
-    return this.http.get<Array<DTORequestList>>("http://193.111.124.45:9815/wc-svc/webcust/getRequestList?CtechId="+req+"&userid="+usr);
+    return this.http.get<Array<DTORequestList>>("http://193.111.124.45:9815/wc-svc/webcust/getRequestListAdm?CtechId="+req+"&userid="+usr);
   }
 
   getReqEcByIdNo(req: string, no: string, sr:string, tkn:string): Observable<any> {

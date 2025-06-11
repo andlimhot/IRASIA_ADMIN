@@ -2,6 +2,7 @@
   <div class="top-header">
     <div class="container mx-auto px-8">
       <div class="flex flex-wrap flex-row justify-between text-center">
+
         <ul class="flex flex-wrap flex-row justify-center md:justify-start gap-4 header-left-content">
           <li><a href="#">About</a></li>
           <li><a href="#">Request For Quotation</a></li>
@@ -19,36 +20,57 @@
             </a>
             <ul class="dropdown-menu">
               <li><a href="#" (click)="login($event)"><i class="ri-login-box-line"></i> Login</a></li>
-              <li><a href="#" (click)="registration($event,'Insert','')"><i class="ri-user-add-line"></i> Sign Up</a></li>
+              <li><a href="#" (click)="registration($event,'Insert','')"><i class="ri-user-add-line"></i> Sign Up</a>
+              </li>
             </ul>
           </li>
         </ul>
       </div>
 
+     <div *ngIf="ismenuaktif">
+      
       <!-- Menu Master dan Transaksi Sejajar -->
       <div class="menu-wrapper">
+        <div class="menu-container">
+          <button mat-button [matMenuTriggerFor]="RegisMenu">APPROVAL REGISTRASI</button>
+          <mat-menu #RegisMenu="matMenu">
+            <button mat-menu-item (click)="openRegisInNewTab()">Registration List</button>
+          </mat-menu>
+        </div>
+
         <div class="menu-container">
           <button mat-button [matMenuTriggerFor]="masterMenu">MASTER</button>
           <mat-menu #masterMenu="matMenu">
             <button mat-menu-item (click)="openProductInNewTab()">Master Product</button>
             <button mat-menu-item (click)="openEmployeeInNewTab()">Master Employee</button>
             <button mat-menu-item (click)="openBannersInNewTab()">Master Banners</button>
+            <button mat-menu-item (click)="openBannerTypeInNewTab()">Master Banner Type</button>
           </mat-menu>
         </div>
 
         <div class="menu-container">
-          <button mat-button [matMenuTriggerFor]="transaksiMenu">TRANSAKSI</button>
+          <button mat-button [matMenuTriggerFor]="RequestMenu">REQUEST</button>
+          <mat-menu #RequestMenu="matMenu">
+            <button mat-menu-item (click)="openRequesInNewTab()">Request List</button>
+          </mat-menu>
+        </div>
+
+        <div class="menu-container">
+          <button mat-button [matMenuTriggerFor]="transaksiMenu">QUOTATION</button>
           <mat-menu #transaksiMenu="matMenu">
-            <button mat-menu-item [matMenuTriggerFor]="productMenu">Product</button>
+            <button mat-menu-item [matMenuTriggerFor]="productMenu">Quotatin</button>
           </mat-menu>
 
           <mat-menu #productMenu="matMenu">
-            <button mat-menu-item>Employee 1</button>
-            <button mat-menu-item>Employee 2</button>
-            <button mat-menu-item>Employee 3</button>
+            <button mat-menu-item (click)="openQuoManualInNewTab()">Quotation Manual</button>
+            <button mat-menu-item (click)="openQuoProductInNewTab()">Quotation By Product</button>
+            <!--<button mat-menu-item>Employee 3</button>-->
           </mat-menu>
         </div>
       </div>
+
+     </div>
+
     </div>
   </div>
   <router-outlet></router-outlet>

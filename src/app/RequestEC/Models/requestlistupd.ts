@@ -12,4 +12,6 @@ export interface requestlistupd{
     prodsize :string,
     prodStock :string,
     prodMinpurc: string,
+    prodNewArrival:string,
+    prodHotSale:string,
 }

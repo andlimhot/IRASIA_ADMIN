@@ -11,3 +11,12 @@
   .icon {
     margin-right: 10px; /* Atur jarak antar ikon */
   }
+
+  .fixed {
+  z-index: 50;
+}
+
+
+.close-icon {
+    color: rgb(235, 224, 224);
+}

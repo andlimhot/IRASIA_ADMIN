@@ -2,37 +2,46 @@
   <div class="container mx-auto p-4">
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
       <div class="flex items-start">
-        <div class="w-1/2 p-4">
-          <img [src]="item.requestProductImage1" alt="Product Image" class="w-full">
-          <img [src]="item.requestProductImage2" alt="Product Image" class="w-full">
-          <img [src]="item.requestProductImage3" alt="Product Image" class="w-full">
-          <img [src]="item.requestProductImage4" alt="Product Image" class="w-full">
-        <!--<div class="flex mt-2">
-            <img [src]="item.requestProductImage2" alt="Product Image" class="w-1/4 mr-2">
-            <img [src]="item.requestProductImage3" alt="Product Image" class="w-1/4 mr-2">
-            <img [src]="item.requestProductImage4" alt="Product Image" class="w-1/4">
-          </div>-->
+        <div class="grid grid-cols-2 gap-2">
+          <img [src]="item.requestProductImage1" alt="Product Image" class="w-60 rounded-lg shadow-sm" title="Klik untuk melihat lebih besar Gambar 1" (click)="openModal(item.requestProductImage1)">
+          <img [src]="item.requestProductImage2" alt="Product Image" class="w-60 rounded-lg shadow-sm" title="Klik untuk melihat lebih besar Gambar 2" (click)="openModal(item.requestProductImage2)">
+          <img [src]="item.requestProductImage3" alt="Product Image" class="w-60 rounded-lg shadow-sm" title="Klik untuk melihat lebih besar Gambar 3" (click)="openModal(item.requestProductImage3)">
+          <img [src]="item.requestProductImage4" alt="Product Image" class="w-60 rounded-lg shadow-sm" title="Klik untuk melihat lebih besar Gambar 4" (click)="openModal(item.requestProductImage4)">
         </div>
+
+        <!-- Modal untuk gambar -->
+            <div *ngIf="modalImage" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-8"
+              (click)="modalImage = null">
+              <img [src]="modalImage" class="w-[95%] h-auto max-w-3xl max-h-[85vh] rounded-lg shadow-lg" />
+            </div>
+
+
         <div class="w-1/2 p-4">
           <h2 class="text-xl font-bold text-gray-900">{{item.requestProductName}}</h2>
           <div class="flex items-center">
-            <span class="text-gray-600 text-sm ml-2">{{item.requestProductTypeName}}- Rp. {{item.requestProductPrice}}</span>
+            <span class="text-gray-600 text-sm ml-2">{{item.requestProductTypeName}}- Rp.
+              {{item.requestProductPrice}}</span>
           </div>
           <p class="text-gray-700 mt-2">
             {{item.requestProductDesc}}
           </p>
           <div class="mt-4">
 
-            <div class="mt-4 flex items-center">
-              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105" (click)="RejectReqDtl('update', item.requestSeqNo)">
-                Reject
-              </button>
-              <div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="CallSendTOWeb(item.requestSeqNo)">
-                Send To Web
+            <div class="flex justify-center items-start mt-[-10px] w-full">
+              <div class="flex justify-center w-full space-x-4">
+                <button
+                  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105"
+                  (click)="RejectReqDtl('update', item.requestSeqNo)">
+                  Reject
+                </button>
+
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  (click)="CallSendTOWeb(item.requestSeqNo)">
+                  Send To Web
                 </button>
               </div>
             </div>
+
 
             <div class="p-4 border-t border-gray-200">
               <h3 class="text-lg font-medium text-gray-900 mb-2">Spesification</h3>
@@ -41,29 +50,31 @@
                 <li>size :{{item.requestProductSize}}</li>
                 <li>Stock :{{item.requestProductStock}}</li>
                 <li>Min. Purchase :{{item.requestProductMinPurc}}</li>
+                <li>New Arival :{{item.requestNewProduct}}</li>
+                <li>Hot Deals :{{item.requestSale}}</li>
               </ul>
             </div>
 
-            <div class="mb-4">
+            <!--<div class="mb-4">
               <h3 class="text-lg font-medium text-gray-900 mb-2">Please Check</h3>
 
               <mat-checkbox [(ngModel)]="vactive" [checked]="vactive" (change)="setcheck($event.checked)"
-                                  style="width: 25%;">Best Price
+                style="width: 25%;" hidden>Best Price
               </mat-checkbox>
-  
-              <mat-checkbox [(ngModel)]="vacbestprod" [checked]="vacbestprod" (change)="setcheckBestProd($event.checked)"
-                                  style="width: 25%;">Best Product
+
+              <mat-checkbox [(ngModel)]="vacbestprod" [checked]="vacbestprod"
+                (change)="setcheckBestProd($event.checked)" style="width: 25%;"hidden="">Best Product
               </mat-checkbox>
-  
+
               <mat-checkbox [(ngModel)]="vacnewprod" [checked]="vacnewprod" (change)="setcheckNewProd($event.checked)"
-                                  style="width: 25%;">New Product
+                style="width: 25%;">New Arrival
               </mat-checkbox>
-  
+
               <mat-checkbox [(ngModel)]="vactsale" [checked]="vactsale" (change)="setcheckSale($event.checked)"
-                                  style="width: 25%;">Sale
+                style="width: 25%;">Hot Deals
               </mat-checkbox>
-  
-              </div>
+
+            </div>-->
 
 
           </div>

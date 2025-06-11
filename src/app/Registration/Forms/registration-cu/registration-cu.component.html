@@ -1,5 +1,9 @@
 <div class="divide-y divide-blue-300">
   <!-- Header Section -->
+   <button class="close-icon" mat-icon-button color="warn" style="position: absolute; right: 10px; top: 5px;" (click)="closeForm()"
+        title="Close">
+        <mat-icon>close</mat-icon>
+    </button>
 
   <div class="pb-4 text-center">
     <p
@@ -41,20 +45,20 @@
             </div>
 
             <!-- Email -->
-              <div class="space-y-2">
-                <label for="ccregMobilePhone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
-                <input type="text" formControlName="ccregMobilePhone" id="ccregMobilePhone"
-                  placeholder="Enter Mobile Phone"
-                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
-  
-              <!-- Mobile Phone -->
-              <div class="space-y-2">
-                <label for="ccregEmail" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="text" formControlName="ccregEmail" id="ccregEmail" placeholder="Enter Email Address"
-                  class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
-            
+            <div class="space-y-2">
+              <label for="ccregMobilePhone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
+              <input type="text" formControlName="ccregMobilePhone" id="ccregMobilePhone"
+                placeholder="Enter Mobile Phone"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
+            <!-- Mobile Phone -->
+            <div class="space-y-2">
+              <label for="ccregEmail" class="block text-sm font-medium text-gray-700">Email</label>
+              <input type="text" formControlName="ccregEmail" id="ccregEmail" placeholder="Enter Email Address"
+                class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+
 
             <!-- National ID Field -->
             <div class="space-y-2">
@@ -64,30 +68,16 @@
             </div>
 
             <!-- Business No Image Field -->
-            <div class="space-y-4">
-              <label class="block text-sm font-medium text-gray-700">Upload National Id</label>
-              <div class="flex flex-col items-center space-y-2">
-                <img
-                  [src]="imageNikUrl || 'assets/default-image.png'"
-                  alt="National Id Preview"
-                  class="h-[150px] w-[250px] object-cover rounded-md shadow-md"
-                  style="background-color: #f3f4f6;"
-                />
-               <!-- <input
-                  type="file"
-                  accept="image/*"
-                  #fileInput
-                  style="display: none"
-                  (change)="selectImageNik($event)"
-                />
-                <button
-                  type="button"
-                  class="px-4 py-2 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 h-10 w-62"
-                  (click)="fileInput.click()"
-                >
-                  Select Image
-                </button> -->
-              </div>            
+            <div class="flex flex-col items-center">
+              <img *ngIf="imagePreview" [src]="getSanitizedImage(imagePreview)" alt="Preview Image 1"
+                class="w-90 h-40 object-cover rounded border border-gray-200 shadow-sm cursor-pointer hover:opacity-80"
+                title="Klik untuk melihat lebih besar Gambar NIK" (click)="openModal(imagePreview)" />
+
+              <!-- Modal untuk gambar -->
+              <div *ngIf="modalImage" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-8"
+                (click)="modalImage= null">
+                <img [src]="modalImage" class="w-[95%] h-auto max-w-3xl max-h-[85vh] rounded-lg shadow-lg" />
+              </div>
             </div>
 
             <!-- Single Business No Field -->
@@ -98,16 +88,26 @@
             </div>
 
             <!-- Business No Image Field -->
-            <div class="space-y-4">
+            <div class="flex flex-col items-center">
+              <img *ngIf="imagePreview2" [src]="getSanitizedImage(imagePreview2)" alt="Preview Image 1"
+                class="w-90 h-40 object-cover rounded border border-gray-200 shadow-sm cursor-pointer hover:opacity-80"
+                title="Klik untuk melihat lebih besar Gambar NIB" (click)="openModal2(imagePreview2)" />
+
+              <!-- Modal untuk gambar2 -->
+              <div *ngIf="modalImage2" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-8"
+                (click)="modalImage2 = null">
+                <img [src]="modalImage2" class="w-[95%] h-auto max-w-3xl max-h-[85vh] rounded-lg shadow-lg" />
+              </div>
+
+
+            </div>
+
+            <!--<div class="space-y-4">
               <label class="block text-sm font-medium text-gray-700">Upload Business No Image</label>
               <div class="flex flex-col items-center space-y-2">
-                <img
-                  [src]="imageNibUrl || 'assets/default-image.png'"
-                  alt="Business No Preview"
-                  class="h-[150px] w-[250px] object-cover rounded-md shadow-md"
-                  style="background-color: #f3f4f6;"
-                />
-              <!--  <input
+                <img [src]="imageNibUrl || 'assets/default-image.png'" alt="Business No Preview"
+                  class="h-[150px] w-[250px] object-cover rounded-md shadow-md" style="background-color: #f3f4f6;" />-->
+            <!--  <input
                   type="file"
                   accept="image/*"
                   #fileInput2
@@ -121,9 +121,28 @@
                 >
                   Select Image
                 </button> -->
-              </div>            
+            <!-- </div>
+            </div>-->
+          </div>
+          <!--TAMBAHAN CEKLIS BISNIS INTI-->
+          <div formArrayName="bisnisInti">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Pilih Bisnis Inti</h3>
+            <div
+              *ngIf="vprodlist && vprodlist.length > 0 && bisnisIntiControls.length === vprodlist.length; else noDataBisnis">
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div *ngFor="let control of bisnisIntiControls; let i = index"
+                  class="flex items-center p-3 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 bg-white cursor-pointer hover:bg-gray-50">
+                  <input type="checkbox" [id]="'product-' + vprodlist[i].cmprCode + '-' + i" [formControlName]="i"
+                    class="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded cursor-pointer">
+                  <label [for]="'product-' + vprodlist[i].cmprCode + '-' + i"
+                    class="ml-3 block text-sm font-medium text-gray-700 cursor-pointer truncate select-none"
+                    [title]="vprodlist[i].cmprName"> {{ vprodlist[i].cmprName }}
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
+
         </mat-tab>
         <!--  TAB ADDRESS-->
         <mat-tab>
@@ -189,7 +208,7 @@
                 <mat-form-field appearance="fill" class="w-full">
                   <mat-label>District</mat-label>
                   <mat-select formControlName="ccregKecId" (selectionChange)="changekecamatan($event.value)">
-                    <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecCityCode">
+                    <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecKecCode">
                       {{ kc.cmkecKecamatan }}
                     </mat-option>
                   </mat-select>
@@ -238,7 +257,7 @@
           </div>
         </mat-tab>
         <!--  TAB BANK-->
-        <mat-tab>
+        <!--<mat-tab>
           <ng-template mat-tab-label>
             <div class="flex items-center space-x-2">
               <mat-icon class="text-indigo-600">account_balance</mat-icon>
@@ -246,67 +265,67 @@
             </div>
           </ng-template>
 
-          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
-            <!-- Receive Bank Section -->
-            <div class="space-y-4">
+          <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">-->
+        <!-- Receive Bank Section -->
+        <!-- <div class="space-y-4">
               <h2 class="text-xl font-bold text-indigo-600">Receive Bank</h2>
               <p class="text-sm text-gray-600">This information will be displayed publicly, so be careful what you
-                share.</p>
+                share.</p>-->
 
-              <!-- Bank Name -->
-              <div class="space-y-2">
+        <!-- Bank Name -->
+        <!-- <div class="space-y-2">
                 <label for="ccregRevcCmbaId" class="block text-sm font-medium text-gray-700">Bank Name</label>
                 <input type="text" formControlName="ccregRevcCmbaId" id="ccregRevcCmbaId" placeholder="Enter Bank Name"
                   class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
+              </div>-->
 
-              <!-- Account Name -->
-              <div class="space-y-2">
+        <!-- Account Name -->
+        <!--<div class="space-y-2">
                 <label for="ccregRecvCmbaName" class="block text-sm font-medium text-gray-700">Account Name</label>
                 <input type="text" formControlName="ccregRecvCmbaName" id="ccregRecvCmbaName"
                   placeholder="Enter Account Name"
                   class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
+              </div>-->
 
-              <!-- Account No -->
-              <div class="space-y-2">
+        <!-- Account No -->
+        <!--<div class="space-y-2">
                 <label for="ccregRevcCmbaAccount" class="block text-sm font-medium text-gray-700">Account No</label>
                 <input type="text" formControlName="ccregRevcCmbaAccount" id="ccregRevcCmbaAccount"
                   placeholder="Enter Account No"
                   class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
+              </div>-->
 
-              <!-- Checkbox -->
-             <div>
+        <!-- Checkbox -->
+        <!--<div>
                 <mat-checkbox [checked]="bankrcv" (change)="showSentBank()" class="text-sm">
                   The sending bank is the same as the receiving bank
                 </mat-checkbox>
               </div> 
-            </div>
+            </div>-->
 
-            <!-- Sent Bank Section -->
-           <div *ngIf="bankrcv === false" class="space-y-4 pt-6 border-t border-gray-300">
+        <!-- Sent Bank Section -->
+        <!-- <div *ngIf="bankrcv === false" class="space-y-4 pt-6 border-t border-gray-300">
               <h2 class="text-xl font-bold text-indigo-600">Sent Bank</h2>
               <p class="text-sm text-gray-600">This information will be displayed publicly, so be careful what you
-                share.</p>
+                share.</p> -->
 
-              <!-- Bank Name -->
-              <div class="space-y-2">
+        <!-- Bank Name -->
+        <!-- <div class="space-y-2">
                 <label for="ccregSentCmbaId" class="block text-sm font-medium text-gray-700">Bank Name</label>
                 <input type="text" formControlName="ccregSentCmbaId" id="ccregSentCmbaId" placeholder="Enter Bank Name"
                   class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
+              </div> -->
 
-              <!-- Account Name -->
-              <div class="space-y-2">
+        <!-- Account Name -->
+        <!--<div class="space-y-2">
                 <label for="ccregSentCmbaName" class="block text-sm font-medium text-gray-700">Account Name</label>
                 <input type="text" formControlName="ccregSentCmbaName" id="ccregSentCmbaName"
                   placeholder="Enter Account Name"
                   class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-              </div>
+              </div>-->
 
-              <!-- Account No -->
-              <div class="space-y-2">
+        <!-- Account No -->
+        <!--<div class="space-y-2">
                 <label for="ccregSentCmbaAccount" class="block text-sm font-medium text-gray-700">Account No</label>
                 <input type="text" formControlName="ccregSentCmbaAccount" id="ccregSentCmbaAccount"
                   placeholder="Enter Account No"
@@ -314,9 +333,9 @@
               </div>
             </div>
           </div>
-        </mat-tab>
+        </mat-tab>-->
         <!--  TAB APPROVAL-->
-        <mat-tab>
+        <!--<mat-tab>
           <ng-template mat-tab-label>
             <div class="flex items-center space-x-2">
               <mat-icon class="text-indigo-600">how_to_reg</mat-icon>
@@ -325,13 +344,13 @@
           </ng-template>
 
           <div class="bg-gray-50 rounded-lg shadow-lg p-6 space-y-6">
-            <!-- Maximum Approval Section -->
+            Maximum Approval Section
             <div class="space-y-4">
               <h2 class="text-xl font-bold text-indigo-600">Maximum Approval</h2>
               <p class="text-sm text-gray-600">This information will be displayed publicly, so be careful what you
                 share.</p>
 
-              <!-- Select Maximum Approval -->
+              Select Maximum Approval
               <div class="space-y-2">
                 <label for="ccregMinApproval" class="block text-sm font-medium text-gray-700">Approval Level</label>
                 <mat-form-field appearance="fill" class="w-full">
@@ -344,19 +363,19 @@
               </div>
             </div>
 
-            <!-- Person in Charge Section -->
+            Person in Charge Section
             <div *ngIf="maxapp >= 1" class="space-y-6">
               <div class="space-y-4">
                 <h2 class="text-lg font-bold text-gray-700">Person In Charge - I</h2>
 
-                <!-- PIC Name -->
+                 PIC Name
                 <div class="space-y-2">
                   <label for="ccregPic1Name" class="block text-sm font-medium text-gray-700">PIC Name</label>
                   <input type="text" formControlName="ccregPic1Name" id="ccregPic1Name" placeholder="Enter PIC Name"
                     class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
 
-                <!-- Mobile Phone -->
+                Mobile Phone
                 <div class="space-y-2">
                   <label for="ccregPic1Phone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
                   <input type="text" formControlName="ccregPic1Phone" id="ccregPic1Phone"
@@ -364,7 +383,7 @@
                     class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
 
-                <!-- Email -->
+                Email
                 <div class="space-y-2">
                   <label for="ccregPic1Email" class="block text-sm font-medium text-gray-700">Email</label>
                   <input type="text" formControlName="ccregPic1Email" id="ccregPic1Email"
@@ -372,7 +391,7 @@
                     class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
 
-                <!-- Password -->
+                 Password
                 <div class="space-y-2">
                   <label for="ccregPic1Password" class="block text-sm font-medium text-gray-700">Password</label>
                   <input type="text" formControlName="ccregPic1password" id="ccregPic1Password"
@@ -381,18 +400,18 @@
                 </div>
               </div>
 
-              <!-- Additional Persons in Charge -->
+              Additional Persons in Charge
               <div *ngIf="maxapp > 1" class="space-y-6">
                 <h2 class="text-lg font-bold text-gray-700">Person In Charge - II</h2>
 
-                <!-- PIC Name -->
+                PIC Name
                 <div class="space-y-2">
                   <label for="ccregPic1Name" class="block text-sm font-medium text-gray-700">PIC Name</label>
                   <input type="text" formControlName="ccregPic2Name" id="ccregPic2Name" placeholder="Enter PIC Name"
                     class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
 
-                <!-- Mobile Phone -->
+                Mobile Phone
                 <div class="space-y-2">
                   <label for="ccregPic1Phone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
                   <input type="text" formControlName="ccregPic2Phone" id="ccregPic2Phone"
@@ -400,7 +419,7 @@
                     class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
 
-                <!-- Email -->
+                 Email
                 <div class="space-y-2">
                   <label for="ccregPic1Email" class="block text-sm font-medium text-gray-700">Email</label>
                   <input type="text" formControlName="ccregPic2Email" id="ccregPic2Email"
@@ -408,7 +427,7 @@
                     class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
 
-                <!-- Password -->
+                Password
                 <div class="space-y-2">
                   <label for="ccregPic1Password" class="block text-sm font-medium text-gray-700">Password</label>
                   <input type="text" formControlName="ccregPic2password" id="ccregPic2Password"
@@ -418,16 +437,16 @@
 
                 <div *ngIf="maxapp > 2" class="space-y-6">
                   <h2 class="text-lg font-bold text-gray-700">Person In Charge - III</h2>
-                  <!-- Fields for PIC III -->
+                  Fields for PIC III
 
-                  <!-- PIC Name -->
+                  PIC Name
                   <div class="space-y-2">
                     <label for="ccregPic1Name" class="block text-sm font-medium text-gray-700">PIC Name</label>
                     <input type="text" formControlName="ccregPic3Name" id="ccregPic3Name" placeholder="Enter PIC Name"
                       class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                   </div>
   
-                  <!-- Mobile Phone -->
+                  Mobile Phone
                   <div class="space-y-2">
                     <label for="ccregPic1Phone" class="block text-sm font-medium text-gray-700">Mobile Phone</label>
                     <input type="text" formControlName="ccregPic3Phone" id="ccregPic2Phone"
@@ -435,7 +454,7 @@
                       class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                   </div>
   
-                  <!-- Email -->
+                  Email
                   <div class="space-y-2">
                     <label for="ccregPic1Email" class="block text-sm font-medium text-gray-700">Email</label>
                     <input type="text" formControlName="ccregPic3Email" id="ccregPic3Email"
@@ -443,7 +462,7 @@
                       class="block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                   </div>
   
-                  <!-- Password -->
+                  Password
                   <div class="space-y-2">
                     <label for="ccregPic1Password" class="block text-sm font-medium text-gray-700">Password</label>
                     <input type="text" formControlName="ccregPic3password" id="ccregPic3Password"
@@ -454,7 +473,7 @@
               </div>
             </div>
           </div>
-        </mat-tab>
+        </mat-tab>-->
         <!--  TAB LOGIN
         <mat-tab>
           <ng-template mat-tab-label>
@@ -483,19 +502,38 @@
         </mat-tab> -->
 
       </mat-tab-group>
-      <!-- Submit Button -->
-      <button mat-flat-button color="accent" (click)="submitRegis()"
-      class="w-full py-2 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700">
-      Submit
-      </button>
+
+      <!-- Container untuk tombol -->
+      <div class="flex justify-center space-x-4">
+        <!-- Reject Button -->
+        <button mat-flat-button color="accent" (click)="confirmReject()"
+          class="py-3 px-6 w-36 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg font-semibold">
+          Reject
+        </button>
+
+        <!-- Submit Button -->
+        <button mat-flat-button color="accent" (click)="submitRegis()"
+          class="py-3 px-6 w-36 bg-gradient-to-r from-indigo-500 to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg font-semibold">
+          Submit
+        </button>
+
+      </div>
+
     </div>
+
   </form>
 
-  <!-- Close Button -->
+  <!-- Close Button
   <div class="pt-6 text-center">
-    <button 
-      class="px-6 py-2 bg-indigo-600 text-white text-lg rounded-lg shadow hover:bg-indigo-700 transition-all">
+    <button class="px-6 py-2 bg-indigo-600 text-white text-lg rounded-lg shadow hover:bg-indigo-700 transition-all">
       Tutup
     </button>
   </div>
-</div>
+</div>-->
+
+
+  <ng-template #noDataBisnis>
+    <div class="text-center text-gray-500 py-4">
+      Tidak ada data bisnis inti untuk ditampilkan atau sedang memuat...
+    </div>
+  </ng-template>

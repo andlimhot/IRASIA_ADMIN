@@ -12,6 +12,9 @@ export class ServLoginService {
 
   private callMethodSource = new Subject<void>();
   callMethodObservable = this.callMethodSource.asObservable();
+
+  private callMethodSourcenavbar = new Subject<void>();
+  callMethodObservablenavbar = this.callMethodSourcenavbar.asObservable();
   
   private resultSource = new BehaviorSubject<string>(''); // Observable untuk hasil
   result$ = this.resultSource.asObservable();

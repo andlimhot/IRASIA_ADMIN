@@ -1,0 +1,8 @@
+.custom-paginator .mat-mdc-select-value .mat-mdc-select-value-text {
+    padding-left: 100px;
+    display : inline-block;
+}
+
+.different{
+    background: rgb(250, 144, 144);
+}

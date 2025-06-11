@@ -50,7 +50,7 @@ export class ServProductService {
     }
 
     getImages(no: string): Observable<string[]> {
-      const url = `http://193.111.124.45:9815/appmst-svc/images/bannerImgbyId?no=`+no;
+      const url = `http://193.111.124.45:9815/appmst-svc/images/productImgbyId?no=`+no;
       return this.http.get<string[]>(url);
     }
 }

@@ -1,267 +1,279 @@
-
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">Employee</h1>
+    <button class="close-icon" mat-icon-button color="warn" style="position: absolute; right: 10px; top: 5px;"
+        (click)="closeForm()" title="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h1 class="text-2xl font-bold mb-4">Master Employee</h1>
     <form (ngSubmit)="submitProducts()" enctype="multipart/form-data">
-    <button mat-raised-button color="warn" style="border-radius: 15px;" (click)="closeForm()">Cancel</button>
-    <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-2 gap-6">
 
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Master Emoloyee</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeEmplNik" class="block text-gray-700 font-bold mb-2">NIK</label>
-                    <input type="text" id="cmeEmplNik" [(ngModel)]="data.cmeEmplNik" name="cmeEmplNik"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="NIK">
+            <div>
+                <!--<h2 class="text-xl font-semibold mb-2">Master Emoloyee</h2>-->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeEmplNik" class="block text-gray-700 font-bold mb-2">NIK</label>
+                        <input type="text" id="cmeEmplNik" [(ngModel)]="data.cmeEmplNik" name="cmeEmplNik"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="NIK">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeEmplName" class="block text-gray-700 font-bold mb-2">Employee Name</label>
+                        <input type="text" id="cmeEmplName" [(ngModel)]="data.cmeEmplName" name="cmeEmplName"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Employee Name">
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label for="cmeEmplName" class="block text-gray-700 font-bold mb-2">Employee Name</label>
-                    <input type="text" id="cmeEmplName" [(ngModel)]="data.cmeEmplName" name="cmeEmplName"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Employee Name">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeEmplBirthPlace" class="block text-gray-700 font-bold mb-2">Birth Place</label>
+                        <input type="text" id="cmeEmplBirthPlace" [(ngModel)]="data.cmeEmplBirthPlace"
+                            name="cmeEmplBirthPlace"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Birth Place">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeEmplBirthDate" class="block text-gray-700 font-bold mb-2">Birth Date</label>
+                        <input type="text" id="cmeEmplBirthDate" [(ngModel)]="data.cmeEmplBirthDate"
+                            name="cmeEmplBirthDate"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Birth Date">
+                    </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeEmplAddress" class="block text-gray-700 font-bold mb-2">Address</label>
+                        <input type="text" id="cmeEmplAddress" [(ngModel)]="data.cmeEmplAddress" name="cmeEmplAddress"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Address">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeEmplHandphone" class="block text-gray-700 font-bold mb-2">HandPhone No</label>
+                        <input type="text" id="cmeEmplHandphone" [(ngModel)]="data.cmeEmplHandphone"
+                            name="cmeEmplHandphone"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="HandPhone No">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeEmplRt" class="block text-gray-700 font-bold mb-2">Rt</label>
+                        <input type="text" id="cmeEmplRt" [(ngModel)]="data.cmeEmplRt" name="cmeEmplRt"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Rt">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeEmplRw" class="block text-gray-700 font-bold mb-2">Rw</label>
+                        <input type="text" id="cmeEmplRw" [(ngModel)]="data.cmeEmplRw" name="cmeEmplRw"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Rw">
+                    </div>
+                </div>
+
+                <!-- Province and City -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="cmeEmplProvCode" class="block text-sm font-medium text-gray-700">Province</label>
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Province</mat-label>
+                            <mat-select formControlName="cmeEmplProvCode" (selectionChange)="changeprov($event.value)">
+                                <mat-option *ngFor="let pro of provlist" [value]="pro.cmpsiProvCode">
+                                    {{ pro.cmpsiProvinsi }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="cmeEmplCityCode" class="block text-sm font-medium text-gray-700">City</label>
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>City</mat-label>
+                            <mat-select formControlName="cmeEmplCityCode" (selectionChange)="changecity($event.value)">
+                                <mat-option *ngFor="let cit of citylist" [value]="cit.cmcitCityCode">
+                                    {{ cit.cmcitCity }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- District and Village -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="cmeEmplKecCode" class="block text-sm font-medium text-gray-700">Kecamatan</label>
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Kecamatan</mat-label>
+                            <mat-select formControlName="cmeEmplKecCode"
+                                (selectionChange)="changekecamatan($event.value)">
+                                <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecKecCode">
+                                    {{ kc.cmkecKecamatan }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="cmeEmplKelCode" class="block text-sm font-medium text-gray-700">Kelurahan</label>
+                        <mat-form-field appearance="fill" class="w-full">
+                            <mat-label>Kelurahan</mat-label>
+                            <mat-select formControlName="cmeEmplKelCode"
+                                (selectionChange)="changekelurahan($event.value)">
+                                <mat-option *ngFor="let kl of kellist" [value]="kl.cmkelKelCode">
+                                    {{ kl.cmkelKelurahan }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeEmplZipCode" class="block text-gray-700 font-bold mb-2">ZipCode</label>
+                        <input type="text" id="cmeEmplZipCode" [(ngModel)]="data.cmeEmplZipCode" name="cmeEmplZipCode"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="ZipCode">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeEmplEmail" class="block text-gray-700 font-bold mb-2">Email</label>
+                        <input type="text" id="cmeEmplEmail" [(ngModel)]="data.cmeEmplEmail" name="cmeEmplEmail"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeUsername" class="block text-gray-700 font-bold mb-2">User Name</label>
+                        <input type="text" id="cmeUsername" [(ngModel)]="data.cmeUsername" name="cmeUsername"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="User Name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmePassword" class="block text-gray-700 font-bold mb-2">Password</label>
+                        <input type="text" id="cmePassword" [(ngModel)]="data.cmePassword" name="cmePassword"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeIdNo" class="block text-gray-700 font-bold mb-2">ID No</label>
+                        <input type="text" id="cmeIdNo" [(ngModel)]="data.cmeIdNo" name="cmeIdNo"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="ID No">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeDescription" class="block text-gray-700 font-bold mb-2">Jabatan</label>
+                        <input type="text" id="cmeDescription" [(ngModel)]="data.cmeDescription" name="cmeDescription"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Jabatan">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeJobLevel" class="block text-gray-700 font-bold mb-2">Job Level</label>
+                        <input type="text" id="cmeJobLevel" [(ngModel)]="data.cmeJobLevel" name="cmeJobLevel"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Job Level">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeSubLevel" class="block text-gray-700 font-bold mb-2">Sub Level</label>
+                        <input type="text" id="cmeSubLevel" [(ngModel)]="data.cmeSubLevel" name="cmeSubLevel"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Sub Level">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeUpLevel" class="block text-gray-700 font-bold mb-2">Up Level</label>
+                        <input type="text" id="cmeUpLevel" [(ngModel)]="data.cmeUpLevel" name="cmeUpLevel"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Up Level">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeUpSubLevel" class="block text-gray-700 font-bold mb-2">Up Sub Level</label>
+                        <input type="text" id="cmeUpSubLevel" [(ngModel)]="data.cmeUpSubLevel" name="cmeUpSubLevel"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Up Sub Level">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeIdCtpicRefNo" class="block text-gray-700 font-bold mb-2">PIC Ref No</label>
+                        <input type="text" id="cmeIdCtpicRefNo" [(ngModel)]="data.cmeIdCtpicRefNo"
+                            name="cmeIdCtpicRefNo"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="PIC Ref No">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeIdCtpicSeqNo" class="block text-gray-700 font-bold mb-2">PIC Seq No</label>
+                        <input type="text" id="cmeIdCtpicSeqNo" [(ngModel)]="data.cmeIdCtpicSeqNo"
+                            name="cmeIdCtpicSeqNo"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Pic Seq No">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmePjsEmplCode" class="block text-gray-700 font-bold mb-2">PJS Empl Code</label>
+                        <input type="text" id="cmePjsEmplCode" [(ngModel)]="data.cmePjsEmplCode" name="cmePjsEmplCode"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="PJS Employee Code">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="mb-4">
+                        <label for="cmeImgFileName" class="block text-gray-700 font-bold mb-2">File Name</label>
+                        <input type="text" id="cmeImgFileName" [(ngModel)]="data.cmeImgFileName" name="cmeImgFileName"
+                            readonly
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="File Name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="cmeImgFilePath" class="block text-gray-700 font-bold mb-2">File Path</label>
+                        <input type="text" id="cmprImgFilepath" [(ngModel)]="data.cmeImgFilePath" name="cmeImgFilePath"
+                            readonly
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="File Path">
+                    </div>
+                </div>
+
             </div>
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Image Upload</h2>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeEmplBirthPlace" class="block text-gray-700 font-bold mb-2">Birth Place</label>
-                    <input type="text" id="cmeEmplBirthPlace" [(ngModel)]="data.cmeEmplBirthPlace" name="cmeEmplBirthPlace"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Birth Place">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeEmplBirthDate" class="block text-gray-700 font-bold mb-2">Birth Date</label>
-                    <input type="text" id="cmeEmplBirthDate" [(ngModel)]="data.cmeEmplBirthDate" name="cmeEmplBirthDate"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Birth Date">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeEmplAddress" class="block text-gray-700 font-bold mb-2">Address</label>
-                    <input type="text" id="cmeEmplAddress" [(ngModel)]="data.cmeEmplAddress" name="cmeEmplAddress"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Address">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeEmplHandphone" class="block text-gray-700 font-bold mb-2">HandPhone No</label>
-                    <input type="text" id="cmeEmplHandphone" [(ngModel)]="data.cmeEmplHandphone" name="cmeEmplHandphone"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="HandPhone No">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeEmplRt" class="block text-gray-700 font-bold mb-2">Rt</label>
-                    <input type="text" id="cmeEmplRt" [(ngModel)]="data.cmeEmplRt" name="cmeEmplRt"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Rt">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeEmplRw" class="block text-gray-700 font-bold mb-2">Rw</label>
-                    <input type="text" id="cmeEmplRw" [(ngModel)]="data.cmeEmplRw" name="cmeEmplRw"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Rw">
-                </div>
-            </div>
-
-            <!-- Province and City -->
-            <div class="grid grid-cols-2 gap-6">
-                <div class="space-y-2">
-                  <label for="cmeEmplProvCode" class="block text-sm font-medium text-gray-700">Province</label>
-                  <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Province</mat-label>
-                    <mat-select formControlName="cmeEmplProvCode"  (selectionChange)="changeprov($event.value)">
-                      <mat-option *ngFor="let pro of provlist" [value]="pro.cmpsiProvCode">
-                        {{ pro.cmpsiProvinsi }} 
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="space-y-2">
-                  <label for="cmeEmplCityCode" class="block text-sm font-medium text-gray-700">City</label>
-                  <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>City</mat-label>
-                    <mat-select formControlName="cmeEmplCityCode" (selectionChange)="changecity($event.value)">
-                      <mat-option *ngFor="let cit of citylist" [value]="cit.cmcitCityCode">
-                        {{ cit.cmcitCity }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            
-            <!-- District and Village -->
-            <div class="grid grid-cols-2 gap-6">
-                <div class="space-y-2">
-                  <label for="cmeEmplKecCode" class="block text-sm font-medium text-gray-700">Kecamatan</label>
-                  <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Kecamatan</mat-label>
-                    <mat-select formControlName="cmeEmplKecCode" (selectionChange)="changekecamatan($event.value)">
-                      <mat-option *ngFor="let kc of keclist" [value]="kc.cmkecKecCode">
-                        {{ kc.cmkecKecamatan }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="space-y-2">
-                  <label for="cmeEmplKelCode" class="block text-sm font-medium text-gray-700">Kelurahan</label>
-                  <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Kelurahan</mat-label>
-                    <mat-select formControlName="cmeEmplKelCode" (selectionChange)="changekelurahan($event.value)">
-                      <mat-option *ngFor="let kl of kellist" [value]="kl.cmkelKelCode">
-                        {{ kl.cmkelKelurahan }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeEmplZipCode" class="block text-gray-700 font-bold mb-2">ZipCode</label>
-                    <input type="text" id="cmeEmplZipCode" [(ngModel)]="data.cmeEmplZipCode" name="cmeEmplZipCode"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="ZipCode">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeEmplEmail" class="block text-gray-700 font-bold mb-2">Email</label>
-                    <input type="text" id="cmeEmplEmail" [(ngModel)]="data.cmeEmplEmail" name="cmeEmplEmail"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Email">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeUsername" class="block text-gray-700 font-bold mb-2">User Name</label>
-                    <input type="text" id="cmeUsername" [(ngModel)]="data.cmeUsername" name="cmeUsername"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="User Name">
-                </div>
-                <div class="mb-4">
-                    <label for="cmePassword" class="block text-gray-700 font-bold mb-2">Password</label>
-                    <input type="text" id="cmePassword" [(ngModel)]="data.cmePassword" name="cmePassword"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Password">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeIdNo" class="block text-gray-700 font-bold mb-2">ID No</label>
-                    <input type="text" id="cmeIdNo" [(ngModel)]="data.cmeIdNo" name="cmeIdNo"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="ID No">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeDescription" class="block text-gray-700 font-bold mb-2">Jabatan</label>
-                    <input type="text" id="cmeDescription" [(ngModel)]="data.cmeDescription" name="cmeDescription"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Jabatan">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeJobLevel" class="block text-gray-700 font-bold mb-2">Job Level</label>
-                    <input type="text" id="cmeJobLevel" [(ngModel)]="data.cmeJobLevel" name="cmeJobLevel"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Job Level">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeSubLevel" class="block text-gray-700 font-bold mb-2">Sub Level</label>
-                    <input type="text" id="cmeSubLevel" [(ngModel)]="data.cmeSubLevel" name="cmeSubLevel"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Sub Level">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeUpLevel" class="block text-gray-700 font-bold mb-2">Up Level</label>
-                    <input type="text" id="cmeUpLevel" [(ngModel)]="data.cmeUpLevel" name="cmeUpLevel"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Up Level">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeUpSubLevel" class="block text-gray-700 font-bold mb-2">Up Sub Level</label>
-                    <input type="text" id="cmeUpSubLevel" [(ngModel)]="data.cmeUpSubLevel" name="cmeUpSubLevel"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Up Sub Level">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeIdCtpicRefNo" class="block text-gray-700 font-bold mb-2">PIC Ref No</label>
-                    <input type="text" id="cmeIdCtpicRefNo" [(ngModel)]="data.cmeIdCtpicRefNo" name="cmeIdCtpicRefNo"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="PIC Ref No">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeIdCtpicSeqNo" class="block text-gray-700 font-bold mb-2">PIC Seq No</label>
-                    <input type="text" id="cmeIdCtpicSeqNo" [(ngModel)]="data.cmeIdCtpicSeqNo" name="cmeIdCtpicSeqNo"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Pic Seq No">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmePjsEmplCode" class="block text-gray-700 font-bold mb-2">PJS Empl Code</label>
-                    <input type="text" id="cmePjsEmplCode" [(ngModel)]="data.cmePjsEmplCode" name="cmePjsEmplCode"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="PJS Employee Code">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div class="mb-4">
-                    <label for="cmeImgFileName" class="block text-gray-700 font-bold mb-2">File Name</label>
-                    <input type="text" id="cmeImgFileName" [(ngModel)]="data.cmeImgFileName" name="cmeImgFileName" readonly
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="File Name">
-                </div>
-                <div class="mb-4">
-                    <label for="cmeImgFilePath" class="block text-gray-700 font-bold mb-2">File Path</label>
-                    <input type="text" id="cmprImgFilepath" [(ngModel)]="data.cmeImgFilePath" name="cmeImgFilePath" readonly
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="File Path">
-                </div>
-            </div>
-
-        </div>
-        <div>
-            <h2 class="text-xl font-semibold mb-2">Image Upload</h2>
-
-            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center">
-                        <div class="row">
-                            <div class="col-span-1">
-                                <div class="col-span-8">
-                                    <label class="cursor-pointer inline-block p-0 relative">
-                                        <input type="file" accept="image/*"  id="file1" name="file1" (change)="onFileSelected($event, 1)" />
-                                        <img [src]="preview" alt="Image Preview1" class="h-24 w-32" />
-                                        <div
-                                            class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
-                                            <span class="text-white font-bold">Pilih File</span>
-                                        </div>
-                                    </label>
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="row">
+                                <div class="col-span-1">
+                                    <div class="col-span-8">
+                                        <label class="cursor-pointer inline-block p-0 relative">
+                                            <input type="file" accept="image/*" id="file1" name="file1"
+                                                (change)="onFileSelected($event, 1)" />
+                                            <img [src]="preview" alt="Image Preview1" class="h-24 w-32" />
+                                            <div
+                                                class="absolute inset-0 bg-gray-400 opacity-50 rounded-md flex items-center justify-center">
+                                                <span class="text-white font-bold">Pilih File</span>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <!--<div class="mt-8">
+        <!--<div class="mt-8">
         <h2 class="text-xl font-semibold mb-2">Specification</h2>
 
         <div class="mb-4">
@@ -286,14 +298,11 @@
         </div>
     </div>-->
 
-    <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="submit" >
-        Save Employee
-    </button>
+        <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit">
+            Save Employee
+        </button>
     </form>
 
 </div>
-
-
-

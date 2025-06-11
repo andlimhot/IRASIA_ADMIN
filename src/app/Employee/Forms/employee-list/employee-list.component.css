@@ -1,0 +1,101 @@
+.mattoolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px; /* Mengurangi padding */
+}
+
+.toolbar-space {
+  flex-grow: 1;
+}
+
+.maindiv2 {
+  padding: 20px;
+}
+
+/* Tombol Add Product */
+button.add-product {
+  background: linear-gradient(135deg, #ff6f61, #ff9a8b);
+  color: white;
+  font-weight: bold;
+  padding: 8px 14px; /* Perkecil ukuran tombol */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button.add-product:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Input Filter */
+.applyfilter {
+  width: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.applyfilter input {
+  width: 300px; /* Ukuran lebih kecil */
+  padding: 6px; /* Padding lebih kecil */
+  font-size: 13px; /* Perkecil ukuran font */
+  border: none;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.applyfilter input::placeholder {
+  color: #aaa;
+  font-size: 12px; /* Placeholder lebih kecil */
+}
+
+.applyfilter input:focus {
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px rgba(255, 111, 97, 0.4);
+}
+
+/* Tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px; /* Perkecil ukuran teks */
+}
+
+th, td {
+  padding: 1px; /* Mengurangi jarak antar teks */
+  text-align: left;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  font-size: 17px; /* Perkecil ukuran */
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 5px; /* Perkecil padding */
+}
+
+/* Warna Baris */
+.hightligth {
+  background-color: #e3f2fd;
+}
+
+.different {
+  background-color: #ffccbc;
+}
+
+/* Judul "Product List" */
+.product-list-title {
+  font-size: 30px; /* Perkecil ukuran judul */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12px;
+  color: #ff6f61;
+}

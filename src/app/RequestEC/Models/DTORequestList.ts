@@ -14,5 +14,7 @@ export interface DTORequestList{
     requestProductImage3: string,
     requestProductImage4: string,
     requestSeqNo: string,
+    requestNewProduct:string,
+    requestSale:string,
 
 }

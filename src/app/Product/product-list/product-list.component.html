@@ -1,4 +1,4 @@
- <!--<mat-toolbar color="warn" class="mat-elevation-z8" class="mattoolbar">
+<!--<mat-toolbar color="warn" class="mat-elevation-z8" class="mattoolbar">
     <span>Product List</span>
     <span class="toolbar-sapce"></span>
     <button mat-button routerLink="/home">back</button>
@@ -6,12 +6,13 @@
     <button mat-raised-button color="primary" (click)="viewAddProduct('Insert', '0')">Add Master Batch</button>
   </mat-toolbar>-->
 
-  
- <div class="maindiv2">
+
+<div class="maindiv2">
+  <h2 class="product-list-title">Product List</h2> <!-- Tambahkan Judul -->
   <table style="width:100%;text-align: center;" id="tablelist">
     <tr>
       <td style="width:10%">
-      <button mat-raised-button color="primary" (click)="viewAddProduct('Insert','0')">Add Product</button>
+        <button mat-raised-button color="primary" (click)="viewAddProduct('Insert','0')">+ Add Product</button>
       </td>
       <td style="width: 10%;">
       </td>
@@ -24,66 +25,66 @@
     </tr>
   </table>
   <!--<div *ngIf="isLoading; else elseform">-->
-   <!--<app-spinner></app-spinner>-->
-   <!--<app-module></app-module>-->
- <!-- </div> -->
+  <!--<app-spinner></app-spinner>-->
+  <!--<app-module></app-module>-->
+  <!-- </div> -->
   <!--<ng-template #elseform>-->
-    <div class="row">
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
+  <div class="row">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
 
-          <ng-container matColumnDef="nourut">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-            <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
-          </ng-container>
+        <ng-container matColumnDef="nourut">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+          <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
+        </ng-container>
 
-          <ng-container matColumnDef="cmprCode">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Kode</th>
-            <td mat-cell *matCellDef="let row" hidden > {{row.cmprCode}} </td>
-          </ng-container>
+        <ng-container matColumnDef="cmprCode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Kode</th>
+          <td mat-cell *matCellDef="let row" hidden> {{row.cmprCode}} </td>
+        </ng-container>
 
-          <ng-container matColumnDef="cmprName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nama Product</th>
-            <td mat-cell *matCellDef="let row"> {{row.cmprName}} </td>
-          </ng-container>
+        <ng-container matColumnDef="cmprName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nama Product</th>
+          <td mat-cell *matCellDef="let row"> {{row.cmprName}} </td>
+        </ng-container>
 
-          <ng-container matColumnDef="cmprImgFilename">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> File Name</th>
-            <td mat-cell *matCellDef="let row" hidden > {{row.cmprImgFilename}} </td>
-          </ng-container>
+        <ng-container matColumnDef="cmprImgFilename">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> File Name</th>
+          <td mat-cell *matCellDef="let row" hidden> {{row.cmprImgFilename}} </td>
+        </ng-container>
 
-          <ng-container matColumnDef="cmprImgFilepath">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden > File Path</th>
-            <td mat-cell *matCellDef="let row"hidden > {{row.cmprImgFilepath}} </td>
-          </ng-container>
+        <ng-container matColumnDef="cmprImgFilepath">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> File Path</th>
+          <td mat-cell *matCellDef="let row" hidden> {{row.cmprImgFilepath}} </td>
+        </ng-container>
 
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-            <td mat-cell *matCellDef="let row">
-            <button mat-icon-button color="primary" (click)="viewAddProduct('Update', row.cmprCode)"
-               ><mat-icon>edit</mat-icon></button>
-              <button mat-icon-button color="accent"
-                ><mat-icon>delete</mat-icon></button>
-            </td>
-          </ng-container>-->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="viewAddProduct('Update', row.cmprCode)" title="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" title="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+        </ng-container>-->
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'hightligth':row.nourut%2== 1,'different':row.debet!=row.credit}">
-          </tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{'hightligth':row.nourut%2== 1,'different':row.debet!=row.credit}">
+        </tr>
 
-          <!-- Row shown when there is no matching data. -->
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-          </tr>
-        </table>
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 
-      </div>
     </div>
+  </div>
   <!--</ng-template>-->
 
 
 </div>
-
-

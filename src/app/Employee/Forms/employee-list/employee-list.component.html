@@ -8,10 +8,11 @@
 
   
   <div class="maindiv2">
+    <h2 class="product-list-title">Employee List</h2> <!-- Tambahkan Judul -->
     <table style="width:100%;text-align: center;" id="tablelist">
       <tr>
         <td style="width:10%">
-        <button mat-raised-button color="primary" (click)="viewAddProduct('Insert','')">Add Employee</button>
+        <button mat-raised-button color="primary" (click)="viewAddProduct('Insert','')">+Add Employee</button>
         </td>
         <td style="width: 10%;">
         </td>
@@ -85,11 +86,12 @@
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
               <td mat-cell *matCellDef="let row">
-              <button mat-icon-button color="primary" (click)="viewAddProduct('Update', row.cmeEmplNik)"
-                 ><mat-icon>edit</mat-icon></button>
-                <button mat-icon-button color="accent"
-                  ><mat-icon>delete</mat-icon></button>
-              </td>
+              <button mat-icon-button color="primary" (click)="viewAddProduct('Update', row.cmeEmplNik)" title="Edit">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" title="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
             </ng-container>-->
   
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

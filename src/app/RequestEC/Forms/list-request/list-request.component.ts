@@ -51,7 +51,7 @@ export class ListRequestComponent implements OnInit{
     this.vtknd=sessionStorage.getItem('tkn');
     //this.vusr=this.decrypt(this.vusrd);
     //this.vtkn=this.decrypt(this.vtknd);
-    alert("aaaaa :"+this.vusr+" ---- "+this.vtkn);
+   // alert("aaaaa :"+this.vusr+" ---- "+this.vtkn);
     this.getVrlByUser();
   }
 

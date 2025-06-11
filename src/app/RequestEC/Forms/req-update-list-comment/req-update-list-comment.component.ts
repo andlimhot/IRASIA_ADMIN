@@ -88,7 +88,7 @@ export class ReqUpdateListCommentComponent implements OnInit{
 
     }
 
-    ApproveProductDtl() {
+    RejectProductDtl() {
       alert('reject: '+ this.p_reqno+'/'+this.p_no+'/'+this.data.ctecdReason+'/'+this.p_usr)
       this.reqServ.UpdStsProductDtl(this.p_reqno,this.p_no,this.data.ctecdReason,this.p_usr)
           .subscribe(
@@ -107,5 +107,14 @@ export class ReqUpdateListCommentComponent implements OnInit{
           );
           //alert('endsubmitregist');
     }
+
+    validateAndReject() {
+    if (!this.data.ctecdReason || this.data.ctecdReason.trim() === '') {
+        alert('Mohon input comment untuk melanjutkan reject!');
+        return;
+    }
+    this.RejectProductDtl();
+}
+
 
 }

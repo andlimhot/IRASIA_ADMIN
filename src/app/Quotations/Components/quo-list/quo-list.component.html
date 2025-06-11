@@ -1,0 +1,98 @@
+<!--<app-header-nav></app-header-nav>-->
+<nav></nav>
+<div class="container mx-auto p-6 rounded-lg shadow-lg">
+  <h1 class="text-3xl font-bold mb-6 text-blue-700">Quotation Manual List</h1>
+
+  <div class="flex flex-col md:flex-row md:items-center mb-6 gap-4">
+    <div class="w-full md:w-1/4 flex justify-center">
+      <img src="/assets/ialogo_awal.png" alt="image" class="h-24 w-auto">
+    </div>
+
+    <div class="w-full md:w-1/2 flex">
+      <div class="flex flex-wrap justify-center gap-2">
+      </div>
+    </div>
+
+    <div class="w-full md:w-1/4 flex justify-end">
+      <!--<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="AddQuo('Insert')">Add Quotation</button>-->
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="w-full md:w-1/4">
+      <div class="bg-gray-200 p-4 rounded-lg shadow-md mb-4">
+        <img src="/assets/Note 5.jpg" alt="image" class="rounded-md">
+      </div>
+    </div>
+
+    <div class="w-full md:w-3/4">
+      <mat-form-field class="applyfilter w-1/2 ml-4">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. 123" #input>
+      </mat-form-field>
+      <div class="mat-elevation-z8 min-h-[33.5rem] overflow-y-auto p-4 bg-white rounded-lg shadow-md">
+        <table mat-table [dataSource]="dataSource" matSort class="min-w-full">
+          <ng-container matColumnDef="nourut">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell *matCellDef="let row"> {{row.nourut}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vquoUserId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> user</th>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vquoUserId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vquoId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quotation No.</th>
+            <td mat-cell *matCellDef="let row"> {{row.vquoId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vquoDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quotation Date </th>
+            <td mat-cell *matCellDef="let row"> {{row.vquoDate }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vquoStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status </th>
+            <td mat-cell *matCellDef="let row"> {{row.vquoStatus }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vquoSendDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Send Date </th>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vquoSendDate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="vquoApprove">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> Approval </th>
+            <td mat-cell *matCellDef="let row" hidden> {{row.vquoApprove }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button color="success">
+                <mat-icon>supervisor_account</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="updateQuo('Update', row.vquoId,row.vquoUserId)" title="Detail">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" hidden>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': row.nourut % 2 == 1, 'different': row.debet != row.credit}">
+          </tr>
+        </table>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+          class="custom-paginator"
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

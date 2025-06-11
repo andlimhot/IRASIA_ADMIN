@@ -71,4 +71,9 @@ export class ServRegistrationService {
     return this.http.get(SubRegis, {responseType: 'text' as 'text'});
    }
 
+   RejectRegistration(p_regid:any,p_email:any, p_user:any):Observable<string>{
+    const SubRegis:string="http://193.111.124.45:9815/am-svc/webadmin/ProcRejectRegis?p_regid="+p_regid+"&p_email="+p_email+"&p_user="+p_user;
+    return this.http.get(SubRegis, {responseType: 'text' as 'text'});
+   }
+
 }

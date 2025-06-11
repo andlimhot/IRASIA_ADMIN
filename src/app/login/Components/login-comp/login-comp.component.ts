@@ -2,15 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServLoginService } from '../../Services/serv-login.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { loginresponseempl } from '../../Models/loginresponseempl';
 import { loginresponse } from '../../Models/loginresponse';
 import * as CryptoJS from 'crypto-js';  
+import { RouterModule } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login-comp',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, FormsModule  ],
+  imports: [CommonModule,ReactiveFormsModule, FormsModule, MatDialogModule,  RouterModule,MatMenuModule,
+      MatButtonModule, MatIconModule  ],
   templateUrl: './login-comp.component.html',
   styleUrls: ['./login-comp.component.css']
 })
@@ -19,7 +24,7 @@ export class LoginCompComponent implements OnInit{
   loginForm!: FormGroup;
   submitted = false;
   token: string = '';
-  secretKey: string="12!@#$%abgz123";
+  secretKey: string="12!@#$%cdiz123";
   vusr:string="";
   vtkn:string="";
   vusrname:string="";

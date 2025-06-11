@@ -1,169 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header Styling */
 .top-header {
-    background-color: #f8f8f9;
-    font-family: var(--fontFamily);
-    padding-top: 15px;
-    padding-bottom: 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 12px 0;
+    color: white;
 }
 
-.top-header li:not(:last-child) a:hover {
-    color: var(--primaryColor);
-}
-
-.header-left-content {
-    line-height: 1;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style-type: none;
-}
-
-.header-left-content > li {
+.top-header ul {
+    list-style: none;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    color: #555;
-    font-size: var(--fontSize);
-    text-align: center;
+    gap: 16px;
 }
 
-.header-left-content > li a {
+.top-header ul li a {
+    color: white;
     text-decoration: none;
-    color: #555;
-    font-size: var(--fontSize);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.header-left-content > li:not(:last-child) {
-    margin-right: 10px;
-    padding-right: 10px;
+.top-header ul li a:hover {
+    color: #3b72ff;
 }
 
-.header-left-content > li:not(:last-child)::before {
-    top: 50%;
-    width: 1px;
-    content: "";
-    right: -3px;
-    height: 80%;
-    position: absolute;
-    background-color: #ddd;
-    transform: translateY(-50%);
-}
-
-.header-right-content>li>a{
-    font-size: 15px;
-    color: #555;
-    cursor: pointer;
-}
+/* Dropdown Styling */
 .account-dropdown {
     position: relative;
 }
 
-.account-dropdown .my-account {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #555;
-    padding: 10px 15px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.account-dropdown:hover .my-account {
-    background-color: #f1f1f1;
-}
-
-.account-dropdown .account-logo {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.account-dropdown .dropdown-icon {
-    font-size: 18px;
-    transition: transform 0.3s ease;
-}
-
-.account-dropdown:hover .dropdown-icon {
-    transform: rotate(180deg);
-}
-
-.dropdown-menu {
-    display: none;
+.account-dropdown .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 180px;
-    z-index: 11;
-    border-radius: 4px;
-    padding: 10px 0;
-    animation: fadeIn 0.3s ease-in-out;
+    background: #764ba2;
+    color: #333;
+    padding: 8px 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    border-radius: 6px;
 }
 
 .account-dropdown:hover .dropdown-menu {
     display: block;
 }
 
-.dropdown-menu li {
-    list-style: none;
-    padding: 10px 15px;
-    text-align: left;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-menu li a {
-    text-decoration: none;
-    color: #555;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-}
-
-.dropdown-menu li a i {
-    font-size: 16px;
-    color: var(--primaryColor);
-}
-
-.dropdown-menu li:hover {
-    background-color: #f8f8f9;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Align Dropdown to Right */
-.account-dropdown.right-align .dropdown-menu {
-    left: auto;
-    right: 0;
-}
-
+/* Menu Styling */
 .menu-wrapper {
     display: flex;
-    gap: 20px;
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
+    justify-content: center;
+    /*justify-content: flex-start;*/ /* Memindahkan menu ke kiri */
+    gap: 24px;
+    padding: 16px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container button {
+    background: #667eea;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-container button:hover {
+    background: #764ba2;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .top-header ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu-wrapper {
+        flex-direction: column;
+        text-align: left;
+    }
+}
+/*logo account*/
+.my-account {
+  display: flex;
+  align-items: center; /* Agar teks dan gambar sejajar secara vertikal */
+  gap: 8px; /* Memberikan jarak antara gambar dan teks */
+}
+
+.account-logo {
+  width: 32px; /* Sesuaikan ukuran logo */
+  height: 32px;
+}
+
+/*logo iron*/
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: -101px; /* Menggeser lebih ke kiri */
+  position: relative;
+  top: 67px; /* Geser sedikit ke bawah */
+}
+
+.iron-asia-logo {
+  width: 80px; /* Sesuaikan ukuran logo */
+  height: auto;
+}
+
+
 
 

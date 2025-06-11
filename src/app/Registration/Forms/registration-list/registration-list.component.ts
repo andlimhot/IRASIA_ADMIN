@@ -79,9 +79,9 @@ export class RegistrationListComponent implements OnInit{
      getRegisAll(){
         this.vmsjur=[];
         this.vct=0;
-        alert('registlist');
+        //alert('registlist');
         this._mbtserv.getVRegisAll().subscribe((res:VCustRegistration[])=>{
-          alert(res.length)
+          //alert(res.length)
           this.vmsjur=res;
           this.dataSource=new MatTableDataSource(this.vmsjur);
           this.dataSource.data.forEach( async item => {

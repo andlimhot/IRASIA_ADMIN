@@ -1,0 +1,14 @@
+body {
+    height: 100vh;
+    margin: 0;
+  }
+
+  .modal-container {
+  padding: 50px; /* Memberi ruang di sekeliling gambar */
+}
+
+
+.close-icon {
+    color: red;
+}
+

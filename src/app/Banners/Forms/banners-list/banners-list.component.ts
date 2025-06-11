@@ -101,7 +101,7 @@ export class BannersListComponent implements OnInit{
       }
   
      viewAddBanners(ptranstype:string, vprodcode:any){
-      const dialogRef =this.dialog.open(BannersCuComponent,{height:'90%',width:'80%'},);
+      const dialogRef =this.dialog.open(BannersCuComponent,{height:'60%',width:'65%'},);
         dialogRef.afterClosed().subscribe({
           next:(val) =>{
             if (val) {
